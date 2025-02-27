@@ -7,6 +7,7 @@ import type {
 import {AddToCartButton} from './AddToCartButton';
 import {useAside} from './Aside';
 import type {ProductFragment} from 'storefrontapi.generated';
+import {cn} from '~/utils/cn';
 
 export function ProductForm({
   productOptions,
@@ -18,89 +19,57 @@ export function ProductForm({
   const navigate = useNavigate();
   const {open} = useAside();
   return (
-    <div className="product-form">
-      {productOptions.map((option) => {
-        // If there is only a single value in the option values, don't display the option
-        if (option.optionValues.length === 1) return null;
+    <div>
+      <div className="block text-xs cursor-pointer bg-white text-black uppercase font-bold py-3 text-center w-1/2 relative border-2 border-b-0 border-neutral-300">
+        {productOptions.map((option) => {
+          if (option.optionValues.length === 1) return null;
+          if (option.name === 'Size') {
+            return (
+              <div key={option.name}>
+                <div className="flex items-center justify-evenly">
+                  {option.optionValues.map((value) => {
+                    const {
+                      name,
+                      handle,
+                      variantUriQuery,
+                      selected,
+                      available,
+                      exists,
+                      isDifferentProduct,
+                      swatch,
+                    } = value;
+                    return (
+                      <button
+                        type="button"
+                        key={option.name + name}
+                        disabled={!exists}
+                        onClick={() => {
+                          if (!selected) {
+                            navigate(`?${variantUriQuery}`, {
+                              replace: true,
+                              preventScrollReset: true,
+                            });
+                          }
+                        }}
+                        className={cn(
+                          'transition cursor-pointer uppercase',
+                          selected ? 'opacity-100' : 'opacity-25',
+                        )}
+                      >
+                        <ProductOptionSwatch swatch={swatch} name={name} />
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          }
+        })}
 
-        return (
-          <div className="product-options" key={option.name}>
-            <h5>{option.name}</h5>
-            <div className="product-options-grid">
-              {option.optionValues.map((value) => {
-                const {
-                  name,
-                  handle,
-                  variantUriQuery,
-                  selected,
-                  available,
-                  exists,
-                  isDifferentProduct,
-                  swatch,
-                } = value;
-
-                if (isDifferentProduct) {
-                  // SEO
-                  // When the variant is a combined listing child product
-                  // that leads to a different url, we need to render it
-                  // as an anchor tag
-                  return (
-                    <Link
-                      className="product-options-item"
-                      key={option.name + name}
-                      prefetch="intent"
-                      preventScrollReset
-                      replace
-                      to={`/products/${handle}?${variantUriQuery}`}
-                      style={{
-                        border: selected
-                          ? '1px solid black'
-                          : '1px solid transparent',
-                        opacity: available ? 1 : 0.3,
-                      }}
-                    >
-                      <ProductOptionSwatch swatch={swatch} name={name} />
-                    </Link>
-                  );
-                } else {
-                  // SEO
-                  // When the variant is an update to the search param,
-                  // render it as a button with javascript navigating to
-                  // the variant so that SEO bots do not index these as
-                  // duplicated links
-                  return (
-                    <button
-                      type="button"
-                      className={`product-options-item${
-                        exists && !selected ? ' link' : ''
-                      }`}
-                      key={option.name + name}
-                      style={{
-                        border: selected
-                          ? '1px solid black'
-                          : '1px solid transparent',
-                        opacity: available ? 1 : 0.3,
-                      }}
-                      disabled={!exists}
-                      onClick={() => {
-                        if (!selected) {
-                          navigate(`?${variantUriQuery}`, {
-                            replace: true,
-                            preventScrollReset: true,
-                          });
-                        }
-                      }}
-                    >
-                      <ProductOptionSwatch swatch={swatch} name={name} />
-                    </button>
-                  );
-                }
-              })}
-            </div>
-            <br />
-          </div>
-        );
-      })}
+        {/* dots */}
+        <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
+        <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
+      </div>
       <AddToCartButton
         disabled={!selectedVariant || !selectedVariant.availableForSale}
         onClick={() => {
@@ -124,7 +93,7 @@ export function ProductForm({
   );
 }
 
-function ProductOptionSwatch({
+export function ProductOptionSwatch({
   swatch,
   name,
 }: {

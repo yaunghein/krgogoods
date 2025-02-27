@@ -14,7 +14,7 @@ export function Footer({
   publicStoreDomain,
 }: FooterProps) {
   return (
-    <footer>
+    <footer className="mt-auto">
       <div className="px-10 pt-20 pb-9 grid grid-cols-5 gap-5 items-start">
         <div className="grid gap-2">
           <NavLink

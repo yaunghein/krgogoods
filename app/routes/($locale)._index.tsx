@@ -57,7 +57,7 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 
 export default function Homepage() {
   // const data = useLoaderData<typeof loader>();
-  const data = [...Array(8)];
+  const data = [...Array(7)];
   return (
     <>
       <div className="overflow-hidden py-[0.3rem] -my-[0.3rem]">
