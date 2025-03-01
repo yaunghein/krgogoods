@@ -67,7 +67,7 @@ export default function Homepage() {
       <div className="overflow-hidden py-[0.3rem] -my-[0.3rem]">
         <PaginatedResourceSection
           connection={collection.products}
-          resourcesClassName="px-10 grid grid-cols-4 translate-x-[1px] translate-y-[1px]"
+          resourcesClassName="px-8 sm:px-10 grid sm:grid-cols-4 translate-x-[1px] translate-y-[1px]"
         >
           {/* {data.map((_, index) => (
             <Product key={index} listLength={data.length} index={index} />
@@ -94,6 +94,7 @@ import Shirt from '~/assets/shirt.png';
 import Shirt2 from '~/assets/shirt-2.png';
 import {PaginatedResourceSection} from '~/components/PaginatedResourceSection';
 import {useVariantUrl} from '~/lib/variants';
+import {cn} from '~/utils/cn';
 
 type ProductProps = {
   listLength: number;
@@ -101,8 +102,7 @@ type ProductProps = {
   product: any;
 };
 
-function Product({listLength, index, product}: ProductProps) {
-  console.log(product.title, index);
+function Product({index, product}: ProductProps) {
   const shouldHideRightLines = (index + 1) % 4 !== 0;
   const variantUrl = useVariantUrl(product.handle);
 
@@ -111,9 +111,9 @@ function Product({listLength, index, product}: ProductProps) {
       key={product.id}
       prefetch="intent"
       to={variantUrl}
-      className="relative -ml-[2px] -mt-[2px] hover:z-10 group cursor-pointer"
+      className="relative sm:-ml-[2px] -ml-[1px] -mt-[1px] sm:-mt-[2px] hover:z-10 group cursor-pointer"
     >
-      <div className="relative border-2 border-neutral-300">
+      <div className="relative border sm:border-2 border-neutral-300">
         {product.featuredImage && (
           <Image
             alt={product.featuredImage.altText || product.title}
@@ -125,46 +125,57 @@ function Product({listLength, index, product}: ProductProps) {
         )}
 
         {/* lines  */}
-        <div className="h-[2px] bg-neutral-300 w-10 absolute -bottom-[2px] -left-10"></div>
-        {!shouldHideRightLines && (
-          <div className="h-[2px] bg-neutral-300 w-10 absolute -bottom-[2px] -right-10"></div>
-        )}
+        <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-10 absolute -bottom-[2px] -left-10"></div>
+        <div
+          className={cn(
+            'h-[1px] sm:h-[2px] bg-neutral-300 w-10 absolute -bottom-[2px] -right-10',
+            shouldHideRightLines && 'sm:hidden',
+          )}
+        ></div>
 
         {/* dots */}
-        <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
-        <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+        <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white border sm:border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+        <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white border sm:border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
       </div>
-      <div className="px-[1.13rem] py-[0.88rem] border-2 border-neutral-300 flex items-center justify-between -mt-[2px] transition duration-300 group-hover:bg-black group-hover:text-white">
-        <div className="font-bold">{product.title}</div>
-        <div className="">
+      <div className="px-[1.13rem] py-[0.88rem] border sm:border-2 border-neutral-300 flex gap-1 flex-col sm:flex-row items-center justify-between -mt-[1px] sm:-mt-[2px] transition duration-300 group-hover:bg-black group-hover:text-white">
+        <div className="font-bold uppercase text-xs sm:text-sm">
+          {product.title}
+        </div>
+        <div className="text-xs sm:text-sm uppercase">
           <Money data={product.priceRange.minVariantPrice} />
         </div>
       </div>
 
       {/* colors */}
       {/* <div className="absolute top-3 left-3 flex flex-col items-center">
-        <div className="size-[1.13rem] bg-[#294031] border-2 border-neutral-300 rounded-full"></div>
+        <div className="size-[1.13rem] bg-[#294031] border sm:border-2 border-neutral-300 rounded-full"></div>
         <div className="w-[2px] h-2 bg-neutral-300 -my-[1px]"></div>
-        <div className="size-[1.13rem] bg-white border-2 border-neutral-300 rounded-full"></div>
+        <div className="size-[1.13rem] bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
         <div className="w-[2px] h-2 bg-neutral-300 -my-[1px]"></div>
-        <div className="size-[1.13rem] bg-black border-2 border-neutral-300 rounded-full"></div>
+        <div className="size-[1.13rem] bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
       </div> */}
 
       {/* lines */}
-      <div className="h-[2px] bg-neutral-300 w-10 absolute top-0 -left-10"></div>
-      {!shouldHideRightLines && (
-        <div className="h-[2px] bg-neutral-300 w-10 absolute top-0 -right-10 right-line"></div>
-      )}
-      <div className="h-[2px] bg-neutral-300 w-10 absolute bottom-0 -left-10"></div>
-      {!shouldHideRightLines && (
-        <div className="h-[2px] bg-neutral-300 w-10 absolute bottom-0 -right-10 right-line"></div>
-      )}
+      <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-10 absolute top-0 -left-10"></div>
+      <div
+        className={cn(
+          'h-[1px] sm:h-[2px] bg-neutral-300 w-10 absolute top-0 -right-10',
+          shouldHideRightLines && 'sm:hidden',
+        )}
+      ></div>
+      <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-10 absolute bottom-0 -left-10"></div>
+      <div
+        className={cn(
+          'h-[1px] sm:h-[2px] bg-neutral-300 w-10 absolute bottom-0 -right-10',
+          shouldHideRightLines && 'sm:hidden',
+        )}
+      ></div>
 
       {/* dots */}
-      <div className="absolute size-2 top-0 left-0 transform -translate-x-2/5 -translate-y-2/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
-      <div className="absolute size-2 top-0 right-0 transform translate-x-2/5 -translate-y-2/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
-      <div className="absolute size-2 bottom-0 left-0 transform -translate-x-2/5 translate-y-2/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
-      <div className="absolute size-2 bottom-0 right-0 transform translate-x-2/5 translate-y-2/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+      <div className="absolute size-2 top-0 left-0 transform -translate-x-2/5 -translate-y-2/5 bg-white border sm:border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+      <div className="absolute size-2 top-0 right-0 transform translate-x-2/5 -translate-y-2/5 bg-white border sm:border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+      <div className="absolute size-2 bottom-0 left-0 transform -translate-x-2/5 translate-y-2/5 bg-white border sm:border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+      <div className="absolute size-2 bottom-0 right-0 transform translate-x-2/5 translate-y-2/5 bg-white border sm:border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
     </Link>
   );
 }

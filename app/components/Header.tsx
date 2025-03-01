@@ -22,19 +22,19 @@ type Viewport = 'desktop' | 'mobile';
 export function Header({cart}: HeaderProps) {
   return (
     <header>
-      <div className="h-24 p-5 flex items-center justify-between relative">
+      <div className="h-[5.5rem] sm:h-24 p-5 flex items-center justify-end sm:justify-between relative gap-3">
         <ThemeSwitcher />
         <NavLink
           prefetch="intent"
           to="/"
           style={activeLinkStyle}
           end
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          className="absolute top-1/2 left-8 sm:left-1/2 transform sm:-translate-x-1/2 -translate-y-1/2"
         >
           <img
             src={Logo}
             alt="Krgogoods Logo"
-            className="w-[16.06rem] h-[3.44rem]"
+            className="w-[8.13rem] sm:w-[16.06rem] h-[2.19rem] sm:h-[3.44rem]"
           />
         </NavLink>
         <CartToggle cart={cart} />
@@ -159,55 +159,55 @@ function CartBadge({count}: {count: number | null}) {
       }}
     >
       <div className="flex items-center gap-3">
-        <div className="relative shrink-0">
-          <div className="size-9 bg-white border-2 border-neutral-300 rounded-full relative">
-            <div className="text-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+        <div className="relative shrink-0 hidden sm:block">
+          <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
+            <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
               C
             </div>
           </div>
-          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border-2 border-neutral-300 rounded-full"></div>
-          <div className="h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
         </div>
-        <div className="relative shrink-0">
-          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border-2 border-neutral-300 rounded-full"></div>
-          <div className="size-9 bg-white border-2 border-neutral-300 rounded-full relative">
-            <div className="text-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+        <div className="relative shrink-0 hidden sm:block">
+          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
+            <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
               A
             </div>
           </div>
-          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border-2 border-neutral-300 rounded-full"></div>
-          <div className="h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
         </div>
-        <div className="relative shrink-0">
-          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border-2 border-neutral-300 rounded-full"></div>
-          <div className="size-9 bg-white border-2 border-neutral-300 rounded-full relative">
-            <div className="text-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+        <div className="relative shrink-0 hidden sm:block">
+          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
+            <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
               R
             </div>
           </div>
-          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border-2 border-neutral-300 rounded-full"></div>
-          <div className="h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
         </div>
-        <div className="relative shrink-0">
-          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border-2 border-neutral-300 rounded-full"></div>
-          <div className="size-9 bg-white border-2 border-neutral-300 rounded-full relative">
-            <div className="text-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+        <div className="relative shrink-0 hidden sm:block">
+          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
+            <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
               T
             </div>
           </div>
-          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border-2 border-neutral-300 rounded-full"></div>
-          <div className="h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
         </div>
         <div className="relative shrink-0">
-          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border-2 border-neutral-300 rounded-full"></div>
-          <div className="size-9 bg-white border-2 border-neutral-300 rounded-full relative">
-            <div className="text-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black flex">
+          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
+            <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black flex">
               <span className="inline-block -translate-y-[0.1rem]">(</span>
               {count === null ? <span>&nbsp;</span> : count}
               <span className="inline-block -translate-y-[0.1rem]">)</span>
             </div>
           </div>
-          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border-2 border-neutral-300 rounded-full"></div>
+          <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -left-3"></div>
+          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
         </div>
       </div>
     </a>

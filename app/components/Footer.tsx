@@ -15,8 +15,8 @@ export function Footer({
 }: FooterProps) {
   return (
     <footer className="mt-auto">
-      <div className="px-10 pt-20 pb-9 grid grid-cols-5 gap-5 items-start">
-        <div className="grid gap-2">
+      <div className="px-8 sm:px-10 pt-8 sm:pt-20 pb-8 sm:pb-9 grid sm:grid-cols-5 gap-8 items-start">
+        <div className="grid gap-2 sm:gap-2">
           <NavLink
             prefetch="intent"
             to="/"
@@ -51,7 +51,7 @@ export function Footer({
           </NavLink>
         </div>
 
-        <div className="grid gap-2">
+        <div className="grid gap-2 sm:gap-2">
           <NavLink
             prefetch="intent"
             to="/"
@@ -70,7 +70,7 @@ export function Footer({
           </NavLink>
         </div>
 
-        <div className="grid gap-2">
+        <div className="grid gap-2 sm:gap-2">
           <NavLink
             prefetch="intent"
             to="/"
@@ -89,7 +89,7 @@ export function Footer({
           </NavLink>
         </div>
 
-        <div className="grid gap-2">
+        <div className="grid gap-2 sm:gap-2">
           <NavLink
             prefetch="intent"
             to="/"
@@ -108,7 +108,7 @@ export function Footer({
           </NavLink>
         </div>
 
-        <div className="grid gap-2">
+        <div className="grid gap-2 sm:gap-2">
           <NavLink
             prefetch="intent"
             to="/"
