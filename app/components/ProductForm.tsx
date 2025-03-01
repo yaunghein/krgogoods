@@ -20,56 +20,58 @@ export function ProductForm({
   const {open} = useAside();
   return (
     <div>
-      <div className="block text-xs cursor-pointer bg-white text-black uppercase font-bold py-3 text-center w-1/2 relative border-2 border-b-0 border-neutral-300">
-        {productOptions.map((option) => {
-          if (option.optionValues.length === 1) return null;
-          if (option.name === 'Size') {
-            return (
-              <div key={option.name}>
-                <div className="flex items-center justify-evenly">
-                  {option.optionValues.map((value) => {
-                    const {
-                      name,
-                      handle,
-                      variantUriQuery,
-                      selected,
-                      available,
-                      exists,
-                      isDifferentProduct,
-                      swatch,
-                    } = value;
-                    return (
-                      <button
-                        type="button"
-                        key={option.name + name}
-                        disabled={!exists}
-                        onClick={() => {
-                          if (!selected) {
-                            navigate(`?${variantUriQuery}`, {
-                              replace: true,
-                              preventScrollReset: true,
-                            });
-                          }
-                        }}
-                        className={cn(
-                          'transition cursor-pointer uppercase',
-                          selected ? 'opacity-100' : 'opacity-25',
-                        )}
-                      >
-                        <ProductOptionSwatch swatch={swatch} name={name} />
-                      </button>
-                    );
-                  })}
+      {productOptions.some((o) => o.name === 'Size') && (
+        <div className="block text-xs cursor-pointer bg-white text-black uppercase font-bold py-3 text-center w-1/2 relative border-2 border-b-0 border-neutral-300">
+          {productOptions.map((option) => {
+            if (option.optionValues.length === 1) return null;
+            if (option.name === 'Size') {
+              return (
+                <div key={option.name}>
+                  <div className="flex items-center justify-evenly">
+                    {option.optionValues.map((value) => {
+                      const {
+                        name,
+                        handle,
+                        variantUriQuery,
+                        selected,
+                        available,
+                        exists,
+                        isDifferentProduct,
+                        swatch,
+                      } = value;
+                      return (
+                        <button
+                          type="button"
+                          key={option.name + name}
+                          disabled={!exists}
+                          onClick={() => {
+                            if (!selected) {
+                              navigate(`?${variantUriQuery}`, {
+                                replace: true,
+                                preventScrollReset: true,
+                              });
+                            }
+                          }}
+                          className={cn(
+                            'transition cursor-pointer uppercase',
+                            selected ? 'opacity-100' : 'opacity-25',
+                          )}
+                        >
+                          <ProductOptionSwatch swatch={swatch} name={name} />
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            );
-          }
-        })}
+              );
+            }
+          })}
 
-        {/* dots */}
-        <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-        <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-      </div>
+          {/* dots */}
+          <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
+          <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
+        </div>
+      )}
       <AddToCartButton
         disabled={!selectedVariant || !selectedVariant.availableForSale}
         onClick={() => {

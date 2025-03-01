@@ -248,6 +248,7 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
                         isDifferentProduct,
                         swatch,
                       } = value;
+                      console.log('swatch', option);
                       if (option.name === 'Color') {
                         return (
                           <button
@@ -265,7 +266,7 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
                           >
                             <div className="relative">
                               <div
-                                style={{backgroundColor: swatch.color}}
+                                style={{backgroundColor: swatch?.color}}
                                 className={cn(
                                   'size-5 rounded-full border-2  cursor-pointer',
                                   selected

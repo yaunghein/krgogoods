@@ -13,8 +13,14 @@ export function PaginatedResourceSection<NodesType>({
   children: React.FunctionComponent<{node: NodesType; index: number}>;
   resourcesClassName?: string;
 }) {
+  const [key, setKey] = React.useState(Date.now());
+
+  React.useEffect(() => {
+    setKey(Date.now()); // Forces component to re-render on refresh
+  }, []);
+
   return (
-    <Pagination connection={connection}>
+    <Pagination key={key} connection={connection}>
       {({nodes, isLoading, PreviousLink, NextLink}) => {
         const resourcesMarkup = nodes.map((node, index) =>
           children({node, index}),
@@ -22,16 +28,31 @@ export function PaginatedResourceSection<NodesType>({
 
         return (
           <div>
-            <PreviousLink>
-              {isLoading ? 'Loading...' : <span>↑ Load previous</span>}
+            <PreviousLink className="flex justify-center my-10">
+              <div className="group block text-xs cursor-pointer bg-white text-black uppercase font-bold py-3 text-center w-96 relative border-2 border-neutral-300 transition duration-300 hover:bg-black hover:text-white">
+                {isLoading ? 'Loading...' : <span>Load previous</span>}
+                {/* dots */}
+                <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+                <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+                <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+                <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+              </div>
             </PreviousLink>
             {resourcesClassName ? (
               <div className={resourcesClassName}>{resourcesMarkup}</div>
             ) : (
               resourcesMarkup
             )}
-            <NextLink>
-              {isLoading ? 'Loading...' : <span>Load more ↓</span>}
+
+            <NextLink className="flex justify-center mt-10">
+              <div className="group block text-xs cursor-pointer bg-white text-black uppercase font-bold py-3 text-center w-96 relative border-2 border-neutral-300 transition duration-300 hover:bg-black hover:text-white">
+                {isLoading ? 'Loading...' : <span>Load more</span>}
+                {/* dots */}
+                <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+                <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+                <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+                <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+              </div>
             </NextLink>
           </div>
         );
