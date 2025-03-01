@@ -9,7 +9,7 @@ export function ProductPrice({
   compareAtPrice?: MoneyV2 | null;
 }) {
   return (
-    <div className="text-base uppercase">
+    <div className="text-xs sm:text-base uppercase">
       {compareAtPrice ? (
         <div className="product-price-on-sale">
           {price ? <Money data={price} /> : null}

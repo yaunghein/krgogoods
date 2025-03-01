@@ -160,7 +160,7 @@ function Accordion({header, body, initialOpen}: AccordionProps) {
         <div className="text-xs uppercase">{header}</div>
         <div
           className={cn(
-            'absolute left-56 size-3 rounded-full  border-2 border-neutral-300 transition',
+            'ml-auto sm:absolute left-56 size-3 rounded-full  border sm:border-2 border-neutral-300 transition',
             isOpen ? 'bg-black' : 'bg-white',
           )}
         ></div>
@@ -175,8 +175,8 @@ import SizeFitChart from '~/assets/size-fit-chart.jpg';
 function SizeFit() {
   const [type, setType] = useState('inches');
   return (
-    <div className="flex gap-5">
-      <div className="shrink-0 w-[11.56rem] aspect-[1/0.82]">
+    <div className="flex flex-col sm:flex-row gap-5">
+      <div className="shrink-0 w-[8rem] sm:w-[11.56rem] aspect-[1/0.82]">
         <img src={SizeFitShirt} alt="" className="w-full h-full" />
       </div>
       <div className="grid gap-3">
@@ -219,10 +219,10 @@ import Sleeve from '~/assets/sleeve.jpg';
 function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
   const navigate = useNavigate();
   return (
-    <div className="p-10 pb-0 flex flex-col h-full">
-      <div className="flex items-start justify-between">
-        <div>
-          <h1 className="text-base font-bold uppercase">{title}</h1>
+    <div className="sm:p-10 sm:pb-0 flex flex-col h-full">
+      <div className="flex flex-col-reverse sm:flex-row items-start justify-between">
+        <div className="px-4 pb-0 sm:pb-6 sm:px-0 py-6 sm:py-0">
+          <h1 className="text-xs sm:text-base font-bold uppercase">{title}</h1>
           <ProductPrice
             price={selectedVariant?.price}
             compareAtPrice={selectedVariant?.compareAtPrice}
@@ -268,7 +268,7 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
                               <div
                                 style={{backgroundColor: swatch?.color}}
                                 className={cn(
-                                  'size-5 rounded-full border-2  cursor-pointer',
+                                  'size-5 rounded-full border sm:border-2 cursor-pointer',
                                   selected
                                     ? 'border-black'
                                     : 'border-neutral-300',
@@ -276,7 +276,7 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
                                 )}
                               ></div>
                               {i !== option.optionValues.length - 1 && (
-                                <div className="h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+                                <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
                               )}
                             </div>
                           </button>
@@ -290,11 +290,11 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
             })}
           </div>
         </div>
-        <div className="w-[16rem] aspect-[1/0.32] -translate-y-[0.4rem]">
+        <div className="w-full sm:w-[16rem] mt-6 sm:mt-0 aspect-[1/0.36] -translate-y-[0.4rem]">
           <img src={Sleeve} alt="" className="w-full h-full" />
         </div>
       </div>
-      <div className="mb-auto mt-16 grid gap-5">
+      <div className="mb-auto mt-0 sm:mt-16 grid gap-4 sm:gap-5 px-4 sm:px-0">
         <Accordion header={<div>size & fit</div>} body={<SizeFit />} />
         <Accordion
           header={<div>composition, care & origin</div>}
@@ -302,7 +302,7 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
         />
         <Accordion header={<div>shipping & returns</div>} body={<SizeFit />} />
       </div>
-      <div className="mt-8 pb-10">
+      <div className="sm:mt-8 sm:pb-10">
         <ProductForm
           productOptions={productOptions}
           selectedVariant={selectedVariant}
