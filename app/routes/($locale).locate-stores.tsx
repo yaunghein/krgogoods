@@ -60,7 +60,7 @@ import {TwoColumnLayout} from '~/components/TwoColumnLayout';
 export default function Homepage() {
   // const data = useLoaderData<typeof loader>();
 
-  return <TwoColumnLayout left={<Left />} right={<Right />} />;
+  return <TwoColumnLayout left={<Left />} />;
 }
 
 const locations = [
@@ -100,7 +100,7 @@ const locations = [
 
 function Left() {
   return (
-    <div className="p-7">
+    <div className="p-4 sm:p-7">
       <div className="font-bold text-sm uppercase">Stores</div>
       <div className="mt-7 grid gap-7">
         {locations.map((location) => (

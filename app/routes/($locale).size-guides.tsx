@@ -80,8 +80,8 @@ function Left({
   setType: (type: 'cm' | 'inches') => void;
 }) {
   return (
-    <div className="p-7">
-      <div className="flex items-center gap-6">
+    <div className="p-4 sm:p-7">
+      <div className="flex items-center justify-between sm:justify-start gap-6">
         <div className="font-bold text-sm uppercase">Size Guides</div>
         <div className="flex gap-1">
           <button
@@ -105,22 +105,22 @@ function Left({
         </div>
       </div>
 
-      <div className="grid gap-6 mt-10">
+      <div className="grid gap-6 mt-4 sm:mt-10">
         {[...Array(3)].map((i) => (
           <div>
             <div className="!text-xs uppercase">Man Tops</div>
-            <div className="flex gap-5">
-              <div className="shrink-0 w-[11rem] aspect-[1/0.82]">
+            <div className="flex flex-col sm:flex-row gap-5">
+              <div className="shrink-0 w-[8rem] sm:w-[11rem] aspect-[1/0.82]">
                 <img src={SizeFitShirt} alt="" className="w-full h-full" />
               </div>
               <div className="grid gap-3">
                 {type === 'cm' && (
-                  <div className="w-[27rem] aspect-[1/0.33] rotate-180">
+                  <div className="w-full sm:w-[27rem] aspect-[1/0.33] rotate-180">
                     <img src={SizeFitChart} alt="" />
                   </div>
                 )}
                 {type === 'inches' && (
-                  <div className="w-[27rem] aspect-[1/0.33]">
+                  <div className="w-full sm:w-[27rem] aspect-[1/0.33]">
                     <img src={SizeFitChart} alt="" />
                   </div>
                 )}
@@ -141,23 +141,23 @@ function Right({
   setType: (type: 'cm' | 'inches') => void;
 }) {
   return (
-    <div className="p-7">
-      <div className="grid gap-6 mt-[3.75rem]">
+    <div className="p-4 sm:p-7">
+      <div className="grid gap-6 mt-0 sm:mt-[3.75rem]">
         {[...Array(3)].map((i) => (
           <div>
             <div className="!text-xs uppercase">Man Tops</div>
-            <div className="flex gap-5">
-              <div className="shrink-0 w-[11rem] aspect-[1/0.82]">
+            <div className="flex flex-col sm:flex-row gap-5">
+              <div className="shrink-0 w-[8rem] sm:w-[11rem] aspect-[1/0.82]">
                 <img src={SizeFitShirt} alt="" className="w-full h-full" />
               </div>
               <div className="grid gap-3">
                 {type === 'cm' && (
-                  <div className="w-[27rem] aspect-[1/0.33] rotate-180">
+                  <div className="w-full sm:w-[27rem] aspect-[1/0.33] rotate-180">
                     <img src={SizeFitChart} alt="" />
                   </div>
                 )}
                 {type === 'inches' && (
-                  <div className="w-[27rem] aspect-[1/0.33]">
+                  <div className="w-full sm:w-[27rem] aspect-[1/0.33]">
                     <img src={SizeFitChart} alt="" />
                   </div>
                 )}

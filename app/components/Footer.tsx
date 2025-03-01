@@ -27,7 +27,7 @@ export function Footer({
           </NavLink>
           <NavLink
             prefetch="intent"
-            to="/"
+            to="/faq"
             end
             className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
           >
@@ -35,7 +35,7 @@ export function Footer({
           </NavLink>
           <NavLink
             prefetch="intent"
-            to="/"
+            to="/product-care"
             end
             className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
           >
@@ -43,7 +43,7 @@ export function Footer({
           </NavLink>
           <NavLink
             prefetch="intent"
-            to="/"
+            to="/size-guides"
             end
             className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
           >
@@ -54,7 +54,7 @@ export function Footer({
         <div className="grid gap-2 sm:gap-2">
           <NavLink
             prefetch="intent"
-            to="/"
+            to="/locate-stores"
             end
             className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
           >
@@ -64,7 +64,7 @@ export function Footer({
             prefetch="intent"
             to="/"
             end
-            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
+            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition pointer-events-none line-through"
           >
             archive
           </NavLink>

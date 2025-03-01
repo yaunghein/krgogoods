@@ -60,7 +60,7 @@ import {TwoColumnLayout} from '~/components/TwoColumnLayout';
 export default function Homepage() {
   // const data = useLoaderData<typeof loader>();
 
-  return <TwoColumnLayout left={<Left />} right={<Right />} />;
+  return <TwoColumnLayout left={<Left />} />;
 }
 
 type AccordionProps = {
@@ -80,7 +80,7 @@ function Accordion({header, body, initialOpen}: AccordionProps) {
         <div className="text-xs uppercase">{header}</div>
         <div
           className={cn(
-            'absolute left-[18.25rem] size-3 rounded-full  border-2 border-neutral-300 transition',
+            'ml-auto sm:absolute left-[18.25rem] size-2 sm:size-3 rounded-full border sm:border-2 border-neutral-300 transition',
             isOpen ? 'bg-black' : 'bg-white',
           )}
         ></div>
@@ -97,8 +97,8 @@ import {cn} from '~/utils/cn';
 function SizeFit() {
   const [type, setType] = useState('inches');
   return (
-    <div className="flex gap-5">
-      <div className="shrink-0 w-[11.56rem] aspect-[1/0.82]">
+    <div className="flex flex-col sm:flex-row gap-5">
+      <div className="shrink-0 w-[8rem] sm:w-[11.56rem] aspect-[1/0.82]">
         <img src={SizeFitShirt} alt="" className="w-full h-full" />
       </div>
       <div className="grid gap-3">
@@ -139,7 +139,7 @@ function SizeFit() {
 
 function Left() {
   return (
-    <div className="p-7 h-full flex flex-col justify-between">
+    <div className="p-4 sm:p-7 h-full flex flex-col justify-between">
       <div className="grid gap-4">
         <Accordion
           header={<div className="font-bold">SHIPPING AND DELIVERY</div>}
@@ -159,13 +159,13 @@ function Left() {
         />
       </div>
 
-      <button className="block text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center w-1/2 relative border-2 border-neutral-300">
+      <button className="mt-7 sm:mt-0 block text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300">
         MYanmar (Select Store)
         {/* dots */}
-        <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border-2 border-neutral-300 rounded-full"></div>
-        <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border-2 border-neutral-300 rounded-full"></div>
-        <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-black border-2 border-neutral-300 rounded-full"></div>
-        <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-black border-2 border-neutral-300 rounded-full"></div>
+        <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+        <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+        <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+        <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
       </button>
     </div>
   );
