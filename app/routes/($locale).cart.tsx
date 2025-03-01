@@ -143,23 +143,88 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
   const cartHasItems = cart?.totalQuantity && cart?.totalQuantity > 0;
 
   return (
-    <TwoColumnLayout
-      left={
-        <ul>
-          <CartEmpty hidden={linesCount} layout={layout} />
-          {(cart?.lines?.nodes ?? []).map((line) => (
-            <CartLineItem key={line.id} line={line} layout={layout} />
-          ))}
-        </ul>
-      }
-      right={
-        cartHasItems ? (
-          <div className="h-full flex flex-col justify-end">
-            <CartSummary cart={cart} layout={layout} />
+    <div className="flex flex-col items-center">
+      <div className="w-full flex justify-center px-8 sm:px-10 sm:border-t-2 border-neutral-300">
+        <div className="relative sm:border-x-2 border-b-0 w-full border-neutral-300 pt-5 sm:pt-3 pb-7 sm:pb-3 flex justify-center">
+          <div className="flex items-center gap-3 -translate-x-[0.05rem]">
+            <div className="relative shrink-0">
+              <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
+                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+                  C
+                </div>
+              </div>
+              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+              <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+            </div>
+            <div className="relative shrink-0">
+              <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+              <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
+                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+                  A
+                </div>
+              </div>
+              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+              <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+            </div>
+            <div className="relative shrink-0">
+              <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+              <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
+                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+                  R
+                </div>
+              </div>
+              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+              <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+              <div className="hidden sm:block h-3 bg-neutral-300 w-[2px] absolute -top-3 left-1/2 -translate-x-1/2"></div>
+              <div className="hidden sm:block h-3 bg-neutral-300 w-[2px] absolute -bottom-3 left-1/2 -translate-x-1/2"></div>
+            </div>
+            <div className="relative shrink-0">
+              <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+              <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
+                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+                  T
+                </div>
+              </div>
+              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+            </div>
+            <div className="relative shrink-0">
+              <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+              <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
+                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black flex">
+                  <span className="inline-block -translate-y-[0.1rem]">(</span>
+                  {cart?.lines?.nodes.length}
+                  <span className="inline-block -translate-y-[0.1rem]">)</span>
+                </div>
+              </div>
+              <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -left-3"></div>
+              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+            </div>
           </div>
-        ) : null
-      }
-    />
+
+          {/* dots */}
+          <div className="hidden sm:block absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="hidden sm:block absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="hidden sm:block absolute size-2 top-0 left-1/2 transform -translate-x-3/5 -translate-y-3/5 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+        </div>
+      </div>
+      <TwoColumnLayout
+        left={
+          <ul>
+            <CartEmpty hidden={linesCount} layout={layout} />
+            {(cart?.lines?.nodes ?? []).map((line) => (
+              <CartLineItem key={line.id} line={line} layout={layout} />
+            ))}
+          </ul>
+        }
+        right={
+          cartHasItems ? (
+            <div className="h-full flex flex-col justify-end">
+              <CartSummary cart={cart} layout={layout} />
+            </div>
+          ) : null
+        }
+      />
+    </div>
     // <div className="pl-8 pr-10 -my-[0.3rem] relative">
     //   <div className="absolute inset-0 top-[3px] bottom-auto w-full h-[2px] bg-neutral-300"></div>
     //   <div className="absolute inset-0 top-auto w-full h-[2px] bg-neutral-300"></div>

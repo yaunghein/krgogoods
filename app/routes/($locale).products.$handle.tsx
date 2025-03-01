@@ -248,7 +248,6 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
                         isDifferentProduct,
                         swatch,
                       } = value;
-                      console.log('swatch', option);
                       if (option.name === 'Color') {
                         return (
                           <button

@@ -110,7 +110,7 @@ function Product({index, product}: ProductProps) {
       key={product.id}
       prefetch="intent"
       to={variantUrl}
-      className="relative sm:-ml-[2px] -ml-[1px] -mt-[1px] sm:-mt-[2px] hover:z-10 group cursor-pointer"
+      className="relative sm:-ml-[2px] -ml-[1px] -mt-[1px] sm:-mt-[2px] hover:z-10 cursor-pointer"
     >
       <div className="relative border sm:border-2 border-neutral-300">
         {product.featuredImage && (
