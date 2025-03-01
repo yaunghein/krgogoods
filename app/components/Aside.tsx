@@ -38,6 +38,9 @@ export function Aside({
   const {type: activeType, close} = useAside();
   const expanded = type === activeType;
 
+  // just to hard bypass cart drawer temporarily
+  if (type === 'cart') return;
+
   useEffect(() => {
     const abortController = new AbortController();
 

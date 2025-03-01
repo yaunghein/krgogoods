@@ -9,7 +9,7 @@ import type {HeaderQuery, CartApiQueryFragment} from 'storefrontapi.generated';
 import {useAside} from '~/components/Aside';
 import Logo from '~/assets/logo.jpg';
 import {ThemeSwitcher} from '~/components/ThemeSwitcher';
-import {useLocation} from '@remix-run/react';
+import {useLocation, useNavigate} from '@remix-run/react';
 
 interface HeaderProps {
   header: HeaderQuery;
@@ -25,6 +25,7 @@ export function Header({cart}: HeaderProps) {
   const isPathNotShowCloseButton =
     ['/'].includes(location.pathname) ||
     location.pathname.startsWith('/products');
+  const navigate = useNavigate();
 
   return (
     <header>
@@ -49,7 +50,9 @@ export function Header({cart}: HeaderProps) {
         {!isPathNotShowCloseButton && (
           <button
             className="relative shrink-0 cursor-pointer"
-            onClick={() => window.history.back()}
+            onClick={() => {
+              document.referrer ? window.history.back() : navigate('/');
+            }}
           >
             <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
             <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
