@@ -19,7 +19,7 @@ export function Footer({
         <div className="grid gap-2 sm:gap-2">
           <NavLink
             prefetch="intent"
-            to="/"
+            to="/contact"
             end
             className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
           >

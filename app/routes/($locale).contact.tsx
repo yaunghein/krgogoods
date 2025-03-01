@@ -60,86 +60,12 @@ import {TwoColumnLayout} from '~/components/TwoColumnLayout';
 export default function Homepage() {
   // const data = useLoaderData<typeof loader>();
 
-  return <TwoColumnLayout left={<Left />} right={<Right />} />;
-}
-
-type AccordionProps = {
-  header: React.ReactNode;
-  body: React.ReactNode;
-  initialOpen?: boolean;
-};
-
-function Accordion({header, body, initialOpen}: AccordionProps) {
-  const [isOpen, setIsOpen] = useState(initialOpen || false);
-  return (
-    <div className="grid gap-6">
-      <div
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center relative w-full cursor-pointer"
-      >
-        <div className="text-xs uppercase">{header}</div>
-        <div
-          className={cn(
-            'absolute left-[18.25rem] size-3 rounded-full  border-2 border-neutral-300 transition',
-            isOpen ? 'bg-black' : 'bg-white',
-          )}
-        ></div>
-      </div>
-      {isOpen && body}
-    </div>
-  );
-}
-
-import SizeFitShirt from '~/assets/size-fit-shirt.jpg';
-import SizeFitChart from '~/assets/size-fit-chart.jpg';
-import {useState} from 'react';
-import {cn} from '~/utils/cn';
-function SizeFit() {
-  const [type, setType] = useState('inches');
-  return (
-    <div className="flex gap-5">
-      <div className="shrink-0 w-[11.56rem] aspect-[1/0.82]">
-        <img src={SizeFitShirt} alt="" className="w-full h-full" />
-      </div>
-      <div className="grid gap-3">
-        <div className="flex gap-1">
-          <button
-            onClick={() => setType('cm')}
-            className={cn(
-              type === 'cm' ? 'opacity-100' : 'opacity-20',
-              'transition uppercase text-xs cursor-pointer',
-            )}
-          >
-            CM
-          </button>
-          <button
-            onClick={() => setType('inches')}
-            className={cn(
-              type === 'inches' ? 'opacity-100' : 'opacity-20',
-              'transition uppercase text-xs cursor-pointer',
-            )}
-          >
-            Inches
-          </button>
-        </div>
-        {type === 'cm' && (
-          <div className="flex-1 aspect-[1/0.33] rotate-180">
-            <img src={SizeFitChart} alt="" />
-          </div>
-        )}
-        {type === 'inches' && (
-          <div className="flex-1 aspect-[1/0.33]">
-            <img src={SizeFitChart} alt="" />
-          </div>
-        )}
-      </div>
-    </div>
-  );
+  return <TwoColumnLayout left={<Left />} />;
 }
 
 function Left() {
   return (
-    <div className="p-7 h-full flex flex-col justify-between">
+    <div className="p-4 sm:p-7 h-full flex flex-col justify-between">
       <div className="grid gap-7">
         <div className="grid gap-2">
           <div className="font-bold text-sm uppercase">Contact us</div>
@@ -161,17 +87,17 @@ function Left() {
         </div>
       </div>
 
-      <div className="grid gap-2">
-        <p className="text-[0.65rem]">
+      <div className="grid gap-2 mt-7 sm:mt-0 ">
+        <p className="text-sm sm:text-[0.65rem]">
           For opening times or to contact one of our stores directly
         </p>
-        <button className="block text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center w-1/2 relative border-2 border-neutral-300">
+        <button className="block text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300">
           Locate stores
           {/* dots */}
-          <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border-2 border-neutral-300 rounded-full"></div>
-          <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border-2 border-neutral-300 rounded-full"></div>
-          <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-black border-2 border-neutral-300 rounded-full"></div>
-          <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-black border-2 border-neutral-300 rounded-full"></div>
+          <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
         </button>
       </div>
     </div>
