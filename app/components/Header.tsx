@@ -1,4 +1,4 @@
-import {Suspense} from 'react';
+import {Suspense, useRef} from 'react';
 import {Await, NavLink, useAsyncValue} from '@remix-run/react';
 import {
   type CartViewPayload,
@@ -9,6 +9,7 @@ import type {HeaderQuery, CartApiQueryFragment} from 'storefrontapi.generated';
 import {useAside} from '~/components/Aside';
 import Logo from '~/assets/logo.jpg';
 import {ThemeSwitcher} from '~/components/ThemeSwitcher';
+import {useLocation} from '@remix-run/react';
 
 interface HeaderProps {
   header: HeaderQuery;
@@ -20,6 +21,11 @@ interface HeaderProps {
 type Viewport = 'desktop' | 'mobile';
 
 export function Header({cart}: HeaderProps) {
+  const location = useLocation();
+  const isPathNotShowCloseButton =
+    ['/'].includes(location.pathname) ||
+    location.pathname.startsWith('/products');
+
   return (
     <header>
       <div className="h-[5.5rem] sm:h-24 p-5 flex items-center justify-end sm:justify-between relative gap-3">
@@ -37,7 +43,35 @@ export function Header({cart}: HeaderProps) {
             className="w-[8.13rem] sm:w-[16.06rem] h-[2.19rem] sm:h-[3.44rem]"
           />
         </NavLink>
-        <CartToggle cart={cart} />
+
+        {isPathNotShowCloseButton && <CartToggle cart={cart} />}
+
+        {!isPathNotShowCloseButton && (
+          <button
+            className="relative shrink-0 cursor-pointer"
+            onClick={() => window.history.back()}
+          >
+            <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+            <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
+              <div className="size-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black flex">
+                <svg
+                  width="100%"
+                  height="100%"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.94548 6.49768L13.4949 0.948308L15.2258 2.6793L9.67647 8.22868L15.2513 13.8035L13.5203 15.5345L7.94548 9.95968L2.3961 15.5091L0.665105 13.7781L6.21448 8.22868L0.639648 2.65385L2.37065 0.922852L7.94548 6.49768Z"
+                    fill="#1E1E1E"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div className="sm:hidden h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -left-3"></div>
+            <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+          </button>
+        )}
       </div>
     </header>
   );
@@ -148,8 +182,8 @@ function CartBadge({count}: {count: number | null}) {
     <a
       href="/cart"
       onClick={(e) => {
-        e.preventDefault();
-        open('cart');
+        // e.preventDefault();
+        // open('cart');
         publish('cart_viewed', {
           cart,
           prevCart,

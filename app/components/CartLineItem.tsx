@@ -30,7 +30,7 @@ export function CartLineItem({
     // <li key={id} className="cart-line">
     <li
       key={id}
-      className="flex border-2 border-neutral-300 -mt-[2px] relative"
+      className="flex flex-col sm:flex-row border-y sm:border-y-2 border-neutral-300 -mt-[2px] relative"
     >
       {image && (
         <Image
@@ -40,12 +40,12 @@ export function CartLineItem({
           height={300}
           loading="lazy"
           width={300}
-          className="object-cover w-[14rem] !rounded-none border-r-2 border-neutral-300"
+          className="object-cover w-full sm:w-[14rem] !rounded-none sm:border-r-2 border-neutral-300"
         />
       )}
 
       <div className="p-5 w-full flex flex-col justify-between">
-        <div className="flex items-start justify-between w-full">
+        <div className="flex flex-col sm:flex-row items-start justify-between w-full mb-8 sm:mb-0">
           <div className="grid gap-1">
             <Link
               prefetch="intent"
@@ -56,9 +56,13 @@ export function CartLineItem({
                 }
               }}
             >
-              <strong>{product.title}</strong>
+              <strong className="uppercase text-xs sm:text-base">
+                {product.title}
+              </strong>
             </Link>
-            <div className="text-sm">{selectedVariants}</div>
+            <div className="text-xs sm:text-base uppercase">
+              {selectedVariants}
+            </div>
           </div>
           <ProductPrice price={line?.cost?.totalAmount} />
         </div>
@@ -66,10 +70,10 @@ export function CartLineItem({
       </div>
 
       {/* dots */}
-      <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
+      {/* <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
       <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
       <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-      <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
+      <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div> */}
     </li>
   );
 }
@@ -110,7 +114,7 @@ function CartLineQuantity({line}: {line: CartLine}) {
           <span className="">&#43;</span>
         </button>
       </CartLineUpdateButton>
-      <div className="ml-auto">
+      <div className="ml-auto absolute top-4 right-4 sm:static">
         <CartLineRemoveButton lineIds={[lineId]} disabled={!!isOptimistic} />
       </div>
     </div>

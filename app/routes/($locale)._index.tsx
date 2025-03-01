@@ -28,7 +28,7 @@ export async function loader(args: LoaderFunctionArgs) {
 async function loadCriticalData({context, request}: LoaderFunctionArgs) {
   const {storefront} = context;
   const paginationVariables = getPaginationVariables(request, {
-    pageBy: 8,
+    pageBy: 250,
   });
 
   const [{collection}] = await Promise.all([
@@ -60,7 +60,6 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 
 export default function Homepage() {
   const {collection} = useLoaderData<typeof loader>();
-  console.log(collection.products);
 
   return (
     <>
