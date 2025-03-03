@@ -7,7 +7,7 @@ type TwoColumnLayoutProps = {
 
 export function TwoColumnLayout({left, right}: TwoColumnLayoutProps) {
   return (
-    <div className="px-8 sm:px-10 border-y sm:border-y-2 border-neutral-300">
+    <div className="px-8 sm:px-10 border-y sm:border-y-2 border-neutral-300 w-full">
       <div className="relative grid sm:grid-cols-2 border-x sm:border-x-2 border-neutral-300">
         <div
           className={cn(

@@ -192,7 +192,7 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
               <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
                 <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black flex">
                   <span className="inline-block -translate-y-[0.1rem]">(</span>
-                  {cart?.lines?.nodes.length}
+                  {cart?.lines?.nodes.length || 0}
                   <span className="inline-block -translate-y-[0.1rem]">)</span>
                 </div>
               </div>
@@ -263,7 +263,7 @@ function CartEmpty({
   const {close} = useAside();
   return (
     <div hidden={hidden} className="p-7 grid gap-7 sm:p-10">
-      <p>
+      <p className="max-w-[22rem] uppercase text-sm">
         Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you
         started!
       </p>

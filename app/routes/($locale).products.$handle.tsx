@@ -231,7 +231,7 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
             dangerouslySetInnerHTML={{__html: descriptionHtml}}
             className="text-xs mt-6 max-w-[16rem]"
           />
-          <div>
+          <div className="mt-7">
             {productOptions.map((option: any) => {
               if (option.optionValues.length === 1) return null;
               return (
@@ -280,10 +280,11 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
                             </div>
                           </button>
                         );
+                      } else {
+                        return null;
                       }
                     })}
                   </div>
-                  <br />
                 </div>
               );
             })}
@@ -293,7 +294,7 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
           <img src={Sleeve} alt="" className="w-full h-full" />
         </div>
       </div>
-      <div className="mb-auto mt-0 sm:mt-16 grid gap-4 sm:gap-5 px-4 sm:px-0">
+      <div className="mb-auto mt-0 sm:mt-auto grid gap-4 sm:gap-5 px-4 sm:px-0">
         <Accordion header={<div>size & fit</div>} body={<SizeFit />} />
         <Accordion
           header={<div>composition, care & origin</div>}
