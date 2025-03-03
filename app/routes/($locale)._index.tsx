@@ -33,7 +33,7 @@ async function loadCriticalData({context, request}: LoaderFunctionArgs) {
 
   const [{collection}] = await Promise.all([
     storefront.query(COLLECTION_QUERY, {
-      variables: {handle: 'featured', ...paginationVariables},
+      variables: {handle: 'all', ...paginationVariables},
       // Add other queries here, so that they are loaded in parallel
     }),
   ]);
