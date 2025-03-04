@@ -1,6 +1,6 @@
 import React from 'react';
-import {useLocation} from '@remix-run/react';
 import {cn} from '~/utils/cn';
+import {Form, useMatches, useLocation, useFetcher} from '@remix-run/react';
 
 export function StoreSelector() {
   const [selectedStore, setSelectedStore] = React.useState<
@@ -14,7 +14,7 @@ export function StoreSelector() {
 
   return (
     <div className="fixed z-20 inset-0 w-full h-full grid place-items-center">
-      <div className="absolute inset-0 w-full h-full bg-white opacity-90 sm:opacity-0"></div>
+      <div className="absolute inset-0 w-full h-full bg-white opacity-90"></div>
 
       <div className="relative bg-white text-black w-[calc(100vw-3.95rem)] sm:w-[59rem] p-4 border sm:border-2 border-neutral-300">
         <div className="font-bold text-center text-xs sm:text-sm uppercase">
@@ -176,32 +176,41 @@ export function StoreSelector() {
 
         <div className="grid sm:grid-cols-2 -mb-[calc(1rem+1px)] -mx-[calc(1rem+1px)]">
           <div className="sm:pb-6 sm:pl-6 sm:-mr-[1px] -mb-[1px] sm:mb-0 relative hover:z-10">
-            <button
-              onMouseEnter={() => setSelectedStore('myanmar')}
-              onMouseLeave={() => setSelectedStore(null)}
-              className="group block text-xs sm:text-sm cursor-pointer transition duration-300 bg-white hover:bg-black text-black hover:text-white uppercase py-3 text-center w-full relative border sm:border-2 border-neutral-300"
-            >
-              Myanmar
-              {/* dots */}
-              <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="absolute hidden sm:block size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="absolute hidden sm:block size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-            </button>
+            <Form method="post" action="/locale" key="EN-MM">
+              <input type="hidden" name="language" value="EN" />
+              <input type="hidden" name="country" value="MM" />
+              <button
+                type="submit"
+                onMouseEnter={() => setSelectedStore('myanmar')}
+                onMouseLeave={() => setSelectedStore(null)}
+                className="group block text-xs sm:text-sm cursor-pointer transition duration-300 bg-white hover:bg-black text-black hover:text-white uppercase py-3 text-center w-full relative border sm:border-2 border-neutral-300"
+              >
+                Myanmar
+                {/* dots */}
+                <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+                <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+                <div className="absolute hidden sm:block size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+                <div className="absolute hidden sm:block size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+              </button>
+            </Form>
           </div>
           <div className="sm:pb-6 sm:pr-6 sm:-ml-[1px] relative hover:z-10">
-            <button
-              onMouseEnter={() => setSelectedStore('worldwide')}
-              onMouseLeave={() => setSelectedStore(null)}
-              className="group block text-xs sm:text-sm cursor-pointer transition duration-300 bg-white hover:bg-black text-black hover:text-white uppercase py-3 text-center w-full relative border sm:border-2 border-neutral-300"
-            >
-              WORLDWIDE
-              {/* dots */}
-              <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-            </button>
+            <Form method="post" action="/locale" key="EN-SG">
+              <input type="hidden" name="language" value="EN" />
+              <input type="hidden" name="country" value="SG" />
+              <button
+                onMouseEnter={() => setSelectedStore('worldwide')}
+                onMouseLeave={() => setSelectedStore(null)}
+                className="group block text-xs sm:text-sm cursor-pointer transition duration-300 bg-white hover:bg-black text-black hover:text-white uppercase py-3 text-center w-full relative border sm:border-2 border-neutral-300"
+              >
+                WORLDWIDE
+                {/* dots */}
+                <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+                <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+                <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+                <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+              </button>
+            </Form>
           </div>
         </div>
 

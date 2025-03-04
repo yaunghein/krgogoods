@@ -41,6 +41,7 @@ export function CartSummary({cart, layout}: CartSummaryProps) {
     </div>
   );
 }
+
 function CartCheckoutActions({checkoutUrl}: {checkoutUrl?: string}) {
   if (!checkoutUrl) return null;
 

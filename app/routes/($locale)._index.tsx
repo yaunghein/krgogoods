@@ -25,15 +25,24 @@ export async function loader(args: LoaderFunctionArgs) {
  * Load data necessary for rendering content above the fold. This is the critical data
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  */
+import {localizationCookie} from '../cookie.server';
+
 async function loadCriticalData({context, request}: LoaderFunctionArgs) {
   const {storefront} = context;
   const paginationVariables = getPaginationVariables(request, {
     pageBy: 250,
   });
 
+  const cookieHeader = request.headers.get('Cookie');
+  const country = await localizationCookie.parse(cookieHeader);
+
   const [{collection}] = await Promise.all([
     storefront.query(COLLECTION_QUERY, {
-      variables: {handle: 'all', ...paginationVariables},
+      variables: {
+        handle: 'all',
+        country: country || 'MM',
+        ...paginationVariables,
+      },
       // Add other queries here, so that they are loaded in parallel
     }),
   ]);

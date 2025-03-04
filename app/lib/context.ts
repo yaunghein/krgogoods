@@ -31,7 +31,7 @@ export async function createAppLoadContext(
     cache,
     waitUntil,
     session,
-    i18n: getLocaleFromRequest(request),
+    i18n: await getLocaleFromRequest(request),
     cart: {
       queryFragment: CART_QUERY_FRAGMENT,
     },

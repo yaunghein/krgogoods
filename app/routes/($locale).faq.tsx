@@ -6,6 +6,7 @@ import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
+import {useNavigate, useLocation} from '@remix-run/react';
 
 export const meta: MetaFunction = () => {
   return [{title: 'Krgogoods | FAQ'}];
@@ -71,6 +72,7 @@ type AccordionProps = {
 
 function Accordion({header, body, initialOpen}: AccordionProps) {
   const [isOpen, setIsOpen] = useState(initialOpen || false);
+
   return (
     <div className="grid gap-6">
       <div
@@ -138,6 +140,9 @@ function SizeFit() {
 }
 
 function Left() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <div className="p-4 sm:p-7 h-full flex flex-col justify-between">
       <div className="grid gap-4">
@@ -159,7 +164,14 @@ function Left() {
         />
       </div>
 
-      <button className="mt-7 sm:mt-0 block text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300">
+      <button
+        onClick={() => {
+          const currentPath = location.pathname;
+          const newUrl = `${currentPath}?select-store=true`;
+          navigate(newUrl, {replace: true});
+        }}
+        className="mt-7 sm:mt-0 block text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300"
+      >
         MYanmar (Select Store)
         {/* dots */}
         <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>

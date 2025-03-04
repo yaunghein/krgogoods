@@ -52,9 +52,16 @@ async function loadCriticalData({
     throw new Error('Expected product handle to be defined');
   }
 
+  const cookieHeader = request.headers.get('Cookie');
+  const country = await localizationCookie.parse(cookieHeader);
+
   const [{product}] = await Promise.all([
     storefront.query(PRODUCT_QUERY, {
-      variables: {handle, selectedOptions: getSelectedProductOptions(request)},
+      variables: {
+        handle,
+        country: country || 'MM',
+        selectedOptions: getSelectedProductOptions(request),
+      },
     }),
     // Add other queries here, so that they are loaded in parallel
   ]);
@@ -216,6 +223,7 @@ function SizeFit() {
 }
 
 import Sleeve from '~/assets/sleeve.jpg';
+import {localizationCookie} from '~/cookie.server';
 function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
   const navigate = useNavigate();
   return (

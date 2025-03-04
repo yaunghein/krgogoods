@@ -67,6 +67,8 @@ export function links() {
   ];
 }
 
+import {localizationCookie} from './cookie.server';
+
 export async function loader(args: LoaderFunctionArgs) {
   // Start fetching non-critical data without blocking time to first byte
   const deferredData = loadDeferredData(args);
@@ -75,6 +77,9 @@ export async function loader(args: LoaderFunctionArgs) {
   const criticalData = await loadCriticalData(args);
 
   const {storefront, env} = args.context;
+
+  const cookieHeader = args.request.headers.get('Cookie');
+  const country = await localizationCookie.parse(cookieHeader);
 
   return {
     ...deferredData,
@@ -92,6 +97,7 @@ export async function loader(args: LoaderFunctionArgs) {
       country: args.context.storefront.i18n.country,
       language: args.context.storefront.i18n.language,
     },
+    country,
   };
 }
 
@@ -143,9 +149,21 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
   };
 }
 
+import {useEffect} from 'react';
+import {useNavigate} from '@remix-run/react';
+
 export function Layout({children}: {children?: React.ReactNode}) {
   const nonce = useNonce();
   const data = useRouteLoaderData<RootLoader>('root');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (data && !data.country) {
+      const currentPath = location.pathname;
+      const newUrl = `${currentPath}?select-store=true`;
+      navigate(newUrl, {replace: true});
+    }
+  }, []);
 
   return (
     <html lang="en" className="text-base sm:text-[1.12vw]">
