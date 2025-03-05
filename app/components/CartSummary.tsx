@@ -47,10 +47,15 @@ function CartCheckoutActions({checkoutUrl}: {checkoutUrl?: string}) {
 
   return (
     <a
-      href={checkoutUrl}
+      href="/checkout"
       target="_self"
       className="block text-xs bg-black text-white uppercase font-bold py-3 text-center w-full relative border sm:border-2 border-neutral-300"
     >
+      {/* <a
+      href={checkoutUrl}
+      target="_self"
+      className="block text-xs bg-black text-white uppercase font-bold py-3 text-center w-full relative border sm:border-2 border-neutral-300"
+    > */}
       Checkout
       {/* <p>Continue to Checkout &rarr;</p> */}
       {/* dots */}

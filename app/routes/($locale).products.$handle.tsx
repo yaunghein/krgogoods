@@ -96,6 +96,8 @@ export default function Product() {
     getAdjacentAndFirstAvailableVariants(product),
   );
 
+  console.log({selectedVariant});
+
   // Sets the search param to the selected variant without navigation
   // only when no search params are set in the url
   useSelectedOptionInUrlParam(selectedVariant.selectedOptions);

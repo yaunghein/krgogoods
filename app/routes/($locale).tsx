@@ -8,7 +8,7 @@ import {
   type ActionFunction,
 } from '@shopify/remix-oxygen';
 import {localizationCookie} from '~/cookie.server';
-import invariant from 'tiny-invariant';
+// import invariant from 'tiny-invariant';
 import type {
   CountryCode,
   LanguageCode,
@@ -77,7 +77,7 @@ async function updateCartBuyerIdentity(
     },
   });
 
-  invariant(data, 'No data returned from Shopify API');
+  // invariant(data, 'No data returned from Shopify API');
 
   return data.cartBuyerIdentityUpdate.cart;
 }
