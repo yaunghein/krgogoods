@@ -51,7 +51,9 @@ export function Header({cart}: HeaderProps) {
           <button
             className="relative shrink-0 cursor-pointer"
             onClick={() => {
-              document.referrer ? window.history.back() : navigate('/');
+              document.referrer
+                ? (window.location.href = document.referrer)
+                : navigate('/');
             }}
           >
             <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
