@@ -1,7 +1,12 @@
 import {type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link, type MetaFunction} from '@remix-run/react';
 import {Suspense} from 'react';
-import {getPaginationVariables, Image, Money} from '@shopify/hydrogen';
+import {
+  getPaginationVariables,
+  Image,
+  Money,
+  getProductOptions,
+} from '@shopify/hydrogen';
 import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
@@ -69,7 +74,6 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 
 export default function Homepage() {
   const {collection} = useLoaderData<typeof loader>();
-  // console.log(collection.products);
 
   return (
     <>
@@ -115,6 +119,10 @@ function Product({index, product}: ProductProps) {
   const shouldHideRightLines = (index + 1) % 4 !== 0;
   const variantUrl = useVariantUrl(product.handle);
 
+  const availableColors = product.options
+    ?.find((o: any) => o.name === 'Color')
+    ?.optionValues?.map((v: any) => v.swatch?.color);
+
   return (
     <Link
       key={product.id}
@@ -133,7 +141,7 @@ function Product({index, product}: ProductProps) {
           />
         )}
 
-        <div className="w-full aspect-square">
+        <div className="w-full aspect-square relative">
           <div className="w-full h-full absolute inset-0">
             <img
               src={product.media.edges[0]?.node?.image?.url}
@@ -148,6 +156,26 @@ function Product({index, product}: ProductProps) {
               className="w-full h-full object-cover"
             />
           </div>
+
+          {availableColors && (
+            <div className="flex flex-col gap-2 absolute top-3 left-3">
+              {availableColors.map((color: string, i: number) => (
+                <div key={color}>
+                  <div className="relative">
+                    <div
+                      style={{backgroundColor: color}}
+                      className={cn(
+                        'size-4 rounded-full border sm:border-2 cursor-pointer border-neutral-300 dark:border-[#2D2D2D]',
+                      )}
+                    ></div>
+                    {i !== availableColors.length - 1 && (
+                      <div className="w-[1px] sm:w-[2px] bg-neutral-300 dark:bg-[#2D2D2D] h-3 absolute -bottom-3 left-1/2 -translate-x-1/2"></div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* lines  */}
@@ -237,6 +265,20 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
         }
       }
     }
+    options {
+      name
+      optionValues {
+        name
+        swatch {
+          color
+          image {
+            previewImage {
+              url
+            }
+          }
+        }
+      }
+    } 
     priceRange {
       minVariantPrice {
         ...MoneyProductItem
