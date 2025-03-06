@@ -162,7 +162,7 @@ type AccordionProps = {
 function Accordion({header, body, initialOpen}: AccordionProps) {
   const [isOpen, setIsOpen] = useState(initialOpen || false);
   return (
-    <div className="grid gap-6">
+    <div className="grid gap-3">
       <div
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center relative w-full cursor-pointer"
@@ -311,7 +311,90 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
           header={<div>composition, care & origin</div>}
           body={<SizeFit />}
         />
-        <Accordion header={<div>shipping & returns</div>} body={<SizeFit />} />
+        <Accordion
+          header={<div>shipping & returns</div>}
+          body={
+            <div className="grid gap-3 max-w-[27rem]">
+              <div className="grid gap-3">
+                <div className="text-xs uppercase font-bold">
+                  Domestic (Myanmar) Shipping policy:
+                </div>
+                <div className="text-xs leading-normal">
+                  Domestic (Myanmar) addresses ship with Royal Express or Wepozt
+                  Express with tracking numbers, which can be checked on their
+                  respective websites or applications. P.O. Box addresses ship
+                  with USPS tracking.
+                </div>
+                <div className="text-xs leading-normal">
+                  All orders will be shipped within 3-5 business days. If the
+                  orders are not delivered to the intended destinations in a
+                  timely manner, please contact the customer service at{' '}
+                  <a
+                    href="mailto:hello.krgogoods@gmail.com"
+                    className="underline"
+                  >
+                    hello.krgogoods@gmail.com
+                  </a>{' '}
+                  or call{' '}
+                  <a href="tel:+959774234928" className="underline">
+                    +959774234928
+                  </a>
+                  .
+                </div>
+              </div>
+              <div className="grid gap-3">
+                <div className="text-xs uppercase font-bold">
+                  International (Non Myanmar) Shipping policy:
+                </div>
+                <div className="text-xs leading-normal">
+                  International orders ship via SingPost. Currently, the
+                  applicable duties and import taxes are not calculated at the
+                  checkout for now and you will likely be subject to pay upon
+                  importing into your country.
+                </div>
+                <div className="text-xs leading-normal">
+                  All orders will be shipped within 3-5 days. Delivery time may
+                  alter due to the respective postal systems of the countries.
+                  If the orders are not delivered to the intended destinations
+                  in a timely manner, please contact the customer service at{' '}
+                  <a
+                    href="mailto:hello.krgogoods@gmail.com"
+                    className="underline"
+                  >
+                    hello.krgogoods@gmail.com
+                  </a>{' '}
+                  or call{' '}
+                  <a href="tel:+959774234928" className="underline">
+                    +959774234928
+                  </a>
+                  .
+                </div>
+              </div>
+              <div className="grid gap-3">
+                <div className="text-xs uppercase font-bold">Return</div>
+                <div className="text-xs leading-normal">
+                  All sales are final. No returns or exchanges. In case of
+                  damaged or missing product, we are able to offer either a full
+                  refund or exchange for the item in question within one week of
+                  customer receipt date and depending upon availability.
+                </div>
+                <div className="text-xs leading-normal">
+                  We cannot guarantee that purchased items will remain in stock.
+                  To acquire a refund or exchange, we require a receipt and
+                  visual proof of damage. For all requests, please contact
+                  customer service at{' '}
+                  <a
+                    href="mailto:hello.krgogoods@gmail.com"
+                    className="underline"
+                  >
+                    hello.krgogoods@gmail.com
+                  </a>{' '}
+                  with your order number.
+                </div>
+              </div>
+            </div>
+          }
+        />
       </div>
       <div className="sm:mt-8 sm:pb-10">
         <ProductForm
