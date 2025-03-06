@@ -181,7 +181,21 @@ export default function Cart() {
   );
 }
 
-import KpayQR from '~/assets/kpay-qr.jpg';
+import QrKpay from '~/assets/qr-kpay.png';
+import QrAya from '~/assets/qr-aya.png';
+import QrWave from '~/assets/qr-wave.png';
+
+const Qrs: Record<string, string> = {
+  kpay: QrKpay,
+  aya: QrAya,
+  wave: QrWave,
+};
+
+const Labels: Record<string, string> = {
+  kpay: 'KBZPay',
+  aya: 'AYA Pay',
+  wave: 'WavePay',
+};
 
 function Left({
   cart: originalCart,
@@ -426,15 +440,15 @@ function Left({
           <div className="relative py-3 flex flex-col-reverse items-center justify-center">
             <div className="w-[10.63rem] aspect-square">
               <img
-                src={KpayQR}
-                alt="Kpay QR"
+                src={Qrs[formData.paymentMethod]}
+                alt="Payment QR"
                 className="w-full h-full dark:invert transitin duration-300"
               />
             </div>
 
             <div className="sm:absolute top-1/2 sm:-translate-y-1/2 left-14 leading-none grid gap-3 sm:gap-5 text-center sm:text-left my-3 sm:my-0">
-              <div className="font-bold text-xs sm:text-base max-w-[7rem] uppercase">
-                USE KBZPAY Scan to Pay
+              <div className="font-bold text-xs sm:text-base max-w-[7.2rem] uppercase">
+                USE {Labels[formData.paymentMethod]} Scan to Pay
               </div>
               <div className="font-bold text-xs sm:text-base max-w-[7rem] uppercase">
                 {cart.cost?.subtotalAmount?.amount ? (
