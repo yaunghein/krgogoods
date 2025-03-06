@@ -51,6 +51,10 @@ export function Header({cart}: HeaderProps) {
           <button
             className="relative shrink-0 cursor-pointer"
             onClick={() => {
+              if (location.pathname.startsWith('/order-success')) {
+                navigate('/');
+                return;
+              }
               document.referrer
                 ? (window.location.href = document.referrer)
                 : navigate('/');

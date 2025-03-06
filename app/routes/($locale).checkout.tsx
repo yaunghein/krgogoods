@@ -109,7 +109,19 @@ export async function action({request, context}: ActionFunctionArgs) {
   }
 
   // ✅ **Redirect to Success Page**
-  return redirect('/order-success');
+  return redirect(
+    `/order-success?name=${encodeURIComponent(
+      customerData.name,
+    )}&email=${encodeURIComponent(
+      customerData.email,
+    )}&phone=${encodeURIComponent(
+      customerData.phone,
+    )}&address=${encodeURIComponent(
+      customerData.address,
+    )}&township=${encodeURIComponent(
+      customerData.township,
+    )}&province=${encodeURIComponent(customerData.province)}`,
+  );
 }
 
 export async function loader({context}: LoaderFunctionArgs) {

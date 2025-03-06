@@ -37,10 +37,10 @@ export function CartLineItem({
           alt={title}
           aspectRatio="1/0.9"
           data={image}
-          height={300}
+          height={200}
           loading="lazy"
-          width={300}
-          className="object-cover w-full sm:w-[12rem] !rounded-none sm:border-r-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+          width={200}
+          className="object-cover !rounded-none sm:border-r-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
         />
       )}
 
