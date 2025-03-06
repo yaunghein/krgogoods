@@ -69,6 +69,7 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 
 export default function Homepage() {
   const {collection} = useLoaderData<typeof loader>();
+  console.log(collection.products);
 
   return (
     <>
@@ -119,10 +120,10 @@ function Product({index, product}: ProductProps) {
       key={product.id}
       prefetch="intent"
       to={variantUrl}
-      className="relative sm:-ml-[2px] -ml-[1px] -mt-[1px] sm:-mt-[2px] hover:z-10 cursor-pointer"
+      className="group relative sm:-ml-[2px] -ml-[1px] -mt-[1px] sm:-mt-[2px] cursor-pointer"
     >
       <div className="relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
-        {product.featuredImage && (
+        {!product.media.edges.length && product.featuredImage && (
           <Image
             alt={product.featuredImage.altText || product.title}
             aspectRatio="1/1"
@@ -131,6 +132,23 @@ function Product({index, product}: ProductProps) {
             sizes="(min-width: 45em) 400px, 100vw"
           />
         )}
+
+        <div className="w-full aspect-square">
+          <div className="w-full h-full absolute inset-0">
+            <img
+              src={product.media.edges[0]?.node?.image?.url}
+              alt={product.media.edges[0]?.node?.image?.altText}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="w-full h-full absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
+            <img
+              src={product.media.edges[1]?.node?.image?.url}
+              alt={product.media.edges[1]?.node?.image?.altText}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
 
         {/* lines  */}
         <div className="h-[1px] sm:h-[2px] bg-neutral-300 dark:bg-[#2D2D2D] transition duration-300 w-10 absolute -bottom-[2px] -left-10"></div>
@@ -142,10 +160,10 @@ function Product({index, product}: ProductProps) {
         ></div>
 
         {/* dots */}
-        <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full transition duration-300 group-hover:bg-black"></div>
-        <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+        <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] rounded-full transition duration-300"></div>
+        <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] rounded-full transition duration-300"></div>
       </div>
-      <div className="dark:text-white px-[1.13rem] py-[0.88rem] border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 flex gap-1 flex-col sm:flex-row items-center justify-between -mt-[1px] sm:-mt-[2px] transition duration-300 group-hover:bg-black group-hover:text-white">
+      <div className="dark:text-white px-[1.13rem] py-[0.88rem] border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] flex gap-1 flex-col sm:flex-row items-center justify-between -mt-[1px] sm:-mt-[2px] transition duration-300">
         <div className="font-bold uppercase text-xs sm:text-sm">
           {product.title}
         </div>
@@ -180,10 +198,10 @@ function Product({index, product}: ProductProps) {
       ></div>
 
       {/* dots */}
-      <div className="absolute size-2 top-0 left-0 transform -translate-x-2/5 -translate-y-2/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full transition duration-300 group-hover:bg-black"></div>
-      <div className="absolute size-2 top-0 right-0 transform translate-x-2/5 -translate-y-2/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full transition duration-300 group-hover:bg-black"></div>
-      <div className="absolute size-2 bottom-0 left-0 transform -translate-x-2/5 translate-y-2/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full transition duration-300 group-hover:bg-black"></div>
-      <div className="absolute size-2 bottom-0 right-0 transform translate-x-2/5 translate-y-2/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full transition duration-300 group-hover:bg-black"></div>
+      <div className="absolute size-2 top-0 left-0 transform -translate-x-2/5 -translate-y-2/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] rounded-full transition duration-300"></div>
+      <div className="absolute size-2 top-0 right-0 transform translate-x-2/5 -translate-y-2/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] rounded-full transition duration-300"></div>
+      <div className="absolute size-2 bottom-0 left-0 transform -translate-x-2/5 translate-y-2/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] rounded-full transition duration-300"></div>
+      <div className="absolute size-2 bottom-0 right-0 transform translate-x-2/5 translate-y-2/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] rounded-full transition duration-300"></div>
     </Link>
   );
 }
@@ -203,6 +221,21 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
       url
       width
       height
+    }
+    media(first: 2) {
+      edges {
+        node {
+          ... on MediaImage {
+            image {
+              id
+              altText
+              url
+              width
+              height
+            }
+          }
+        }
+      }
     }
     priceRange {
       minVariantPrice {
