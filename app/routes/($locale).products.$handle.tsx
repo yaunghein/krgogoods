@@ -14,7 +14,7 @@ import {ProductImage} from '~/components/ProductImage';
 import {ProductForm, ProductOptionSwatch} from '~/components/ProductForm';
 import {TwoColumnLayout} from '~/components/TwoColumnLayout';
 import {cn} from '~/utils/cn';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 export const meta: MetaFunction<typeof loader> = ({data}) => {
   return [
@@ -89,15 +89,12 @@ function loadDeferredData({context, params}: LoaderFunctionArgs) {
 
 export default function Product() {
   const {product} = useLoaderData<typeof loader>();
-  // console.log(product);
 
   // Optimistically selects a variant with given available variant information
   const selectedVariant = useOptimisticVariant(
     product.selectedOrFirstAvailableVariant,
     getAdjacentAndFirstAvailableVariants(product),
   );
-
-  // console.log({selectedVariant});
 
   // Sets the search param to the selected variant without navigation
   // only when no search params are set in the url
@@ -146,9 +143,43 @@ export default function Product() {
 
 // TODO: type
 function Left({selectedVariant}: {selectedVariant: any}) {
+  // console.log(selectedVariant)
+  const otherImages =
+    selectedVariant.otherImages?.references.edges.map(
+      (edge: any) => edge.node.image,
+    ) || [];
+  const allImages = [selectedVariant.image, ...otherImages];
+  const [selectedImage, setSelectedImage] = useState(allImages[0]);
+
+  useEffect(() => {
+    setSelectedImage(allImages[0]);
+  }, [selectedVariant]);
+
   return (
-    <div className="">
-      <ProductImage image={selectedVariant?.image} />
+    <div className="h-full flex flex-col-reverse sm:flex-row gap-0 sm:gap-6 items-center p-3 sm:p-6">
+      <div className="shrink-0 flex sm:flex-col w-full sm:w-20 justify-center">
+        {allImages.map((image: any) => (
+          <button
+            key={image.url}
+            onClick={() => setSelectedImage(image)}
+            className="w-14 sm:w-full aspect-square cursor-pointer"
+          >
+            <img
+              src={image.url}
+              alt={image.altText}
+              className="w-full h-full object-cover"
+            />
+          </button>
+        ))}
+      </div>
+
+      <div className="w-full aspect-square">
+        <img
+          src={selectedImage.url}
+          alt={selectedImage.altText}
+          className="w-full h-full object-cover"
+        />
+      </div>
     </div>
   );
 }
@@ -188,7 +219,7 @@ function SizeFit({product}: {product?: any}) {
     <div className="flex flex-col sm:flex-row gap-5">
       <div className="shrink-0 w-[8rem] sm:w-[11.56rem] aspect-[1/0.82] dark:invert transition duration-300">
         <img
-          src={product.sizeFitImages.references.edges[0]?.node.image.url}
+          src={product.sizeFitImages?.references.edges[0]?.node.image.url}
           alt=""
           className="w-full h-full"
         />
@@ -217,7 +248,7 @@ function SizeFit({product}: {product?: any}) {
         {type === 'cm' && (
           <div className="flex-1 aspect-[1/0.33] dark:invert transition duration-300">
             <img
-              src={product.sizeFitImages.references.edges[1]?.node.image.url}
+              src={product.sizeFitImages?.references?.edges[1]?.node.image.url}
               alt=""
             />
           </div>
@@ -225,7 +256,7 @@ function SizeFit({product}: {product?: any}) {
         {type === 'inches' && (
           <div className="flex-1 aspect-[1/0.33] dark:invert transition duration-300">
             <img
-              src={product.sizeFitImages.references.edges[2]?.node.image.url}
+              src={product.sizeFitImages?.references?.edges[2]?.node.image.url}
               alt=""
             />
           </div>
@@ -319,7 +350,7 @@ function Right({
         </div>
         <div className="w-full sm:w-[16rem] mt-6 sm:mt-0 aspect-[1/0.36] -translate-y-[0.4rem] dark:invert transition duration-300">
           <img
-            src={product.topRightImage.reference.image.url}
+            src={product.topRightImage?.reference?.image.url}
             alt=""
             className="w-full h-full"
           />
@@ -335,7 +366,7 @@ function Right({
           body={
             <div className="w-full aspect-[1/0.33] dark:invert transition duration-300">
               <img
-                src={product.compositionCareOriginImage.reference.image.url}
+                src={product.compositionCareOriginImage?.reference?.image.url}
                 alt=""
               />
             </div>
@@ -451,6 +482,23 @@ const PRODUCT_VARIANT_FRAGMENT = `#graphql
       altText
       width
       height
+    }
+    otherImages: metafield(namespace: "custom", key: "variant_images") {
+      references(first: 10) {
+        edges {
+          node {
+            ... on MediaImage {
+              image {
+                id
+                url
+                altText
+                width
+                height
+              }
+            }
+          }
+        }
+      }
     }
     price {
       amount

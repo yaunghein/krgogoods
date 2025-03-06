@@ -69,7 +69,7 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 
 export default function Homepage() {
   const {collection} = useLoaderData<typeof loader>();
-  console.log(collection.products);
+  // console.log(collection.products);
 
   return (
     <>
