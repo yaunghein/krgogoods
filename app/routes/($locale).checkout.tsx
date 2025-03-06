@@ -485,6 +485,7 @@ function Right({
   formData: any;
 }) {
   const cart = useOptimisticCart(originalCart);
+  const [isSending, setIsSending] = useState(false);
 
   console.log({lines: cart.lines.nodes, customerData: formData});
 
@@ -530,9 +531,10 @@ function Right({
               !formData.address ||
               (!formData.screenshot.content && formData.paymentMethod !== 'cod')
             }
-            className="disabled:opacity-50 transition duration-300 block z-10 text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center w-full sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+            onClick={() => setIsSending(true)}
+            className="disabled:opacity-50 block z-10 text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center w-full sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
           >
-            submit order
+            {isSending ? '  submitting order...' : '  submit order'}
             {/* dots */}
             <div className="absolute size-[0.6rem] sm:size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
             <div className="absolute size-[0.6rem] sm:size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
