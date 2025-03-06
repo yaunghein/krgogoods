@@ -30,17 +30,17 @@ export function CartLineItem({
     // <li key={id} className="cart-line">
     <li
       key={id}
-      className="flex flex-col sm:flex-row border-y sm:border-y-2 border-b-0 border-neutral-300 -mt-[2px] relative"
+      className="dark:text-white flex flex-col sm:flex-row border-y sm:border-y-2 border-b-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 -mt-[2px] relative"
     >
       {image && (
         <Image
           alt={title}
-          aspectRatio="1/1"
+          aspectRatio="1/0.9"
           data={image}
           height={300}
           loading="lazy"
           width={300}
-          className="object-cover w-full sm:w-[14rem] !rounded-none sm:border-r-2 border-neutral-300"
+          className="object-cover w-full sm:w-[12rem] !rounded-none sm:border-r-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
         />
       )}
 
@@ -70,10 +70,10 @@ export function CartLineItem({
       </div>
 
       {/* dots */}
-      {/* <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-      <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-      <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-      <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div> */}
+      {/* <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+      <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+      <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+      <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div> */}
     </li>
   );
 }
@@ -142,7 +142,7 @@ function CartLineRemoveButton({
       <button
         disabled={disabled}
         type="submit"
-        className="size-5 cursor-pointer"
+        className="size-5 cursor-pointer text-white dark:text-black transition duration-300"
       >
         <svg
           width="100%"
@@ -156,7 +156,7 @@ function CartLineRemoveButton({
             cy="11.2679"
             r="8.60063"
             transform="rotate(45 11.2681 11.2679)"
-            fill="white"
+            fill="currentColor"
             stroke="#FF7777"
             strokeWidth="1.26604"
           />

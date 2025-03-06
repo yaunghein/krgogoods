@@ -14,9 +14,9 @@ export function StoreSelector() {
 
   return (
     <div className="fixed z-20 inset-0 w-full h-full grid place-items-center">
-      <div className="absolute inset-0 w-full h-full bg-white opacity-90"></div>
+      <div className="absolute inset-0 w-full h-full bg-white dark:bg-black opacity-90"></div>
 
-      <div className="relative bg-white text-black w-[calc(100vw-3.95rem)] sm:w-[59rem] p-4 border sm:border-2 border-neutral-300">
+      <div className="relative bg-white text-black dark:text-white dark:bg-black w-[calc(100vw-3.95rem)] sm:w-[59rem] p-4 border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
         <div className="font-bold text-center text-xs sm:text-sm uppercase">
           Select Store
         </div>
@@ -24,8 +24,8 @@ export function StoreSelector() {
         <div className="grid grid-cols-2">
           <div
             className={cn(
-              '-mr-[1px] transition duration-300',
-              selectedStore === 'myanmar' ? 'text-black' : 'text-neutral-300',
+              '-mr-[1px] transition duration-300 text-black dark:text-white',
+              selectedStore === 'myanmar' ? 'opacity-100' : 'opacity-50',
             )}
           >
             <div className="w-full aspect-[1/1] grid place-items-center ">
@@ -48,8 +48,8 @@ export function StoreSelector() {
 
           <div
             className={cn(
-              '-ml-[1px] transition duration-300',
-              selectedStore === 'worldwide' ? 'text-black' : 'text-neutral-300',
+              '-mr-[1px] transition duration-300 text-black dark:text-white',
+              selectedStore === 'worldwide' ? 'opacity-100' : 'opacity-25',
             )}
           >
             <div className="w-full aspect-[1/1] grid place-items-center">
@@ -183,14 +183,14 @@ export function StoreSelector() {
                 type="submit"
                 onMouseEnter={() => setSelectedStore('myanmar')}
                 onMouseLeave={() => setSelectedStore(null)}
-                className="group block text-xs sm:text-sm cursor-pointer transition duration-300 bg-white hover:bg-black text-black hover:text-white uppercase py-3 text-center w-full relative border sm:border-2 border-neutral-300"
+                className="group block text-xs sm:text-sm cursor-pointer bg-white dark:bg-black dark:text-white dark:opacity-75 dark:hover:opacity-100 hover:bg-black text-black hover:text-white uppercase py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
               >
                 Myanmar
                 {/* dots */}
-                <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-                <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-                <div className="absolute hidden sm:block size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-                <div className="absolute hidden sm:block size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+                <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute hidden sm:block size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute hidden sm:block size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
               </button>
             </Form>
           </div>
@@ -199,25 +199,26 @@ export function StoreSelector() {
               <input type="hidden" name="language" value="EN" />
               <input type="hidden" name="country" value="SG" />
               <button
+                disabled
                 onMouseEnter={() => setSelectedStore('worldwide')}
                 onMouseLeave={() => setSelectedStore(null)}
-                className="group block text-xs sm:text-sm cursor-pointer transition duration-300 bg-white hover:bg-black text-black hover:text-white uppercase py-3 text-center w-full relative border sm:border-2 border-neutral-300"
+                className="disabled:opacity-25 disabled:pointer-events-none group block text-xs sm:text-sm cursor-pointer bg-white dark:bg-black dark:text-white dark:opacity-75 dark:hover:opacity-100 hover:bg-black text-black hover:text-white uppercase py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
               >
-                WORLDWIDE
+                WORLDWIDE (Coming soon)
                 {/* dots */}
-                <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-                <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-                <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-                <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white transition duration-300 group-hover:bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+                <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
               </button>
             </Form>
           </div>
         </div>
 
-        <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
-        <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
-        <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
-        <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+        <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+        <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+        <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+        <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
       </div>
     </div>
   );

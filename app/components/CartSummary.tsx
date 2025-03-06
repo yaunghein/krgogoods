@@ -37,7 +37,11 @@ export function CartSummary({cart, layout}: CartSummaryProps) {
         <CartCheckoutActions checkoutUrl={cart.checkoutUrl} />
       </div>
 
-      <img src={Payments} alt="" className="w-full aspect-[1/0.13]" />
+      <img
+        src={Payments}
+        alt=""
+        className="w-full aspect-[1/0.13] dark:invert transition duration-300"
+      />
     </div>
   );
 }
@@ -49,20 +53,20 @@ function CartCheckoutActions({checkoutUrl}: {checkoutUrl?: string}) {
     <a
       href="/checkout"
       target="_self"
-      className="block text-xs bg-black text-white uppercase font-bold py-3 text-center w-full relative border sm:border-2 border-neutral-300"
+      className="block text-xs bg-black text-white uppercase font-bold py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
     >
       {/* <a
       href={checkoutUrl}
       target="_self"
-      className="block text-xs bg-black text-white uppercase font-bold py-3 text-center w-full relative border sm:border-2 border-neutral-300"
+      className="block text-xs bg-black text-white uppercase font-bold py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
     > */}
       Checkout
       {/* <p>Continue to Checkout &rarr;</p> */}
       {/* dots */}
-      <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-      <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-      <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-      <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+      <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+      <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+      <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+      <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
     </a>
   );
 }

@@ -144,67 +144,67 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="w-full flex justify-center px-8 sm:px-10 sm:border-t-2 border-neutral-300">
-        <div className="relative sm:border-x-2 border-b-0 w-full border-neutral-300 pt-5 sm:pt-3 pb-7 sm:pb-3 flex justify-center">
+      <div className="w-full flex justify-center px-8 sm:px-10 sm:border-t-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
+        <div className="relative sm:border-x-2 border-b-0 w-full border-neutral-300 dark:border-[#2D2D2D] transition duration-300 pt-5 sm:pt-3 pb-7 sm:pb-3 flex justify-center">
           <div className="flex items-center gap-3 -translate-x-[0.05rem]">
             <div className="relative shrink-0">
-              <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
-                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+              <div className="size-8 sm:size-9 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full relative">
+                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black dark:text-white transition duration-300">
                   C
                 </div>
               </div>
-              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+              <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 dark:bg-[#2D2D2D] transition duration-300 absolute top-1/2 -translate-y-1/2 -right-3"></div>
             </div>
             <div className="relative shrink-0">
-              <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
-                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+              <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+              <div className="size-8 sm:size-9 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full relative">
+                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black dark:text-white transition duration-300">
                   A
                 </div>
               </div>
-              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+              <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 dark:bg-[#2D2D2D] transition duration-300 absolute top-1/2 -translate-y-1/2 -right-3"></div>
             </div>
             <div className="relative shrink-0">
-              <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
-                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+              <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+              <div className="size-8 sm:size-9 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full relative">
+                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black dark:text-white transition duration-300">
                   R
                 </div>
               </div>
-              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
-              <div className="hidden sm:block h-3 bg-neutral-300 w-[2px] absolute -top-3 left-1/2 -translate-x-1/2"></div>
-              <div className="hidden sm:block h-3 bg-neutral-300 w-[2px] absolute -bottom-3 left-1/2 -translate-x-1/2"></div>
+              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+              <div className="h-[1px] sm:h-[2px] bg-neutral-300 dark:bg-[#2D2D2D] transition duration-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+              <div className="hidden sm:block h-3 bg-neutral-300 dark:bg-[#2D2D2D] transition duration-300 w-[2px] absolute -top-3 left-1/2 -translate-x-1/2"></div>
+              <div className="hidden sm:block h-3 bg-neutral-300 dark:bg-[#2D2D2D] transition duration-300 w-[2px] absolute -bottom-3 left-1/2 -translate-x-1/2"></div>
             </div>
             <div className="relative shrink-0">
-              <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
-                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black">
+              <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+              <div className="size-8 sm:size-9 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full relative">
+                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black dark:text-white transition duration-300">
                   T
                 </div>
               </div>
-              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
             </div>
             <div className="relative shrink-0">
-              <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
-              <div className="size-8 sm:size-9 bg-white border sm:border-2 border-neutral-300 rounded-full relative">
-                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black flex">
+              <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+              <div className="size-8 sm:size-9 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full relative">
+                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black dark:text-white transition duration-300 flex">
                   <span className="inline-block -translate-y-[0.1rem]">(</span>
                   {cart?.lines?.nodes.length || 0}
                   <span className="inline-block -translate-y-[0.1rem]">)</span>
                 </div>
               </div>
-              <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -left-3"></div>
-              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+              <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 dark:bg-[#2D2D2D] transition duration-300 absolute top-1/2 -translate-y-1/2 -left-3"></div>
+              <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
             </div>
           </div>
 
           {/* dots */}
-          <div className="hidden sm:block absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
-          <div className="hidden sm:block absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
-          <div className="hidden sm:block absolute size-2 top-0 left-1/2 transform -translate-x-3/5 -translate-y-3/5 bg-white border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="hidden sm:block absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+          <div className="hidden sm:block absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+          <div className="hidden sm:block absolute size-2 top-0 left-1/2 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
         </div>
       </div>
       <TwoColumnLayout
@@ -239,10 +239,10 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
     //         </ul>
     //       </div>
     //       {/* dots */}
-    //       {/* <div className="absolute size-2 top-0 left-0 transform -translate-x-2/5 -translate-y-2/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-    //       <div className="absolute size-2 top-0 right-0 transform translate-x-2/5 -translate-y-2/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-    //       <div className="absolute size-2 bottom-0 left-0 transform -translate-x-2/5 translate-y-2/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-    //       <div className="absolute size-2 bottom-0 right-0 transform translate-x-2/5 translate-y-2/5 bg-white border-2 border-neutral-300 rounded-full"></div> */}
+    //       {/* <div className="absolute size-2 top-0 left-0 transform -translate-x-2/5 -translate-y-2/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+    //       <div className="absolute size-2 top-0 right-0 transform translate-x-2/5 -translate-y-2/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+    //       <div className="absolute size-2 bottom-0 left-0 transform -translate-x-2/5 translate-y-2/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+    //       <div className="absolute size-2 bottom-0 right-0 transform translate-x-2/5 translate-y-2/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div> */}
     //     </div>
     //     {cartHasItems && (
     //       <div className="flex-1 self-end">
@@ -272,14 +272,14 @@ function CartEmpty({
         to="/"
         onClick={close}
         prefetch="viewport"
-        className="block text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300"
+        className="block text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
       >
         Continue shopping
         {/* dots */}
-        <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-        <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-        <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-        <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+        <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+        <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+        <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+        <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
       </Link>
     </div>
   );

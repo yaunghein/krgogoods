@@ -92,7 +92,7 @@ function Product({listLength, index}: ProductProps) {
       href="/products/hoodie-old?Size=Small&Color=Green"
       className="relative -ml-[2px] -mt-[2px] hover:z-10"
     >
-      <div className="relative border-2 border-neutral-300">
+      <div className="relative border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
         <img
           src={(index + 1) % 2 === 0 ? Shirt : Shirt2}
           alt="Shirt"
@@ -106,21 +106,21 @@ function Product({listLength, index}: ProductProps) {
         )}
 
         {/* dots */}
-        <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-        <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 rounded-full"></div>
+        <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+        <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
       </div>
-      <div className="px-[1.13rem] py-[0.88rem] border-2 border-neutral-300 flex items-center justify-between -mt-[2px]">
+      <div className="px-[1.13rem] py-[0.88rem] border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 flex items-center justify-between -mt-[2px]">
         <div className="font-bold">T-shirt short sleeve</div>
         <div className="">MMK 42,000</div>
       </div>
 
       {/* colors */}
       {/* <div className="absolute top-3 left-3 flex flex-col items-center">
-        <div className="size-[1.13rem] bg-[#294031] border-2 border-neutral-300 rounded-full"></div>
+        <div className="size-[1.13rem] bg-[#294031] border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
         <div className="w-[2px] h-2 bg-neutral-300 -my-[1px]"></div>
-        <div className="size-[1.13rem] bg-white border-2 border-neutral-300 rounded-full"></div>
+        <div className="size-[1.13rem] bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
         <div className="w-[2px] h-2 bg-neutral-300 -my-[1px]"></div>
-        <div className="size-[1.13rem] bg-black border-2 border-neutral-300 rounded-full"></div>
+        <div className="size-[1.13rem] bg-black border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
       </div> */}
 
       {/* lines */}
@@ -134,10 +134,10 @@ function Product({listLength, index}: ProductProps) {
       )}
 
       {/* dots */}
-      <div className="absolute size-2 top-0 left-0 transform -translate-x-2/5 -translate-y-2/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-      <div className="absolute size-2 top-0 right-0 transform translate-x-2/5 -translate-y-2/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-      <div className="absolute size-2 bottom-0 left-0 transform -translate-x-2/5 translate-y-2/5 bg-white border-2 border-neutral-300 rounded-full"></div>
-      <div className="absolute size-2 bottom-0 right-0 transform translate-x-2/5 translate-y-2/5 bg-white border-2 border-neutral-300 rounded-full"></div>
+      <div className="absolute size-2 top-0 left-0 transform -translate-x-2/5 -translate-y-2/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+      <div className="absolute size-2 top-0 right-0 transform translate-x-2/5 -translate-y-2/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+      <div className="absolute size-2 bottom-0 left-0 transform -translate-x-2/5 translate-y-2/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+      <div className="absolute size-2 bottom-0 right-0 transform translate-x-2/5 translate-y-2/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
     </a>
   );
 }

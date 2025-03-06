@@ -67,7 +67,7 @@ export function links() {
   ];
 }
 
-import {localizationCookie} from './cookie.server';
+import {localizationCookie, themeCookie} from './cookie.server';
 
 export async function loader(args: LoaderFunctionArgs) {
   // Start fetching non-critical data without blocking time to first byte
@@ -80,6 +80,7 @@ export async function loader(args: LoaderFunctionArgs) {
 
   const cookieHeader = args.request.headers.get('Cookie');
   const country = await localizationCookie.parse(cookieHeader);
+  const theme = await themeCookie.parse(cookieHeader);
 
   return {
     ...deferredData,
@@ -98,6 +99,7 @@ export async function loader(args: LoaderFunctionArgs) {
       language: args.context.storefront.i18n.language,
     },
     country,
+    theme,
   };
 }
 
@@ -151,6 +153,7 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 
 import {useEffect} from 'react';
 import {useNavigate} from '@remix-run/react';
+import {cn} from './utils/cn';
 
 export function Layout({children}: {children?: React.ReactNode}) {
   const nonce = useNonce();
@@ -166,7 +169,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
   }, []);
 
   return (
-    <html lang="en" className="text-base sm:text-[1.12vw]">
+    <html lang="en" className={cn('text-base sm:text-[1.12vw]', data?.theme)}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -176,7 +179,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
         <Meta />
         <Links />
       </head>
-      <body className="flex flex-col min-h-[100dvh]">
+      <body className="flex flex-col min-h-[100dvh] bg-white dark:bg-black text-black dark:text-white transition duration-300">
         {data ? (
           <Analytics.Provider
             cart={data.cart}

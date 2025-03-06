@@ -89,6 +89,7 @@ function loadDeferredData({context, params}: LoaderFunctionArgs) {
 
 export default function Product() {
   const {product} = useLoaderData<typeof loader>();
+  // console.log(product);
 
   // Optimistically selects a variant with given available variant information
   const selectedVariant = useOptimisticVariant(
@@ -96,7 +97,7 @@ export default function Product() {
     getAdjacentAndFirstAvailableVariants(product),
   );
 
-  console.log({selectedVariant});
+  // console.log({selectedVariant});
 
   // Sets the search param to the selected variant without navigation
   // only when no search params are set in the url
@@ -169,8 +170,8 @@ function Accordion({header, body, initialOpen}: AccordionProps) {
         <div className="text-xs uppercase">{header}</div>
         <div
           className={cn(
-            'ml-auto sm:absolute left-56 size-3 rounded-full  border sm:border-2 border-neutral-300 transition',
-            isOpen ? 'bg-black' : 'bg-white',
+            'ml-auto sm:absolute left-56 size-3 rounded-full border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] duration-300 transition',
+            isOpen ? 'bg-black dark:bg-white' : 'bg-white dark:bg-black',
           )}
         ></div>
       </div>
@@ -185,7 +186,7 @@ function SizeFit() {
   const [type, setType] = useState('inches');
   return (
     <div className="flex flex-col sm:flex-row gap-5">
-      <div className="shrink-0 w-[8rem] sm:w-[11.56rem] aspect-[1/0.82]">
+      <div className="shrink-0 w-[8rem] sm:w-[11.56rem] aspect-[1/0.82] dark:invert transition duration-300">
         <img src={SizeFitShirt} alt="" className="w-full h-full" />
       </div>
       <div className="grid gap-3">
@@ -210,12 +211,12 @@ function SizeFit() {
           </button>
         </div>
         {type === 'cm' && (
-          <div className="flex-1 aspect-[1/0.33] rotate-180">
+          <div className="flex-1 aspect-[1/0.33] rotate-180 dark:invert transition duration-300">
             <img src={SizeFitChart} alt="" />
           </div>
         )}
         {type === 'inches' && (
-          <div className="flex-1 aspect-[1/0.33]">
+          <div className="flex-1 aspect-[1/0.33] dark:invert transition duration-300">
             <img src={SizeFitChart} alt="" />
           </div>
         )}
@@ -229,7 +230,7 @@ import {localizationCookie} from '~/cookie.server';
 function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
   const navigate = useNavigate();
   return (
-    <div className="sm:p-10 sm:pb-0 flex flex-col h-full">
+    <div className="dark:text-white transition duration-300 sm:p-10 sm:pb-0 flex flex-col h-full">
       <div className="flex flex-col-reverse sm:flex-row items-start justify-between">
         <div className="px-4 pb-0 sm:pb-6 sm:px-0 py-6 sm:py-0">
           <h1 className="text-xs sm:text-base font-bold uppercase">{title}</h1>
@@ -279,13 +280,13 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
                                 className={cn(
                                   'size-5 rounded-full border sm:border-2 cursor-pointer',
                                   selected
-                                    ? 'border-black'
-                                    : 'border-neutral-300',
+                                    ? 'border-black dark:border-white'
+                                    : 'border-neutral-300 dark:border-[#2D2D2D] transition duration-300',
                                   'transition',
                                 )}
                               ></div>
                               {i !== option.optionValues.length - 1 && (
-                                <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+                                <div className="h-[1px] sm:h-[2px] bg-neutral-300 dark:bg-[#2D2D2D] w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
                               )}
                             </div>
                           </button>
@@ -300,11 +301,11 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
             })}
           </div>
         </div>
-        <div className="w-full sm:w-[16rem] mt-6 sm:mt-0 aspect-[1/0.36] -translate-y-[0.4rem]">
+        <div className="w-full sm:w-[16rem] mt-6 sm:mt-0 aspect-[1/0.36] -translate-y-[0.4rem] dark:invert transition duration-300">
           <img src={Sleeve} alt="" className="w-full h-full" />
         </div>
       </div>
-      <div className="mb-auto mt-0 sm:mt-auto grid gap-4 sm:gap-5 px-4 sm:px-0">
+      <div className="mb-auto mt-7 sm:mt-auto grid gap-4 sm:gap-5 px-4 sm:px-0">
         <Accordion header={<div>size & fit</div>} body={<SizeFit />} />
         <Accordion
           header={<div>composition, care & origin</div>}
@@ -395,6 +396,9 @@ const PRODUCT_FRAGMENT = `#graphql
     seo {
       description
       title
+    }
+    category: metafield(namespace: "custom", key: "category") {
+      value
     }
   }
   ${PRODUCT_VARIANT_FRAGMENT}

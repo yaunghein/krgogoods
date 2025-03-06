@@ -5,3 +5,9 @@ export const localizationCookie = createCookie('localization', {
   httpOnly: true,
   secure: true,
 });
+
+export const themeCookie = createCookie('theme', {
+  path: '/',
+  httpOnly: true,
+  secure: true,
+});

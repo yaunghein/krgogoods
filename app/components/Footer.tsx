@@ -21,7 +21,7 @@ export function Footer({
             prefetch="intent"
             to="/contact"
             end
-            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             Contact
           </NavLink>
@@ -29,7 +29,7 @@ export function Footer({
             prefetch="intent"
             to="/faq"
             end
-            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             FAQ
           </NavLink>
@@ -37,7 +37,7 @@ export function Footer({
             prefetch="intent"
             to="/product-care"
             end
-            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             Product care
           </NavLink>
@@ -45,7 +45,7 @@ export function Footer({
             prefetch="intent"
             to="/size-guides"
             end
-            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             Size guides
           </NavLink>
@@ -56,7 +56,7 @@ export function Footer({
             prefetch="intent"
             to="/locate-stores"
             end
-            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             locate stores
           </NavLink>
@@ -64,7 +64,7 @@ export function Footer({
             prefetch="intent"
             to="/"
             end
-            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition pointer-events-none line-through"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition pointer-events-none line-through"
           >
             archive
           </NavLink>
@@ -75,7 +75,7 @@ export function Footer({
             prefetch="intent"
             to="/"
             end
-            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             facebook
           </NavLink>
@@ -83,7 +83,7 @@ export function Footer({
             prefetch="intent"
             to="/"
             end
-            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             instagram
           </NavLink>
@@ -94,7 +94,7 @@ export function Footer({
             prefetch="intent"
             to="/"
             end
-            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             privacy policy
           </NavLink>
@@ -102,7 +102,7 @@ export function Footer({
             prefetch="intent"
             to="/"
             end
-            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             terms & conditions
           </NavLink>
@@ -113,12 +113,12 @@ export function Footer({
             prefetch="intent"
             to="/"
             end
-            className="inline-block uppercase text-xs text-neutral-400 hover:text-black transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             SELECT STORE
           </NavLink>
           <div className="inline-block uppercase text-xs text-neutral-400 ">
-            © 2025 KRGOGOODS
+            © {new Date().getFullYear()} KRGOGOODS
           </div>
         </div>
       </div>

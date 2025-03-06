@@ -218,7 +218,7 @@ function Left({
       <input
         type="email"
         name="email"
-        className="border sm:border-2 border-neutral-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black"
+        className="border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
         placeholder="email@user.com"
         onChange={(e) =>
           setFormData((data: any) => ({
@@ -230,7 +230,7 @@ function Left({
       <input
         type="phone"
         name="phone"
-        className="border sm:border-2 border-t-0 sm:border-t-0 border-neutral-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black"
+        className="border sm:border-2 border-t-0 sm:border-t-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
         placeholder="Mobile Phone Number"
         onChange={(e) =>
           setFormData((data: any) => ({
@@ -245,7 +245,7 @@ function Left({
       <input
         type="text"
         name="name"
-        className="border sm:border-2 border-neutral-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black"
+        className="border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
         placeholder="Name"
         onChange={(e) =>
           setFormData((data: any) => ({
@@ -257,7 +257,7 @@ function Left({
       <input
         type="text"
         name="address"
-        className="border sm:border-2 border-t-0 sm:border-t-0 border-neutral-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black"
+        className="border sm:border-2 border-t-0 sm:border-t-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
         placeholder="Address"
         onChange={(e) =>
           setFormData((data: any) => ({
@@ -270,7 +270,7 @@ function Left({
         <input
           name="township"
           placeholder="Township"
-          className="border sm:border-2 border-t-0 sm:border-t-0 border-neutral-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black"
+          className="border sm:border-2 border-t-0 sm:border-t-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
           onChange={(e) =>
             setFormData((data: any) => ({
               ...data,
@@ -282,7 +282,7 @@ function Left({
           <select
             name="province"
             value={formData.province}
-            className="appearance-none border sm:border-2 border-t-0 sm:border-t-0 sm:border-l-0 border-neutral-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black"
+            className="appearance-none border sm:border-2 border-t-0 sm:border-t-0 sm:border-l-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
             onChange={(e) =>
               setFormData((data: any) => ({
                 ...data,
@@ -328,7 +328,7 @@ function Left({
       </div>
       <div
         className={cn(
-          'w-full text-sm sm:text-base border sm:border-2 border-neutral-300',
+          'w-full text-sm sm:text-base border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300',
         )}
       >
         <div
@@ -336,16 +336,16 @@ function Left({
             'flex flex-col sm:flex-row',
             formData.paymentMethod &&
               formData.paymentMethod !== 'cod' &&
-              'border-b sm:border-b-2 border-neutral-300',
+              'border-b sm:border-b-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300',
           )}
         >
           <button
             type="button"
             className={cn(
-              'flex-1 text-xs sm:text-base font-bold py-3 sm:py-4 uppercase border-b sm:border-b-0 sm:border-r-2 border-neutral-300 cursor-pointer',
+              'flex-1 text-xs sm:text-base font-bold py-3 sm:py-4 uppercase border-b sm:border-b-0 sm:border-r-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 cursor-pointer',
               formData.paymentMethod === 'kpay'
-                ? 'text-white bg-black'
-                : 'text-black bg-white',
+                ? 'text-white bg-black dark:text-black dark:bg-white'
+                : 'text-black bg-white dark:text-white dark:bg-black',
             )}
             onClick={() => {
               setFormData((data: any) => ({
@@ -359,10 +359,10 @@ function Left({
           <button
             type="button"
             className={cn(
-              'flex-1 text-xs sm:text-base font-bold py-3 sm:py-4 uppercase border-b sm:border-b-0 sm:border-r-2 border-neutral-300 cursor-pointer',
+              'flex-1 text-xs sm:text-base font-bold py-3 sm:py-4 uppercase border-b sm:border-b-0 sm:border-r-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 cursor-pointer',
               formData.paymentMethod === 'aya'
-                ? 'text-white bg-black'
-                : 'text-black bg-white',
+                ? 'text-white bg-black dark:text-black dark:bg-white'
+                : 'text-black bg-white dark:text-white dark:bg-black',
             )}
             onClick={() => {
               setFormData((data: any) => ({
@@ -378,8 +378,8 @@ function Left({
             className={cn(
               'flex-1 text-xs sm:text-base font-bold py-3 sm:py-4 uppercase cursor-pointer',
               formData.paymentMethod === 'wave'
-                ? 'text-white bg-black'
-                : 'text-black bg-white',
+                ? 'text-white bg-black dark:text-black dark:bg-white'
+                : 'text-black bg-white dark:text-white dark:bg-black',
             )}
             onClick={() => {
               setFormData((data: any) => ({
@@ -394,10 +394,10 @@ function Left({
             <button
               type="button"
               className={cn(
-                'flex-1 font-bold font-xs sm:text-base py-3 sm:py-4 px-4 whitespace-nowrap cursor-pointer border-t sm:border-t-0 sm:border-l-2 border-neutral-300',
+                'flex-1 font-bold font-xs sm:text-base py-3 sm:py-4 px-4 whitespace-nowrap cursor-pointer border-t sm:border-t-0 sm:border-l-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300',
                 formData.paymentMethod === 'cod'
-                  ? 'text-white bg-black'
-                  : 'text-black bg-white',
+                  ? 'text-white bg-black dark:text-black dark:bg-white'
+                  : 'text-black bg-white dark:text-white dark:bg-black',
               )}
               onClick={() => {
                 setFormData((data: any) => ({
@@ -413,7 +413,11 @@ function Left({
         {formData.paymentMethod && formData.paymentMethod !== 'cod' && (
           <div className="relative py-3 flex flex-col-reverse items-center justify-center">
             <div className="w-[10.63rem] aspect-square">
-              <img src={KpayQR} alt="Kpay QR" className="w-full h-full" />
+              <img
+                src={KpayQR}
+                alt="Kpay QR"
+                className="w-full h-full dark:invert transitin duration-300"
+              />
             </div>
 
             <div className="sm:absolute top-1/2 sm:-translate-y-1/2 left-14 leading-none grid gap-3 sm:gap-5 text-center sm:text-left my-3 sm:my-0">
@@ -435,7 +439,7 @@ function Left({
           <label
             htmlFor="screenshot"
             className={cn(
-              'block text-center flex-1 text-xs sm:text-base font-bold px-4 py-3 sm:py-4 uppercase border-t sm:border-t-2 border-neutral-300 cursor-pointer w-full text-white bg-black',
+              'block text-center flex-1 text-xs sm:text-base font-bold px-4 py-3 sm:py-4 uppercase border-t sm:border-t-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 cursor-pointer w-full text-white bg-black ',
             )}
           >
             {!formData.screenshot.content
@@ -453,7 +457,7 @@ function Left({
         )}
 
         {/* {preview && (
-          <div className="border-t sm:border-t-2 border-neutral-300 p-4">
+          <div className="border-t sm:border-t-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 p-4">
             <div className="font-bold mb-4 my-4 ml-4 uppercase">
               Screenshot Preview
             </div>
@@ -526,20 +530,20 @@ function Right({
               !formData.address ||
               (!formData.screenshot.content && formData.paymentMethod !== 'cod')
             }
-            className="disabled:opacity-50 transition duration-300 block z-10 text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center w-full sm:w-1/2 relative border sm:border-2 border-neutral-300"
+            className="disabled:opacity-50 transition duration-300 block z-10 text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center w-full sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
           >
             submit order
             {/* dots */}
-            <div className="absolute size-[0.6rem] sm:size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-            <div className="absolute size-[0.6rem] sm:size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-            <div className="absolute size-[0.6rem] sm:size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
-            <div className="absolute size-[0.6rem] sm:size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 rounded-full"></div>
+            <div className="absolute size-[0.6rem] sm:size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+            <div className="absolute size-[0.6rem] sm:size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+            <div className="absolute size-[0.6rem] sm:size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+            <div className="absolute size-[0.6rem] sm:size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
           </button>
 
           <img
             src={MMPayments}
             alt=""
-            className="w-[7.44rem] aspect-[1/0.29]"
+            className="w-[7.44rem] aspect-[1/0.29] dark:invert transition duration-300"
           />
         </Form>
         <p className="text-sm mt-5 sm:max-w-[13rem] font-light text-center sm:text-left">
