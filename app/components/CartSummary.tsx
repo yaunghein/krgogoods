@@ -10,38 +10,36 @@ type CartSummaryProps = {
 };
 
 import Payments from '~/assets/payments.jpg';
+import MMPayments from '~/assets/mm-payments.jpg';
 
 export function CartSummary({cart, layout}: CartSummaryProps) {
   const className =
     layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
 
   return (
-    <div
-      aria-labelledby="cart-summary"
-      className="px-4 sm:px-10 py-10 grid sm:grid-cols-2 items-center gap-7"
-    >
-      {/* <h4>Totals</h4> */}
-      {/* <dl className="cart-subtotal">
-        <dt>Subtotal</dt>
-        <dd>
-          {cart.cost?.subtotalAmount?.amount ? (
-            <Money data={cart.cost?.subtotalAmount} />
-          ) : (
-            '-'
-          )}
-        </dd>
-      </dl> */}
-      {/* <CartDiscounts discountCodes={cart.discountCodes} /> */}
-      {/* <CartGiftCard giftCardCodes={cart.appliedGiftCards} /> */}
-      <div className="flex-1">
-        <CartCheckoutActions checkoutUrl={cart.checkoutUrl} />
+    <div className="sm:mt-10 p-4 sm:p-7">
+      <div className="mb-5">
+        <div className="flex items-center justify-between w-fill sm:w-1/2">
+          <div className="font-bold uppercase text-sm">TOTAL inc. taxes</div>
+          <div className="max-w-[7rem] text-sm uppercase">
+            {cart.cost?.subtotalAmount?.amount ? (
+              <Money data={cart.cost?.subtotalAmount} />
+            ) : (
+              '-'
+            )}
+          </div>
+        </div>
       </div>
-
-      <img
-        src={Payments}
-        alt=""
-        className="w-full aspect-[1/0.13] dark:invert transition duration-300"
-      />
+      <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-7">
+        <div className="w-full sm:w-1/2">
+          <CartCheckoutActions checkoutUrl={cart.checkoutUrl} />
+        </div>
+        <img
+          src={MMPayments}
+          alt=""
+          className="w-[7.44rem] aspect-[1/0.29] dark:invert transition duration-300"
+        />
+      </div>
     </div>
   );
 }

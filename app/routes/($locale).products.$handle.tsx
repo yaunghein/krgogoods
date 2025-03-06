@@ -89,7 +89,7 @@ function loadDeferredData({context, params}: LoaderFunctionArgs) {
 
 export default function Product() {
   const {product} = useLoaderData<typeof loader>();
-  // console.log(product);
+  console.log(product);
 
   // Optimistically selects a variant with given available variant information
   const selectedVariant = useOptimisticVariant(
@@ -182,12 +182,16 @@ function Accordion({header, body, initialOpen}: AccordionProps) {
 
 import SizeFitShirt from '~/assets/size-fit-shirt.jpg';
 import SizeFitChart from '~/assets/size-fit-chart.jpg';
-function SizeFit() {
+function SizeFit({product}: {product?: any}) {
   const [type, setType] = useState('inches');
   return (
     <div className="flex flex-col sm:flex-row gap-5">
       <div className="shrink-0 w-[8rem] sm:w-[11.56rem] aspect-[1/0.82] dark:invert transition duration-300">
-        <img src={SizeFitShirt} alt="" className="w-full h-full" />
+        <img
+          src={product.sizeFitImages.references.edges[0]?.node.image.url}
+          alt=""
+          className="w-full h-full"
+        />
       </div>
       <div className="grid gap-3">
         <div className="flex gap-1">
@@ -211,13 +215,19 @@ function SizeFit() {
           </button>
         </div>
         {type === 'cm' && (
-          <div className="flex-1 aspect-[1/0.33] rotate-180 dark:invert transition duration-300">
-            <img src={SizeFitChart} alt="" />
+          <div className="flex-1 aspect-[1/0.33] dark:invert transition duration-300">
+            <img
+              src={product.sizeFitImages.references.edges[1]?.node.image.url}
+              alt=""
+            />
           </div>
         )}
         {type === 'inches' && (
           <div className="flex-1 aspect-[1/0.33] dark:invert transition duration-300">
-            <img src={SizeFitChart} alt="" />
+            <img
+              src={product.sizeFitImages.references.edges[2]?.node.image.url}
+              alt=""
+            />
           </div>
         )}
       </div>
@@ -227,7 +237,13 @@ function SizeFit() {
 
 import Sleeve from '~/assets/sleeve.jpg';
 import {localizationCookie} from '~/cookie.server';
-function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
+function Right({
+  title,
+  descriptionHtml,
+  selectedVariant,
+  productOptions,
+  product,
+}: any) {
   const navigate = useNavigate();
   return (
     <div className="dark:text-white transition duration-300 sm:p-10 sm:pb-0 flex flex-col h-full">
@@ -302,14 +318,28 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
           </div>
         </div>
         <div className="w-full sm:w-[16rem] mt-6 sm:mt-0 aspect-[1/0.36] -translate-y-[0.4rem] dark:invert transition duration-300">
-          <img src={Sleeve} alt="" className="w-full h-full" />
+          <img
+            src={product.topRightImage.reference.image.url}
+            alt=""
+            className="w-full h-full"
+          />
         </div>
       </div>
       <div className="mb-auto mt-7 sm:mt-auto grid gap-4 sm:gap-5 px-4 sm:px-0">
-        <Accordion header={<div>size & fit</div>} body={<SizeFit />} />
+        <Accordion
+          header={<div>size & fit</div>}
+          body={<SizeFit product={product} />}
+        />
         <Accordion
           header={<div>composition, care & origin</div>}
-          body={<SizeFit />}
+          body={
+            <div className="w-full aspect-[1/0.33] dark:invert transition duration-300">
+              <img
+                src={product.compositionCareOriginImage.reference.image.url}
+                alt=""
+              />
+            </div>
+          }
         />
         <Accordion
           header={<div>shipping & returns</div>}
@@ -482,6 +512,51 @@ const PRODUCT_FRAGMENT = `#graphql
     }
     category: metafield(namespace: "custom", key: "category") {
       value
+    }
+    topRightImage: metafield(namespace: "custom", key: "top_right_image") {
+      reference {
+        ... on MediaImage {
+          image {
+            __typename
+            id
+            url
+            altText
+            width
+            height
+          }
+        }
+      }
+    }
+    sizeFitImages: metafield(namespace: "custom", key: "size_fit_images") {
+      references(first: 10) {
+        edges {
+          node {
+            ... on MediaImage {
+              image {
+                id
+                url
+                altText
+                width
+                height
+              }
+            }
+          }
+        }
+      }
+    }
+    compositionCareOriginImage: metafield(namespace: "custom", key: "composition_care_origin_image") {
+      reference {
+        ... on MediaImage {
+          image {
+            __typename
+            id
+            url
+            altText
+            width
+            height
+          }
+        }
+      }
     }
   }
   ${PRODUCT_VARIANT_FRAGMENT}
