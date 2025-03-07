@@ -13,7 +13,7 @@ import type {
 } from 'storefrontapi.generated';
 
 export const meta: MetaFunction = () => {
-  return [{title: 'Krgogoods | Home'}];
+  return [{title: 'Krgogoods | Products'}];
 };
 
 export async function loader(args: LoaderFunctionArgs) {
