@@ -101,11 +101,11 @@ const locations = [
 function Left() {
   return (
     <div className="p-4 sm:p-7">
-      <div className="font-bold text-sm uppercase">Stores</div>
+      <div className="font-[HelveticaNeueBold] text-sm uppercase">Stores</div>
       <div className="mt-7 grid gap-7">
         {locations.map((location) => (
           <div key={location.country} className="grid gap-3 ">
-            <div className="font-bold text-sm uppercase">
+            <div className="font-[HelveticaNeueBold] text-sm uppercase">
               {location.country}
             </div>
             <div>

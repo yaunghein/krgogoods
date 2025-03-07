@@ -279,14 +279,16 @@ function Right({
     <div className="dark:text-white transition duration-300 sm:p-10 sm:pb-0 flex flex-col h-full">
       <div className="flex flex-col-reverse sm:flex-row items-start justify-between">
         <div className="px-4 pb-0 sm:pb-6 sm:px-0 py-6 sm:py-0">
-          <h1 className="text-xs sm:text-base font-bold uppercase">{title}</h1>
+          <h1 className="text-xs sm:text-base font-[HelveticaNeueBold] uppercase">
+            {title}
+          </h1>
           <ProductPrice
             price={selectedVariant?.price}
             compareAtPrice={selectedVariant?.compareAtPrice}
           />
           <div
             dangerouslySetInnerHTML={{__html: descriptionHtml}}
-            className="text-xs mt-6 max-w-[16rem]"
+            className="text-xs mt-6 max-w-[16rem] prose leading-relaxed"
           />
           <div className="mt-7">
             {productOptions.map((option: any) => {
@@ -391,8 +393,8 @@ function Right({
           header={<div>shipping & returns</div>}
           body={
             <div className="grid gap-3 max-w-[27rem]">
-              <div className="grid gap-3">
-                <div className="text-xs uppercase font-bold">
+              <div className="grid gap-2">
+                <div className="text-xs uppercase font-[HelveticaNeueBold]">
                   Domestic (Myanmar) Shipping policy:
                 </div>
                 <div className="text-xs leading-normal">
@@ -418,8 +420,8 @@ function Right({
                   .
                 </div>
               </div>
-              <div className="grid gap-3">
-                <div className="text-xs uppercase font-bold">
+              <div className="grid gap-2">
+                <div className="text-xs uppercase font-[HelveticaNeueBold]">
                   International (Non Myanmar) Shipping policy:
                 </div>
                 <div className="text-xs leading-normal">
@@ -446,8 +448,10 @@ function Right({
                   .
                 </div>
               </div>
-              <div className="grid gap-3">
-                <div className="text-xs uppercase font-bold">Return</div>
+              <div className="grid gap-2">
+                <div className="text-xs uppercase font-[HelveticaNeueBold]">
+                  Return
+                </div>
                 <div className="text-xs leading-normal">
                   All sales are final. No returns or exchanges. In case of
                   damaged or missing product, we are able to offer either a full

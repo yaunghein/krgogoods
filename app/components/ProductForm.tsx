@@ -21,7 +21,7 @@ export function ProductForm({
   return (
     <div className="mt-6 sm:mt-0 -mb-[1px] sm:mb-0 -mx-[1px] sm:-mx-0">
       {productOptions.some((o) => o.name === 'Size') && (
-        <div className="block text-xs cursor-pointer bg-white dark:bg-black text-black dark:text-white uppercase font-bold py-[0.7rem] sm:py-[0.6rem] text-center sm:w-1/2 relative border sm:border-2 border-b-0 sm:border-b-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
+        <div className="block text-xs cursor-pointer bg-white dark:bg-black text-black dark:text-white uppercase font-[HelveticaNeueBold] py-[0.7rem] sm:py-[0.6rem] text-center sm:w-1/2 relative border sm:border-2 border-b-0 sm:border-b-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
           {productOptions.map((option) => {
             if (option.optionValues.length === 1) return null;
             if (option.name === 'Size') {
@@ -57,7 +57,9 @@ export function ProductForm({
                             selected ? 'opacity-80' : 'opacity-25',
                           )}
                         >
-                          <ProductOptionSwatch swatch={swatch} name={name} />
+                          <div className="translate-y-[0.1rem]">
+                            <ProductOptionSwatch swatch={swatch} name={name} />
+                          </div>
                         </button>
                       );
                     })}
@@ -96,7 +98,9 @@ export function ProductForm({
             : []
         }
       >
-        {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
+        <div className="translate-y-[0.1rem]">
+          {selectedVariant?.availableForSale ? 'Add to cart' : 'Sold out'}
+        </div>
       </AddToCartButton>
     </div>
   );

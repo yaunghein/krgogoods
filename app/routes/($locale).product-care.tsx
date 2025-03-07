@@ -77,7 +77,9 @@ function Left({
   return (
     <div className="p-4 sm:p-7">
       <div className="flex items-center gap-6">
-        <div className="font-bold text-sm uppercase">Product Care</div>
+        <div className="font-[HelveticaNeueBold] text-sm uppercase">
+          Product Care
+        </div>
       </div>
 
       <div className="grid gap-6 mt-10">

@@ -110,7 +110,7 @@ function Product({listLength, index}: ProductProps) {
         <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
       </div>
       <div className="px-[1.13rem] py-[0.88rem] border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 flex items-center justify-between -mt-[2px]">
-        <div className="font-bold">T-shirt short sleeve</div>
+        <div className="font-[HelveticaNeueBold]">T-shirt short sleeve</div>
         <div className="">MMK 42,000</div>
       </div>
 

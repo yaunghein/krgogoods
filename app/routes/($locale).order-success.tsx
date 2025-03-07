@@ -37,26 +37,28 @@ function Left({data}: {data: any}) {
   return (
     <div className="p-4 sm:p-7 h-full flex flex-col justify-between">
       <div className="grid gap-4 max-w-[28rem]">
-        <div className="font-bold uppercase leading-none">
+        <div className="font-[HelveticaNeueBold] uppercase leading-none">
           THANK YOU FOR YOUR PURCHASE!
         </div>
         <div>
           Hi{' '}
-          <span className="font-bold">
+          <span className="font-[HelveticaNeueBold]">
             <span className="uppercase">{data.name}</span>, your order has been
             submitted!
           </span>
         </div>
         <div className="leading-tight">
-          <span className="font-bold uppercase">Order Confirmation</span> will
-          be send to your email within 24 hours.
+          <span className="font-[HelveticaNeueBold] uppercase">
+            Order Confirmation
+          </span>{' '}
+          will be send to your email within 24 hours.
         </div>
         <div className="leading-tight">
           Please note that delivery fees may vary on your location and to be
           paid upon delivery.
         </div>
 
-        <div className="font-bold">Delivery Information</div>
+        <div className="font-[HelveticaNeueBold]">Delivery Information</div>
         <div>
           <div>{data.name}</div>
           <div>{data.email}</div>

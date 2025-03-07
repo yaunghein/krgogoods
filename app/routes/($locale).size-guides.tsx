@@ -82,7 +82,9 @@ function Left({
   return (
     <div className="p-4 sm:p-7">
       <div className="flex items-center justify-between sm:justify-start gap-6">
-        <div className="font-bold text-sm uppercase">Size Guides</div>
+        <div className="font-[HelveticaNeueBold] text-sm uppercase">
+          Size Guides
+        </div>
         <div className="flex gap-1">
           <button
             onClick={() => setType('cm')}

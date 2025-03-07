@@ -6,3 +6,25 @@
 @import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark *));
+
+@font-face {
+  font-family: 'HelveticaNeue';
+  src: url('../fonts/HelveticaNeue.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'HelveticaNeueBold';
+  src: url('../fonts/HelveticaNeueBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'HelveticaNeueLight';
+  src: url('../fonts/HelveticaNeueLight.woff2') format('woff2');
+}
+
+/* Apply it to Tailwind */
+@layer base {
+  body {
+    font-family: 'HelveticaNeue', sans-serif;
+  }
+}

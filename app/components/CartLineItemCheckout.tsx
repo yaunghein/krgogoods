@@ -46,7 +46,7 @@ export function CartLineItem({
 
       <div className="p-4 sm:p-5 w-full flex flex-col sm:flex-row sm:items-center justify-between">
         <CartLineQuantity line={line} />
-        <div className="flex flex-col sm:flex-row items-start justify-between mb-8 sm:mb-0">
+        <div className="flex flex-col sm:flex-row items-start justify-between mb-8 sm:mb-0 mt-2 sm:mt-0">
           <div className="grid sm:gap-1">
             <Link
               prefetch="intent"
@@ -62,9 +62,11 @@ export function CartLineItem({
                 {product.title}
               </strong>
             </Link>
-            <div className="text-xs sm:text-base uppercase sm:-mt-2">
-              {selectedVariants}
-            </div>
+            {selectedVariants !== 'Default Title' && (
+              <div className="text-xs sm:text-base uppercase sm:-mt-2">
+                {selectedVariants}
+              </div>
+            )}
           </div>
         </div>
         <ProductPrice price={line?.cost?.totalAmount} />
@@ -104,7 +106,7 @@ function CartLineQuantity({line}: {line: CartLine}) {
         </button>
       </CartLineUpdateButton> */}
       <div className="relative size-4 sm:size-7 rounded-full bg-black dark:bg-white transition duration-300">
-        <div className="text-xs sm:text-sm font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white dark:text-black transition duration-300">
+        <div className="text-xs sm:text-sm font-[HelveticaNeueBold] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white dark:text-black transition duration-300">
           {quantity}
         </div>
       </div>

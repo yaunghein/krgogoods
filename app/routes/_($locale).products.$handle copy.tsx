@@ -147,7 +147,9 @@ function Right({title, descriptionHtml, selectedVariant, productOptions}: any) {
     <div className="p-10 flex flex-col justify-between h-full">
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-base font-bold uppercase">{title}</h1>
+          <h1 className="text-base font-[HelveticaNeueBold] uppercase">
+            {title}
+          </h1>
           <ProductPrice
             price={selectedVariant?.price}
             compareAtPrice={selectedVariant?.compareAtPrice}

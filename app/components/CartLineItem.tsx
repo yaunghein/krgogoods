@@ -60,9 +60,11 @@ export function CartLineItem({
                 {product.title}
               </strong>
             </Link>
-            <div className="text-xs sm:text-base uppercase">
-              {selectedVariants}
-            </div>
+            {selectedVariants !== 'Default Title' && (
+              <div className="text-xs sm:text-base uppercase">
+                {selectedVariants}
+              </div>
+            )}
           </div>
           <ProductPrice price={line?.cost?.totalAmount} />
         </div>
@@ -102,7 +104,7 @@ function CartLineQuantity({line}: {line: CartLine}) {
           <span className="">&#8722;</span>
         </button>
       </CartLineUpdateButton>
-      <div className="font-bold">{quantity}</div>
+      <div className="font-[HelveticaNeueBold]">{quantity}</div>
       <CartLineUpdateButton lines={[{id: lineId, quantity: nextQuantity}]}>
         <button
           aria-label="Increase quantity"

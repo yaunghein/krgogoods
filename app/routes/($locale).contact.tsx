@@ -68,7 +68,9 @@ function Left() {
     <div className="p-4 sm:p-7 h-full flex flex-col justify-between">
       <div className="grid gap-7">
         <div className="grid gap-2">
-          <div className="font-bold text-sm uppercase">Contact us</div>
+          <div className="font-[HelveticaNeueBold] text-sm uppercase">
+            Contact us
+          </div>
           <div className="text-sm max-w-[21rem]">
             Contact our client services advisors to receive personalised support
             on product related inquiries, tailored recommendations and styling
@@ -76,11 +78,13 @@ function Left() {
           </div>
         </div>
         <div className="grid gap-2">
-          <div className="font-bold text-sm uppercase">CALL</div>
+          <div className="font-[HelveticaNeueBold] text-sm uppercase">CALL</div>
           <div className="text-sm max-w-[21rem]">+95 12 123 12 31</div>
         </div>
         <div className="grid gap-2">
-          <div className="font-bold text-sm uppercase">EMAIL</div>
+          <div className="font-[HelveticaNeueBold] text-sm uppercase">
+            EMAIL
+          </div>
           <div className="text-sm max-w-[21rem]">
             clientservices@krgogoods.com
           </div>
@@ -91,7 +95,7 @@ function Left() {
         <p className="text-sm sm:text-[0.65rem]">
           For opening times or to contact one of our stores directly
         </p>
-        <button className="block text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
+        <button className="block text-xs cursor-pointer bg-black text-white uppercase font-[HelveticaNeueBold] py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
           Locate stores
           {/* dots */}
           <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>

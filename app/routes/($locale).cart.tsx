@@ -272,7 +272,7 @@ function CartEmpty({
         to="/"
         onClick={close}
         prefetch="viewport"
-        className="block text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+        className="block text-xs cursor-pointer bg-black text-white uppercase font-[HelveticaNeueBold] py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
       >
         Continue shopping
         {/* dots */}

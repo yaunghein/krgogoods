@@ -17,7 +17,7 @@ export function StoreSelector() {
       <div className="absolute inset-0 w-full h-full bg-white dark:bg-black opacity-90"></div>
 
       <div className="relative bg-white text-black dark:text-white dark:bg-black w-[calc(100vw-3.95rem)] sm:w-[59rem] p-4 border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
-        <div className="font-bold text-center text-xs sm:text-sm uppercase">
+        <div className="font-[HelveticaNeueBold] text-center text-xs sm:text-sm uppercase">
           Select Store
         </div>
 

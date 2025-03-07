@@ -147,19 +147,29 @@ function Left() {
     <div className="p-4 sm:p-7 h-full flex flex-col justify-between">
       <div className="grid gap-4">
         <Accordion
-          header={<div className="font-bold">SHIPPING AND DELIVERY</div>}
+          header={
+            <div className="font-[HelveticaNeueBold]">
+              SHIPPING AND DELIVERY
+            </div>
+          }
           body={<SizeFit />}
         />
         <Accordion
-          header={<div className="font-bold">RETURNS AND EXCHANGES</div>}
+          header={
+            <div className="font-[HelveticaNeueBold]">
+              RETURNS AND EXCHANGES
+            </div>
+          }
           body={<SizeFit />}
         />
         <Accordion
-          header={<div className="font-bold">ORDER AND TRACKING</div>}
+          header={
+            <div className="font-[HelveticaNeueBold]">ORDER AND TRACKING</div>
+          }
           body={<SizeFit />}
         />
         <Accordion
-          header={<div className="font-bold">SIZE AND FIT</div>}
+          header={<div className="font-[HelveticaNeueBold]">SIZE AND FIT</div>}
           body={<SizeFit />}
         />
       </div>
@@ -170,7 +180,7 @@ function Left() {
           const newUrl = `${currentPath}?select-store=true`;
           navigate(newUrl, {replace: true});
         }}
-        className="mt-7 sm:mt-0 block text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+        className="mt-7 sm:mt-0 block text-xs cursor-pointer bg-black text-white uppercase font-[HelveticaNeueBold] py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
       >
         MYanmar (Select Store)
         {/* dots */}

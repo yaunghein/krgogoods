@@ -32,7 +32,7 @@ export function Footer({
             prefetch="intent"
             to="/faq"
             end
-            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition pointer-events-none line-through"
           >
             FAQ
           </NavLink>
@@ -40,7 +40,7 @@ export function Footer({
             prefetch="intent"
             to="/product-care"
             end
-            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition pointer-events-none line-through"
           >
             Product care
           </NavLink>
@@ -48,7 +48,7 @@ export function Footer({
             prefetch="intent"
             to="/size-guides"
             end
-            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition pointer-events-none line-through"
           >
             Size guides
           </NavLink>
@@ -59,7 +59,7 @@ export function Footer({
             prefetch="intent"
             to="/locate-stores"
             end
-            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition pointer-events-none line-through"
           >
             locate stores
           </NavLink>
@@ -74,22 +74,20 @@ export function Footer({
         </div>
 
         <div className="grid gap-2 sm:gap-2">
-          <NavLink
-            prefetch="intent"
-            to="/"
-            end
+          <a
+            href="https://www.facebook.com/cargosupply"
+            target="_blank"
             className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             facebook
-          </NavLink>
-          <NavLink
-            prefetch="intent"
-            to="/"
-            end
+          </a>
+          <a
+            href="https://www.instagram.com/krgogoods/"
+            target="_blank"
             className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             instagram
-          </NavLink>
+          </a>
         </div>
 
         <div className="grid gap-2 sm:gap-2">

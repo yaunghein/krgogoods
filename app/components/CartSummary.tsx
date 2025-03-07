@@ -20,7 +20,9 @@ export function CartSummary({cart, layout}: CartSummaryProps) {
     <div className="sm:mt-10 p-4 sm:p-7">
       <div className="mb-5">
         <div className="flex items-center justify-between w-fill sm:w-1/2">
-          <div className="font-bold uppercase text-sm">TOTAL inc. taxes</div>
+          <div className="font-[HelveticaNeueBold] uppercase text-sm">
+            TOTAL inc. taxes
+          </div>
           <div className="max-w-[7rem] text-sm uppercase">
             {cart.cost?.subtotalAmount?.amount ? (
               <Money data={cart.cost?.subtotalAmount} />
@@ -51,14 +53,14 @@ function CartCheckoutActions({checkoutUrl}: {checkoutUrl?: string}) {
     <a
       href="/checkout"
       target="_self"
-      className="block text-xs bg-black text-white uppercase font-bold py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+      className="block text-xs bg-black text-white uppercase font-[HelveticaNeueBold] py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
     >
       {/* <a
       href={checkoutUrl}
       target="_self"
-      className="block text-xs bg-black text-white uppercase font-bold py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+      className="block text-xs bg-black text-white uppercase font-[HelveticaNeueBold] py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
     > */}
-      Checkout
+      <div className="translate-y-[0.1rem]">Checkout</div>
       {/* <p>Continue to Checkout &rarr;</p> */}
       {/* dots */}
       <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>

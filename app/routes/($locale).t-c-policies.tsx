@@ -66,7 +66,9 @@ export default function Homepage() {
 function Left() {
   return (
     <div className="p-7 h-full">
-      <div className="font-bold text-sm uppercase">privacy policy</div>
+      <div className="font-[HelveticaNeueBold] text-sm uppercase">
+        privacy policy
+      </div>
       <p className="text-sm mt-3">
         Welcome to KRGOGOODS ("we," "our," or "us"). Your privacy is important
         to us. This Privacy Policy explains how we collect, use, disclose, and
@@ -101,7 +103,9 @@ function Left() {
 function Right() {
   return (
     <div className="p-7 h-full">
-      <div className="font-bold text-sm uppercase">privacy policy</div>
+      <div className="font-[HelveticaNeueBold] text-sm uppercase">
+        privacy policy
+      </div>
       <p className="text-sm mt-3">
         Welcome to KRGOGOODS ("we," "our," or "us"). Your privacy is important
         to us. This Privacy Policy explains how we collect, use, disclose, and

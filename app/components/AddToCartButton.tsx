@@ -27,7 +27,7 @@ export function AddToCartButton({
             type="submit"
             onClick={onClick}
             disabled={disabled ?? fetcher.state !== 'idle'}
-            className="block z-10 text-xs cursor-pointer bg-black text-white uppercase font-bold py-3 text-center w-full sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+            className="block z-10 text-xs cursor-pointer bg-black text-white uppercase font-[HelveticaNeueBold] py-3 text-center w-full sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
           >
             {children}
             {/* dots */}
