@@ -144,7 +144,7 @@ function CartLineRemoveButton({
       <button
         disabled={disabled}
         type="submit"
-        className="size-5 cursor-pointer text-white dark:text-black transition duration-300"
+        className="size-5 flex cursor-pointer text-white dark:text-black transition duration-300"
       >
         <svg
           width="100%"

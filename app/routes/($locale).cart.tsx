@@ -149,7 +149,7 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
           <div className="flex items-center gap-3 -translate-x-[0.05rem]">
             <div className="relative shrink-0">
               <div className="size-8 sm:size-9 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full relative">
-                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black dark:text-white transition duration-300">
+                <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white transition duration-300">
                   C
                 </div>
               </div>
@@ -159,7 +159,7 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
             <div className="relative shrink-0">
               <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
               <div className="size-8 sm:size-9 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full relative">
-                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black dark:text-white transition duration-300">
+                <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white transition duration-300">
                   A
                 </div>
               </div>
@@ -169,7 +169,7 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
             <div className="relative shrink-0">
               <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
               <div className="size-8 sm:size-9 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full relative">
-                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black dark:text-white transition duration-300">
+                <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white transition duration-300">
                   R
                 </div>
               </div>
@@ -181,7 +181,7 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
             <div className="relative shrink-0">
               <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
               <div className="size-8 sm:size-9 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full relative">
-                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black dark:text-white transition duration-300">
+                <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white transition duration-300">
                   T
                 </div>
               </div>
@@ -190,10 +190,10 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
             <div className="relative shrink-0">
               <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
               <div className="size-8 sm:size-9 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full relative">
-                <div className="text-sm absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black dark:text-white transition duration-300 flex">
-                  <span className="inline-block -translate-y-[0.1rem]">(</span>
-                  {cart?.lines?.nodes.length || 0}
-                  <span className="inline-block -translate-y-[0.1rem]">)</span>
+                <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white transition duration-300 flex">
+                  <span className="inline-block -translate-y-[0.05rem]">(</span>
+                  {cart?.totalQuantity || 0}
+                  <span className="inline-block -translate-y-[0.05rem]">)</span>
                 </div>
               </div>
               <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 dark:bg-[#2D2D2D] transition duration-300 absolute top-1/2 -translate-y-1/2 -left-3"></div>
