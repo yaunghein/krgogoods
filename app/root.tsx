@@ -191,7 +191,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
             shop={data.shop}
             consent={data.consent}
           >
-            <PageLayout {...data} setTheme={setTheme}>
+            <PageLayout {...data} theme={theme} setTheme={setTheme}>
               {children}
             </PageLayout>
             <StoreSelector />
