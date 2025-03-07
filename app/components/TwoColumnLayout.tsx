@@ -11,14 +11,14 @@ export function TwoColumnLayout({left, right}: TwoColumnLayoutProps) {
       <div className="relative grid sm:grid-cols-2 border-x sm:border-x-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
         <div
           className={cn(
-            'w-full sm:aspect-square border-r-0 sm:border-r-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 overflow-scroll',
+            'w-full sm:aspect-square border-r-0 sm:border-r-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 overflow-scroll hide-scrollbar',
             right && 'border-b sm:border-b-0',
           )}
         >
           {left}
         </div>
         {right && (
-          <div className="w-full sm:aspect-square sm:overflow-scroll">
+          <div className="w-full sm:aspect-square sm:overflow-scroll hide-scrollbar">
             {right}
           </div>
         )}

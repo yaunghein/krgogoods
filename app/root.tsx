@@ -171,7 +171,10 @@ export function Layout({children}: {children?: React.ReactNode}) {
   // }, []);
 
   return (
-    <html lang="en" className={cn('text-base sm:text-[1.12vw]', theme)}>
+    <html
+      lang="en"
+      className={cn('text-base sm:text-[1.12vw] hide-scrollbar', theme)}
+    >
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
