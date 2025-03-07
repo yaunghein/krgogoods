@@ -356,7 +356,7 @@ function Right({
               product.topRightImage?.reference?.image.width
             }`,
           }}
-          className="max-w-full sm:max-w-[16rem] mt-6 sm:mt-0 -translate-y-[0.4rem] dark:invert transition duration-300"
+          className="max-w-full sm:max-w-[16rem] mt-6 sm:mt-0 -translate-y-[0.4rem] dark:invert transition duration-300 px-4 sm:px-0"
         >
           <img
             src={product.topRightImage?.reference?.image.url}
