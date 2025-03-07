@@ -143,7 +143,6 @@ export default function Product() {
 
 // TODO: type
 function Left({selectedVariant}: {selectedVariant: any}) {
-  // console.log(selectedVariant)
   const otherImages =
     selectedVariant.otherImages?.references.edges.map(
       (edge: any) => edge.node.image,
@@ -348,7 +347,15 @@ function Right({
             })}
           </div>
         </div>
-        <div className="w-full sm:w-[16rem] mt-6 sm:mt-0 aspect-[1/0.36] -translate-y-[0.4rem] dark:invert transition duration-300">
+        <div
+          style={{
+            aspectRatio: `1/${
+              product.topRightImage?.reference?.image.height /
+              product.topRightImage?.reference?.image.width
+            }`,
+          }}
+          className="max-w-full sm:max-w-[16rem] mt-6 sm:mt-0 -translate-y-[0.4rem] dark:invert transition duration-300"
+        >
           <img
             src={product.topRightImage?.reference?.image.url}
             alt=""
@@ -364,7 +371,15 @@ function Right({
         <Accordion
           header={<div>composition, care & origin</div>}
           body={
-            <div className="w-full aspect-[1/0.33] dark:invert transition duration-300">
+            <div
+              style={{
+                aspectRatio: `1/${
+                  product.compositionCareOriginImage?.reference?.image.height /
+                  product.compositionCareOriginImage?.reference?.image.width
+                }`,
+              }}
+              className="w-full dark:invert transition duration-300"
+            >
               <img
                 src={product.compositionCareOriginImage?.reference?.image.url}
                 alt=""
