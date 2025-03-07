@@ -162,13 +162,13 @@ export function Layout({children}: {children?: React.ReactNode}) {
 
   const [theme, setTheme] = useState(data?.theme);
 
-  useEffect(() => {
-    if (data && !data.country) {
-      const currentPath = location.pathname;
-      const newUrl = `${currentPath}?select-store=true`;
-      navigate(newUrl, {replace: true});
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (data && !data.country) {
+  //     const currentPath = location.pathname;
+  //     const newUrl = `${currentPath}?select-store=true`;
+  //     navigate(newUrl, {replace: true});
+  //   }
+  // }, []);
 
   return (
     <html lang="en" className={cn('text-base sm:text-[1.12vw]', theme)}>
