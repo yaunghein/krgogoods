@@ -68,7 +68,13 @@ export async function action({request, context}: ActionFunctionArgs) {
           (line: any) => `
         <li>
           <img src="${line.merchandise.image.url}" width="80" height="80" />
-          <strong>${line.merchandise.product.title}</strong> - ${line.quantity} x ${line.merchandise.price.amount} ${line.merchandise.price.currencyCode}
+          <strong>${
+            line.merchandise.product.title
+          }</strong> - ${line.merchandise.selectedOptions
+            .map((o: any) => o.value)
+            .join(' / ')} - ${line.quantity} x ${
+            line.merchandise.price.amount
+          } ${line.merchandise.price.currencyCode}
         </li>
       `,
         )
