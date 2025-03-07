@@ -93,7 +93,7 @@ export function Footer({
         <div className="grid gap-2 sm:gap-2">
           <NavLink
             prefetch="intent"
-            to="/"
+            to="/t-c-policies"
             end
             className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
@@ -101,7 +101,7 @@ export function Footer({
           </NavLink>
           <NavLink
             prefetch="intent"
-            to="/"
+            to="/t-c-policies"
             end
             className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >

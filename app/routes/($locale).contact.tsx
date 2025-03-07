@@ -1,5 +1,11 @@
 import {type LoaderFunctionArgs} from '@shopify/remix-oxygen';
-import {Await, useLoaderData, Link, type MetaFunction} from '@remix-run/react';
+import {
+  Await,
+  useLoaderData,
+  Link,
+  type MetaFunction,
+  NavLink,
+} from '@remix-run/react';
 import {Suspense} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 import type {
@@ -65,44 +71,77 @@ export default function Homepage() {
 
 function Left() {
   return (
-    <div className="p-4 sm:p-7 h-full flex flex-col justify-between">
-      <div className="grid gap-7">
-        <div className="grid gap-2">
-          <div className="font-[HelveticaNeueBold] text-sm uppercase">
-            Contact us
+    <div className="p-4 sm:p-7 min-h-full flex flex-col justify-between text-black dark:text-white transition duration-300">
+      <div className="h-full">
+        <div className="grid gap-4 max-w-[26rem] sm:pb-7">
+          <div className="grid gap-1">
+            <div className="text-sm uppercase font-[HelveticaNeueBold]">
+              Contact Us
+            </div>
+            <div className="text-sm leading-normal">
+              Contact our advisors assigned for client services to learn more
+              about the tracking, shipping and return of your orders and sizing
+              suggestions and more.
+            </div>
           </div>
-          <div className="text-sm max-w-[21rem]">
-            Contact our client services advisors to receive personalised support
-            on product related inquiries, tailored recommendations and styling
-            advice, suggestions on gifts, account management and more.
+          <div className="grid gap-1">
+            <div className="text-sm uppercase font-[HelveticaNeueBold]">
+              Tracking
+            </div>
+            <div className="text-sm leading-normal">
+              Unfortunately, since the tracking section is not currently
+              available on our website, we advise you to contact directly to{' '}
+              <a href="tel:+959774234928" className="underline">
+                +959774234928
+              </a>{' '}
+              for faster updates on orders tracking.
+            </div>
           </div>
-        </div>
-        <div className="grid gap-2">
-          <div className="font-[HelveticaNeueBold] text-sm uppercase">CALL</div>
-          <div className="text-sm max-w-[21rem]">+95 12 123 12 31</div>
-        </div>
-        <div className="grid gap-2">
-          <div className="font-[HelveticaNeueBold] text-sm uppercase">
-            EMAIL
+          <div className="grid gap-1">
+            <div className="text-sm uppercase font-[HelveticaNeueBold]">
+              Call
+            </div>
+            <div className="text-sm leading-normal">
+              <a href="tel:+95 9774234928" className="underline">
+                +95 9774234928
+              </a>{' '}
+              /{' '}
+              <a href="tel:+95 9977374053" className="underline">
+                +95 9977374053
+              </a>
+            </div>
           </div>
-          <div className="text-sm max-w-[21rem]">
-            clientservices@krgogoods.com
+          <div className="grid gap-1">
+            <div className="text-sm uppercase font-[HelveticaNeueBold]">
+              Email
+            </div>
+            <a
+              href="mailto:hello.krgogoods@gmail.com"
+              className="text-sm leading-normal underline"
+            >
+              hello.krgogoods@gmail.com
+            </a>
           </div>
         </div>
       </div>
 
-      <div className="grid gap-2 mt-7 sm:mt-0 ">
-        <p className="text-sm sm:text-[0.65rem]">
+      <div className="grid gap-2 mt-7 sm:mt-auto">
+        <p className="text-sm sm:text-xs">
           For opening times or to contact one of our stores directly
         </p>
-        <button className="block text-xs cursor-pointer bg-black text-white uppercase font-[HelveticaNeueBold] py-3 text-center sm:w-1/2 relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
-          Locate stores
+        <NavLink
+          prefetch="intent"
+          to="/locate-stores"
+          end
+          className="group cursor-pointer block z-10 group text-sm sm:w-1/2 bg-white text-black hover:bg-black hover:text-white dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black uppercase font-[HelveticaNeueBold] py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+        >
+          <div className="translate-y-[0.1rem]">Locate stores</div>
           {/* dots */}
-          <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-          <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-          <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-          <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-        </button>
+          <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+          <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+          <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+          <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+        </NavLink>
       </div>
     </div>
   );
