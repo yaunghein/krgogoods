@@ -59,7 +59,7 @@ export function Footer({
             prefetch="intent"
             to="/locate-stores"
             end
-            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition pointer-events-none line-through"
+            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             locate stores
           </NavLink>

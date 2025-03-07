@@ -63,60 +63,53 @@ export default function Homepage() {
   return <TwoColumnLayout left={<Left />} />;
 }
 
-const locations = [
-  {
-    country: 'Myanmar',
-    info: [
-      '56A Mahabandoola Road, Lanmadaw Township',
-      'Yangon, Myanmar 11131',
-      'Phone: +95 9 4567 1234',
-    ],
-  },
-  {
-    country: 'Singapore',
-    info: [
-      '12 Orchard Boulevard, Level 5',
-      'Singapore 238875',
-      'Phone: +65 6789 1234',
-    ],
-  },
-  {
-    country: 'Thailand',
-    info: [
-      '88 Sukhumvit Soi 22, Khlong Toei',
-      'Bangkok 10110, Thailand',
-      'Phone: +66 2-345-6789',
-    ],
-  },
-  {
-    country: 'Japan',
-    info: [
-      '3-14-5 Shibuya, Shibuya-ku',
-      'Tokyo 150-0002, Japan',
-      'Phone: +81 3-9876-5432',
-    ],
-  },
-];
-
 function Left() {
   return (
-    <div className="p-4 sm:p-7">
+    <div className="p-4 sm:p-7 text-black dark:text-white transition duration-300">
       <div className="font-[HelveticaNeueBold] text-sm uppercase">Stores</div>
       <div className="mt-7 grid gap-7">
-        {locations.map((location) => (
-          <div key={location.country} className="grid gap-3 ">
-            <div className="font-[HelveticaNeueBold] text-sm uppercase">
-              {location.country}
+        <div className="grid gap-3">
+          <div className="font-[HelveticaNeueBold] text-sm uppercase">
+            Myanmar
+          </div>
+          <div className="grid gap-4">
+            <div className="max-w-[25rem] flex flex-col gap-1">
+              <div className="text-sm -mb-[0.15rem]">HiGround</div>
+              <a
+                href="mailto:oakkamin.bee@gmail.com"
+                className="text-sm underline"
+              >
+                oakkamin.bee@gmail.com
+              </a>
+              <div className="text-sm">
+                No. 276 D-1, Corner of Moe Kaung Road & Pyi Thar Yar Street
+                (Between City Expressand G&G), Yangon, 11082
+              </div>
             </div>
-            <div>
-              {location.info.map((info) => (
-                <div key={info} className="text-sm">
-                  {info}
-                </div>
-              ))}
+            <div className="max-w-[25rem] flex flex-col gap-1">
+              <div className="text-sm -mb-[0.15rem]">Beetage Streetwear</div>
+              <a href="tel:+959777975678" className="text-sm underline">
+                +959777975678
+              </a>
+              <div className="text-sm">
+                Room No. D(8), Talamon Station (Near The Death Railway Museum),
+                Thanbyuzayat, 12092
+              </div>
+            </div>
+            <div className="max-w-[25rem] flex flex-col gap-1">
+              <div className="text-sm -mb-[0.15rem]">
+                Your Design T-Shirt Collection
+              </div>
+              <a href="tel:+959770385558" className="text-sm underline">
+                +959770385558
+              </a>
+              <div className="text-sm">
+                No. (4/B), Myo Shaung Road, Taung Shan Su, Hlaing Quater,
+                Mawlamyine, 12016
+              </div>
             </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
