@@ -35,7 +35,6 @@ import {Resend} from 'resend';
 const resend = new Resend('re_uauU2oYt_Gq3Pt9KhkSnsrLmpREDXM2fe');
 
 export async function action({request, context}: ActionFunctionArgs) {
-  console.log('checkout action hits`');
   const {cart} = context;
   const formData = Object.fromEntries(await request.formData());
 
@@ -100,14 +99,14 @@ export async function action({request, context}: ActionFunctionArgs) {
   console.log('Email sent successfully:', data);
 
   // 🛒 **Clear the Shopify Cart**
-  // if (cart) {
-  //   try {
-  //     await cart.removeLines(cartLines.map((line: any) => line.id)); // Clear cart if available in context
-  //     console.log('Shopify Cart Cleared');
-  //   } catch (err) {
-  //     console.error('Error clearing cart:', err);
-  //   }
-  // }
+  if (cart) {
+    try {
+      await cart.removeLines(cartLines.map((line: any) => line.id)); // Clear cart if available in context
+      console.log('Shopify Cart Cleared');
+    } catch (err) {
+      console.error('Error clearing cart:', err);
+    }
+  }
 
   // ✅ **Redirect to Success Page**
   return redirect(
