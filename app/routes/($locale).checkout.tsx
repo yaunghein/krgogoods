@@ -557,19 +557,20 @@ function Right({
               !formData.email ||
               !formData.name ||
               !formData.address ||
+              isSending ||
               (!formData.screenshot.content && formData.paymentMethod !== 'cod')
             }
             onClick={() => setIsSending(true)}
-            className="disabled:opacity-50 block z-10 text-xs cursor-pointer bg-black text-white uppercase font-[HelveticaNeueBold] py-3 text-center w-full sm:w-1/2 relative border leading-none sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+            className="disabled:opacity-50 disabled:pointer-events-none cursor-pointer block z-10 group text-xs sm:w-1/2 bg-white text-black hover:bg-black hover:text-white dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black uppercase font-[HelveticaNeueBold] py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
           >
             <div className="translate-y-[0.1rem]">
               {isSending ? '  submitting order...' : '  submit order'}
             </div>
             {/* dots */}
-            <div className="absolute size-[0.6rem] sm:size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-black border leading-none sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-            <div className="absolute size-[0.6rem] sm:size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-black border leading-none sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-            <div className="absolute size-[0.6rem] sm:size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-black border leading-none sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-            <div className="absolute size-[0.6rem] sm:size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-black border leading-none sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+            <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+            <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+            <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+            <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
           </button>
 
           <img

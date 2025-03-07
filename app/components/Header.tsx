@@ -48,7 +48,7 @@ export function Header({cart, setTheme}: HeaderProps) {
 
         {!isPathNotShowCloseButton && (
           <button
-            className="relative shrink-0 cursor-pointer"
+            className="group relative shrink-0 cursor-pointer"
             onClick={() => {
               if (location.pathname.startsWith('/order-succes')) {
                 navigate('/');
@@ -64,9 +64,9 @@ export function Header({cart, setTheme}: HeaderProps) {
               //   : navigate('/');
             }}
           >
-            <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
-            <div className="size-8 sm:size-9 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
-              <div className="size-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black dark:text-white trnsition duration-300 flex">
+            <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+            <div className="size-8 sm:size-9 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
+              <div className="size-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black dark:text-white group-hover:text-white dark:group-hover:text-black trnsition duration-300 flex">
                 <svg
                   width="100%"
                   height="100%"
@@ -82,7 +82,7 @@ export function Header({cart, setTheme}: HeaderProps) {
               </div>
             </div>
             <div className="sm:hidden h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -left-3"></div>
-            <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+            <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
           </button>
         )}
       </div>
@@ -204,57 +204,58 @@ function CartBadge({count}: {count: number | null}) {
           url: window.location.href || '',
         } as CartViewPayload);
       }}
+      className="group"
     >
       <div className="flex items-center gap-3">
         <div className="relative shrink-0 hidden sm:block">
-          <div className="size-8 sm:size-9 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
-            <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white transition duration-300">
+          <div className="size-8 sm:size-9 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
+            <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition duration-300">
               C
             </div>
           </div>
-          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
           <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
         </div>
         <div className="relative shrink-0 hidden sm:block">
-          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
-          <div className="size-8 sm:size-9 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
-            <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white transition duration-300">
+          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="size-8 sm:size-9 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
+            <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition duration-300">
               A
             </div>
           </div>
-          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
           <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
         </div>
         <div className="relative shrink-0 hidden sm:block">
-          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
-          <div className="size-8 sm:size-9 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
-            <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white transition duration-300">
+          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="size-8 sm:size-9 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
+            <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition duration-300">
               R
             </div>
           </div>
-          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
           <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
         </div>
         <div className="relative shrink-0 hidden sm:block">
-          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
-          <div className="size-8 sm:size-9 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
-            <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white transition duration-300">
+          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="size-8 sm:size-9 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
+            <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition duration-300">
               T
             </div>
           </div>
-          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
         </div>
         <div className="relative shrink-0">
-          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
-          <div className="size-8 sm:size-9 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
-            <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white transition duration-300 flex">
+          <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="size-8 sm:size-9 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
+            <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition duration-300 flex">
               <span className="inline-block -translate-y-[0.05rem]">(</span>
               {count === null ? <span>&nbsp;</span> : count}
               <span className="inline-block -translate-y-[0.05rem]">)</span>
             </div>
           </div>
           <div className="h-[1px] sm:h-[2px] bg-neutral-300 w-3 absolute top-1/2 -translate-y-1/2 -left-3"></div>
-          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+          <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
         </div>
       </div>
     </a>

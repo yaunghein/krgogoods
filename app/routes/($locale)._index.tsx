@@ -200,10 +200,10 @@ function Product({index, product}: ProductProps) {
         <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] rounded-full transition duration-300"></div>
       </div>
       <div className="dark:text-white px-[1.13rem] py-[0.88rem] border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] flex gap-1 flex-col sm:flex-row items-center justify-between -mt-[1px] sm:-mt-[2px] transition duration-300">
-        <div className="font-[HelveticaNeueBold] uppercase text-xs sm:text-sm">
+        <div className="font-[HelveticaNeueBold] uppercase text-xs sm:text-sm text-black dark:text-white transition duration-300">
           {product.title}
         </div>
-        <div className="text-xs sm:text-sm uppercase">
+        <div className="text-xs sm:text-sm uppercase text-black dark:text-white transition duration-300">
           <Money data={product.priceRange.minVariantPrice} />
         </div>
       </div>
