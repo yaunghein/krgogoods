@@ -361,7 +361,7 @@ function Right({
           <img
             src={product.topRightImage?.reference?.image.url}
             alt=""
-            className="w-full h-full"
+            className="w-full"
           />
         </div>
       </div>
