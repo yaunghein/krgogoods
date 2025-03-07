@@ -1,6 +1,7 @@
 import {Suspense} from 'react';
 import {Await, NavLink} from '@remix-run/react';
 import type {FooterQuery, HeaderQuery} from 'storefrontapi.generated';
+import {useNavigate, useLocation} from '@remix-run/react';
 
 interface FooterProps {
   footer: Promise<FooterQuery | null>;
@@ -13,6 +14,8 @@ export function Footer({
   header,
   publicStoreDomain,
 }: FooterProps) {
+  const navigate = useNavigate();
+
   return (
     <footer className="mt-auto">
       <div className="px-8 sm:px-10 pt-8 sm:pt-20 pb-8 sm:pb-9 grid sm:grid-cols-5 gap-8 items-start">
@@ -109,14 +112,16 @@ export function Footer({
         </div>
 
         <div className="grid gap-2 sm:gap-2">
-          <NavLink
-            prefetch="intent"
-            to="/"
-            end
-            className="inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
+          <button
+            onClick={() => {
+              const currentPath = location.pathname;
+              const newUrl = `${currentPath}?select-store=true`;
+              navigate(newUrl, {replace: true});
+            }}
+            className="text-left cursor-pointer inline-block uppercase text-xs text-black dark:text-white opacity-50 hover:opacity-100 duration-300 transition"
           >
             SELECT STORE
-          </NavLink>
+          </button>
           <div className="inline-block uppercase text-xs text-neutral-400 ">
             © {new Date().getFullYear()} KRGOGOODS
           </div>

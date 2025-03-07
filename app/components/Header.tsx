@@ -7,9 +7,9 @@ import {
 } from '@shopify/hydrogen';
 import type {HeaderQuery, CartApiQueryFragment} from 'storefrontapi.generated';
 import {useAside} from '~/components/Aside';
-import Logo from '~/assets/logo.jpg';
 import {ThemeSwitcher} from '~/components/ThemeSwitcher';
 import {useLocation, useNavigate} from '@remix-run/react';
+import {Logo} from '~/components/Logo';
 
 interface HeaderProps {
   header: HeaderQuery;
@@ -39,11 +39,9 @@ export function Header({cart, setTheme}: HeaderProps) {
           end
           className="absolute top-1/2 left-8 sm:left-1/2 transform sm:-translate-x-1/2 -translate-y-1/2"
         >
-          <img
-            src={Logo}
-            alt="Krgogoods Logo"
-            className="w-[8.13rem] sm:w-[16.06rem] h-[2.19rem] sm:h-[3.44rem] dark:invert transition duration-300"
-          />
+          <div className="w-[8.13rem] sm:w-[16.06rem] aspect-[1/0.21] h-[2.19rem] sm:h-[3.44rem] dark:invert transition duration-300">
+            <Logo />
+          </div>
         </NavLink>
 
         {isPathNotShowCloseButton && <CartToggle cart={cart} />}
@@ -52,13 +50,18 @@ export function Header({cart, setTheme}: HeaderProps) {
           <button
             className="relative shrink-0 cursor-pointer"
             onClick={() => {
-              if (location.pathname !== '/cart') {
+              if (location.pathname.startsWith('/order-succes')) {
                 navigate('/');
                 return;
               }
-              document.referrer
-                ? (window.location.href = document.referrer)
-                : navigate('/');
+              navigate(-1);
+              // if (location.pathname !== '/cart') {
+              //   navigate('/');
+              //   return;
+              // }
+              // document.referrer
+              //   ? (window.location.href = document.referrer)
+              //   : navigate('/');
             }}
           >
             <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>

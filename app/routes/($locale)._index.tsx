@@ -142,22 +142,30 @@ function Product({index, product}: ProductProps) {
         )}
 
         <div className="w-full aspect-square relative">
-          <div className="w-full h-full absolute inset-0">
+          <div
+            className={cn(
+              'w-full h-full absolute inset-0',
+              product.media.edges[1] &&
+                'group-hover:opacity-0 transition duration-300',
+            )}
+          >
             <img
               src={product.media.edges[0]?.node?.image?.url}
               alt={product.media.edges[0]?.node?.image?.altText}
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="w-full h-full absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
-            <img
-              src={product.media.edges[1]?.node?.image?.url}
-              alt={product.media.edges[1]?.node?.image?.altText}
-              className="w-full h-full object-cover"
-            />
-          </div>
+          {product.media.edges[1] && (
+            <div className="font-another w-full h-full absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300">
+              <img
+                src={product.media.edges[1]?.node?.image?.url}
+                alt={product.media.edges[1]?.node?.image?.altText}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
 
-          {availableColors && (
+          {/* {availableColors && (
             <div className="flex flex-col gap-2 absolute top-3 left-3">
               {availableColors.map((color: string, i: number) => (
                 <div key={color}>
@@ -175,7 +183,7 @@ function Product({index, product}: ProductProps) {
                 </div>
               ))}
             </div>
-          )}
+          )} */}
         </div>
 
         {/* lines  */}

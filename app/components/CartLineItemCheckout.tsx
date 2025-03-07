@@ -103,8 +103,8 @@ function CartLineQuantity({line}: {line: CartLine}) {
           <span className="">&#8722;</span>
         </button>
       </CartLineUpdateButton> */}
-      <div className="relative size-4 sm:size-7 rounded-full bg-black">
-        <div className="text-xs sm:text-sm font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white">
+      <div className="relative size-4 sm:size-7 rounded-full bg-black dark:bg-white transition duration-300">
+        <div className="text-xs sm:text-sm font-bold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white dark:text-black transition duration-300">
           {quantity}
         </div>
       </div>

@@ -10,7 +10,7 @@ type CartSummaryProps = {
 };
 
 import Payments from '~/assets/payments.jpg';
-import MMPayments from '~/assets/mm-payments.jpg';
+import MMPayments from '~/assets/mm-payments.svg';
 
 export function CartSummary({cart, layout}: CartSummaryProps) {
   const className =
@@ -37,7 +37,7 @@ export function CartSummary({cart, layout}: CartSummaryProps) {
         <img
           src={MMPayments}
           alt=""
-          className="w-[7.44rem] aspect-[1/0.29] dark:invert transition duration-300"
+          className="w-[7.44rem] dark:invert transition duration-300 aspect-[1/0.29]"
         />
       </div>
     </div>

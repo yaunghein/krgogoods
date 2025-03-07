@@ -244,8 +244,8 @@ function Left({
       <input
         type="email"
         name="email"
-        className="border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
-        placeholder="email@user.com"
+        className="border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:opacity-20 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
+        placeholder="user@email.com"
         onChange={(e) =>
           setFormData((data: any) => ({
             ...data,
@@ -256,7 +256,7 @@ function Left({
       <input
         type="phone"
         name="phone"
-        className="border sm:border-2 border-t-0 sm:border-t-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
+        className="border sm:border-2 border-t-0 sm:border-t-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:opacity-20 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
         placeholder="Mobile Phone Number"
         onChange={(e) =>
           setFormData((data: any) => ({
@@ -271,7 +271,7 @@ function Left({
       <input
         type="text"
         name="name"
-        className="border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
+        className="border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:opacity-20 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
         placeholder="Name"
         onChange={(e) =>
           setFormData((data: any) => ({
@@ -283,7 +283,7 @@ function Left({
       <input
         type="text"
         name="address"
-        className="border sm:border-2 border-t-0 sm:border-t-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
+        className="border sm:border-2 border-t-0 sm:border-t-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:opacity-20 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
         placeholder="Address"
         onChange={(e) =>
           setFormData((data: any) => ({
@@ -296,7 +296,7 @@ function Left({
         <input
           name="township"
           placeholder="Township"
-          className="border sm:border-2 border-t-0 sm:border-t-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
+          className="border sm:border-2 border-t-0 sm:border-t-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:opacity-20 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
           onChange={(e) =>
             setFormData((data: any) => ({
               ...data,
@@ -308,7 +308,7 @@ function Left({
           <select
             name="province"
             value={formData.province}
-            className="appearance-none border sm:border-2 border-t-0 sm:border-t-0 sm:border-l-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
+            className="appearance-none border sm:border-2 border-t-0 sm:border-t-0 sm:border-l-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base p-3 sm:p-4 placeholder:opacity-20 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
             onChange={(e) =>
               setFormData((data: any) => ({
                 ...data,
@@ -442,7 +442,7 @@ function Left({
               <img
                 src={Qrs[formData.paymentMethod]}
                 alt="Payment QR"
-                className="w-full h-full dark:invert transitin duration-300"
+                className="w-full h-full transitin duration-300"
               />
             </div>
 
@@ -501,7 +501,7 @@ function Left({
   );
 }
 
-import MMPayments from '~/assets/mm-payments.jpg';
+import MMPayments from '~/assets/mm-payments.svg';
 
 function Right({
   cart: originalCart,
