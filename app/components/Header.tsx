@@ -16,11 +16,12 @@ interface HeaderProps {
   cart: Promise<CartApiQueryFragment | null>;
   isLoggedIn: Promise<boolean>;
   publicStoreDomain: string;
+  setTheme: any;
 }
 
 type Viewport = 'desktop' | 'mobile';
 
-export function Header({cart}: HeaderProps) {
+export function Header({cart, setTheme}: HeaderProps) {
   const location = useLocation();
   const isPathNotShowCloseButton =
     ['/'].includes(location.pathname) ||
@@ -30,7 +31,7 @@ export function Header({cart}: HeaderProps) {
   return (
     <header>
       <div className="h-[5.5rem] sm:h-24 p-5 flex items-center justify-end sm:justify-between relative gap-3">
-        <ThemeSwitcher />
+        <ThemeSwitcher setTheme={setTheme} />
         <NavLink
           prefetch="intent"
           to="/"

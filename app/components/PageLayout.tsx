@@ -22,6 +22,7 @@ interface PageLayoutProps {
   isLoggedIn: Promise<boolean>;
   publicStoreDomain: string;
   children?: React.ReactNode;
+  setTheme: any;
 }
 
 export function PageLayout({
@@ -31,6 +32,7 @@ export function PageLayout({
   header,
   isLoggedIn,
   publicStoreDomain,
+  setTheme,
 }: PageLayoutProps) {
   return (
     <Aside.Provider>
@@ -45,6 +47,7 @@ export function PageLayout({
           cart={cart}
           isLoggedIn={isLoggedIn}
           publicStoreDomain={publicStoreDomain}
+          setTheme={setTheme}
         />
       )}
       <main>{children}</main>

@@ -151,7 +151,7 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
   };
 }
 
-import {useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {useNavigate} from '@remix-run/react';
 import {cn} from './utils/cn';
 
@@ -159,6 +159,8 @@ export function Layout({children}: {children?: React.ReactNode}) {
   const nonce = useNonce();
   const data = useRouteLoaderData<RootLoader>('root');
   const navigate = useNavigate();
+
+  const [theme, setTheme] = useState(data?.theme);
 
   useEffect(() => {
     if (data && !data.country) {
@@ -169,7 +171,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
   }, []);
 
   return (
-    <html lang="en" className={cn('text-base sm:text-[1.12vw]', data?.theme)}>
+    <html lang="en" className={cn('text-base sm:text-[1.12vw]', theme)}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -186,7 +188,9 @@ export function Layout({children}: {children?: React.ReactNode}) {
             shop={data.shop}
             consent={data.consent}
           >
-            <PageLayout {...data}>{children}</PageLayout>
+            <PageLayout {...data} setTheme={setTheme}>
+              {children}
+            </PageLayout>
             <StoreSelector />
           </Analytics.Provider>
         ) : (
