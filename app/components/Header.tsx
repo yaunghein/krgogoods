@@ -30,7 +30,7 @@ export function Header({cart, theme, setTheme}: HeaderProps) {
   const navigate = useNavigate();
 
   return (
-    <header>
+    <header className="sticky top-0 w-full z-10 bg-white dark:bg-black transition duration-300 border-b sm:border-b-2 border-neutral-300 dark:border-[#2D2D2D] -mb-[2px]">
       <div className="h-[5.5rem] sm:h-24 p-5 flex items-center justify-end sm:justify-between relative gap-3">
         <ThemeSwitcher theme={theme} setTheme={setTheme} />
         <NavLink
@@ -86,6 +86,13 @@ export function Header({cart, theme, setTheme}: HeaderProps) {
             <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
           </button>
         )}
+      </div>
+      <div className="absolute -bottom-[0.3rem] w-full flex items-center justify-between pl-[1.76rem] pr-[1.7rem] sm:pl-9 sm:pr-9">
+        <div className="size-2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+        <div className="size-2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full hidden sm:block"></div>
+        <div className="size-2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full hidden sm:block"></div>
+        <div className="size-2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full hidden sm:block"></div>
+        <div className="size-2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
       </div>
     </header>
   );
