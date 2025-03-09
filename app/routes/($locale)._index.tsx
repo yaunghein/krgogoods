@@ -11,9 +11,39 @@ import type {
   FeaturedCollectionFragment,
   RecommendedProductsQuery,
 } from 'storefrontapi.generated';
+import OgImage from '~/assets/og-image.jpg';
+
+// export const meta: MetaFunction = () => {
+//   return [{title: 'Krgogoods | Products'}];
+// };
 
 export const meta: MetaFunction = () => {
-  return [{title: 'Krgogoods | Products'}];
+  const title = 'Krgogoods | Quality Products';
+  const description =
+    "Explore Krgogoods' exclusive collection of high-quality streetwear, including T-shirts, hoodies, and accessories. Elevate your style with our unique designs.";
+  const url = 'https://www.krgogoods.com/';
+  const image = OgImage;
+
+  return [
+    {title},
+    {name: 'description', content: description},
+    {property: 'og:title', content: title},
+    {property: 'og:description', content: description},
+    {property: 'og:type', content: 'website'},
+    {property: 'og:url', content: url},
+    {property: 'og:image', content: image},
+    {name: 'twitter:card', content: 'summary_large_image'},
+    {name: 'twitter:title', content: title},
+    {name: 'twitter:description', content: description},
+    {name: 'twitter:image', content: image},
+    {
+      name: 'keywords',
+      content: 'Krgogoods, streetwear, fashion, T-shirts, hoodies, accessories',
+    },
+    {name: 'robots', content: 'index, follow'},
+    {charset: 'utf-8'},
+    {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+  ];
 };
 
 export async function loader(args: LoaderFunctionArgs) {
