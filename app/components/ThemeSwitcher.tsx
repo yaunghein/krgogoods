@@ -23,7 +23,7 @@ export function ThemeSwitcher({theme, setTheme}: {theme: any; setTheme: any}) {
             {theme === 'light' ? '+' : '-'}
           </div>
         </div>
-        <div className="absolute size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white  border sm:border-2 border-neutral-300 rounded-full transition duration-300"></div>
+        <div className="absolute size-2 top-1/2 right-0 transform translate-x-[35%] -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white  border sm:border-2 border-neutral-300 rounded-full transition duration-300"></div>
       </button>
     </fetcher.Form>
   );

@@ -33,20 +33,19 @@ export function CartLineItem({
       className="flex sm:border-y-2 border-b-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 -mt-[2px] relative"
     >
       {image && (
-        <Image
-          alt={title}
-          aspectRatio="1/0.9"
-          data={image}
-          height={300}
-          loading="lazy"
-          width={300}
-          className="object-cover w-1/2 sm:w-[8rem] !rounded-none sm:border-r-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
-        />
+        <div className="shrink-0 w-1/2 sm:w-[6.56rem] aspect-square">
+          <img
+            alt={title}
+            src={image.url}
+            loading="lazy"
+            className="w-full h-full object-cover !rounded-none sm:border-r-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+          />
+        </div>
       )}
 
       <div className="p-4 sm:p-5 w-full flex flex-col sm:flex-row sm:items-center justify-between">
         <CartLineQuantity line={line} />
-        <div className="flex flex-col sm:flex-row items-start justify-between mb-8 sm:mb-0 mt-2 sm:mt-0">
+        <div className="flex flex-col sm:flex-row items-start justify-between mb-4 sm:mb-0 mt-2 sm:mt-0">
           <div className="grid sm:gap-1">
             <Link
               prefetch="intent"

@@ -33,19 +33,18 @@ export function CartLineItem({
       className="dark:text-white flex flex-col sm:flex-row border-y sm:border-y-2 border-b-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 -mt-[2px] relative"
     >
       {image && (
-        <Image
-          alt={title}
-          aspectRatio="1/0.9"
-          data={image}
-          height={200}
-          loading="lazy"
-          width={200}
-          className="object-cover !rounded-none sm:border-r-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
-        />
+        <div className="aspect-square w-full sm:w-[17.19rem]">
+          <img
+            src={image.url}
+            alt={title}
+            loading="lazy"
+            className="w-full h-full object-cover !rounded-none sm:border-r-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+          />
+        </div>
       )}
 
-      <div className="p-5 w-full flex flex-col justify-between">
-        <div className="flex flex-col sm:flex-row items-start justify-between w-full mb-8 sm:mb-0">
+      <div className="p-5 pt-0 sm:pt-5 w-full flex flex-col justify-between">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between w-full mb-8 sm:mb-0">
           <div className="grid gap-1">
             <Link
               prefetch="intent"
@@ -68,7 +67,9 @@ export function CartLineItem({
           </div>
           <ProductPrice price={line?.cost?.totalAmount} />
         </div>
-        <CartLineQuantity line={line} />
+        <div className="flex items-center justify-center sm:justify-start w-full">
+          <CartLineQuantity line={line} />
+        </div>
       </div>
 
       {/* dots */}
@@ -92,7 +93,7 @@ function CartLineQuantity({line}: {line: CartLine}) {
   const nextQuantity = Number((quantity + 1).toFixed(0));
 
   return (
-    <div className="flex items-center gap-8">
+    <div className="flex items-center justify-center gap-8 w-full">
       <CartLineUpdateButton lines={[{id: lineId, quantity: prevQuantity}]}>
         <button
           aria-label="Decrease quantity"

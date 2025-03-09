@@ -144,9 +144,9 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="w-full flex justify-center px-8 sm:px-10 sm:border-t-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
-        <div className="relative sm:border-x-2 border-b-0 w-full border-neutral-300 dark:border-[#2D2D2D] transition duration-300 pt-5 sm:pt-3 pb-7 sm:pb-3 flex justify-center">
-          <div className="flex items-center gap-3 -translate-x-[0.05rem]">
+      <div className="w-full flex justify-center pl-[1.975rem] pr-[1.9rem] sm:pl-[2.42rem] sm:pr-[2.45rem] sm:border-t-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300">
+        <div className="relative border-x sm:border-x-2 border-b-0 w-full border-neutral-300 dark:border-[#2D2D2D] transition duration-300 py-5 sm:py-3 sm:-translate-y-[0.05rem] flex justify-center">
+          <div className="flex items-center gap-3">
             <div className="relative shrink-0">
               <div className="size-8 sm:size-9 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full relative">
                 <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white transition duration-300">
@@ -174,9 +174,11 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
                 </div>
               </div>
               <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+              <div className="absolute z-10 size-2 top-0 left-1/2 transform -translate-x-1/2 -translate-y-[35%] bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+              <div className="absolute z-10 size-2 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-[35%] bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
               <div className="h-[1px] sm:h-[2px] bg-neutral-300 dark:bg-[#2D2D2D] transition duration-300 w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
-              <div className="hidden sm:block h-3 bg-neutral-300 dark:bg-[#2D2D2D] transition duration-300 w-[2px] absolute -top-3 left-1/2 -translate-x-1/2"></div>
-              <div className="hidden sm:block h-3 bg-neutral-300 dark:bg-[#2D2D2D] transition duration-300 w-[2px] absolute -bottom-3 left-1/2 -translate-x-1/2"></div>
+              <div className="h-5 sm:h-3 bg-neutral-300 dark:bg-[#2D2D2D] transition duration-300 w-[1px] sm:w-[2px] absolute -top-5 sm:-top-3 left-1/2 -translate-x-1/2"></div>
+              <div className="h-5 sm:h-3 bg-neutral-300 dark:bg-[#2D2D2D] transition duration-300 w-[1px] sm:w-[2px] absolute -bottom-5 sm:-bottom-3 left-1/2 -translate-x-1/2"></div>
             </div>
             <div className="relative shrink-0">
               <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
@@ -200,11 +202,6 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
               <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
             </div>
           </div>
-
-          {/* dots */}
-          <div className="hidden sm:block absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-          <div className="hidden sm:block absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-          <div className="hidden sm:block absolute size-2 top-0 left-1/2 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
         </div>
       </div>
       <TwoColumnLayout
@@ -263,7 +260,7 @@ function CartEmpty({
   const {close} = useAside();
   return (
     <div hidden={hidden} className="p-7 grid gap-7 sm:p-10">
-      <p className="max-w-[22rem] uppercase text-sm">
+      <p className="max-w-[22rem] uppercase text-sm text-black dark:text-white transition duration-300">
         Looks like you haven&rsquo;t added anything yet, let&rsquo;s get you
         started!
       </p>

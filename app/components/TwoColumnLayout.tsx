@@ -28,8 +28,8 @@ export function TwoColumnLayout({left, right}: TwoColumnLayoutProps) {
         <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
         <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
         <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-        {/* <div className="hidden sm:block absolute size-2 top-0 left-1/2 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div> */}
-        <div className="hidden sm:block absolute size-2 bottom-0 left-1/2 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+        <div className="hidden sm:block absolute size-2 top-0 left-1/2 transform -translate-x-1/2 -translate-y-[65%] bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+        <div className="hidden sm:block absolute size-2 bottom-0 left-1/2 transform -translate-x-1/2 translate-y-[60%] bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
       </div>
     </div>
   );

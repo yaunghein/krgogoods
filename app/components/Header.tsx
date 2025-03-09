@@ -30,7 +30,7 @@ export function Header({cart, theme, setTheme}: HeaderProps) {
   const navigate = useNavigate();
 
   return (
-    <header className="sticky top-0 w-full z-10 bg-white dark:bg-black transition duration-300 border-b sm:border-b-2 border-neutral-300 dark:border-[#2D2D2D] -mb-[2px]">
+    <header className="sticky top-0 w-full z-20 bg-white dark:bg-black transition duration-300 border-b sm:border-b-2 border-neutral-300 dark:border-[#2D2D2D] -mb-[2px]">
       <div className="h-[5.5rem] sm:h-24 p-5 flex items-center justify-end sm:justify-between relative gap-3">
         <ThemeSwitcher theme={theme} setTheme={setTheme} />
         <NavLink
@@ -65,9 +65,9 @@ export function Header({cart, theme, setTheme}: HeaderProps) {
               //   : navigate('/');
             }}
           >
-            <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
+            <div className="absolute z-10 size-2 top-1/2 left-0 transform -translate-x-[35%] -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
             <div className="size-8 sm:size-9 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
-              <div className="size-3 leading-none absolute top-1/2 left-1/2 -translate-x-[30%] -translate-y-[50%] rotate-45 text-black dark:text-white group-hover:text-white dark:group-hover:text-black trnsition duration-300 flex">
+              <div className="size-3 scale-110 leading-none absolute top-1/2 left-1/2 -translate-x-[30%] -translate-y-[55%] rotate-45 text-black dark:text-white group-hover:text-white dark:group-hover:text-black trnsition duration-300 flex">
                 +
                 {/* <svg
                   width="100%"
