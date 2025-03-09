@@ -87,10 +87,14 @@ export function Header({cart, theme, setTheme}: HeaderProps) {
           </button>
         )}
       </div>
-      <div className="absolute -bottom-[0.3rem] w-full flex items-center justify-between pl-[1.76rem] pr-[1.7rem] sm:pl-9 sm:pr-9">
+      <div className="absolute -bottom-[0.275rem] w-full flex items-center justify-between pl-[1.775rem] pr-[1.715rem] sm:pl-9 sm:pr-9">
         <div className="size-2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-        <div className="size-2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full hidden sm:block"></div>
-        <div className="size-2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full hidden sm:block"></div>
+        {location.pathname === '/' && (
+          <>
+            <div className="size-2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full hidden sm:block"></div>
+            <div className="size-2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full hidden sm:block"></div>
+          </>
+        )}
         <div className="size-2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full hidden sm:block"></div>
         <div className="size-2 bg-white dark:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
       </div>

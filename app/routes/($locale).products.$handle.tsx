@@ -210,8 +210,6 @@ function Accordion({header, body, initialOpen}: AccordionProps) {
   );
 }
 
-import SizeFitShirt from '~/assets/size-fit-shirt.jpg';
-import SizeFitChart from '~/assets/size-fit-chart.jpg';
 function SizeFit({product}: {product?: any}) {
   const [type, setType] = useState('inches');
   return (
@@ -366,29 +364,35 @@ function Right({
         </div>
       </div>
       <div className="mb-auto mt-7 sm:mt-auto grid gap-4 sm:gap-5 px-4 sm:px-0">
-        <Accordion
-          header={<div>size & fit</div>}
-          body={<SizeFit product={product} />}
-        />
-        <Accordion
-          header={<div>composition, care & origin</div>}
-          body={
-            <div
-              style={{
-                aspectRatio: `1/${
-                  product.compositionCareOriginImage?.reference?.image.height /
-                  product.compositionCareOriginImage?.reference?.image.width
-                }`,
-              }}
-              className="w-full dark:invert transition duration-300"
-            >
-              <img
-                src={product.compositionCareOriginImage?.reference?.image.url}
-                alt=""
-              />
-            </div>
-          }
-        />
+        {product.sizeFitImages &&
+          product.sizeFitImages?.references.edges[0] && (
+            <Accordion
+              header={<div>size & fit</div>}
+              body={<SizeFit product={product} />}
+            />
+          )}
+        {product.compositionCareOriginImage && (
+          <Accordion
+            header={<div>composition, care & origin</div>}
+            body={
+              <div
+                style={{
+                  aspectRatio: `1/${
+                    product.compositionCareOriginImage?.reference?.image
+                      .height /
+                    product.compositionCareOriginImage?.reference?.image.width
+                  }`,
+                }}
+                className="w-full dark:invert transition duration-300"
+              >
+                <img
+                  src={product.compositionCareOriginImage?.reference?.image.url}
+                  alt=""
+                />
+              </div>
+            }
+          />
+        )}
         <Accordion
           header={<div>shipping & returns</div>}
           body={
