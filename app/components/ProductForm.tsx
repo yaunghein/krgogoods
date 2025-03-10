@@ -57,7 +57,7 @@ export function ProductForm({
                             selected ? 'opacity-80' : 'opacity-25',
                           )}
                         >
-                          <div className="translate-y-[0.1rem]">
+                          <div className="translate-y-[0.1rem] py-[0.08rem]">
                             <ProductOptionSwatch swatch={swatch} name={name} />
                           </div>
                         </button>
