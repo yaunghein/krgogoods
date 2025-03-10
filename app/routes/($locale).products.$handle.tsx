@@ -197,10 +197,12 @@ function Accordion({header, body, initialOpen}: AccordionProps) {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center relative w-full cursor-pointer"
       >
-        <div className="text-xs uppercase">{header}</div>
+        <div className="text-xs uppercase text-black dark:text-white transition duration-300">
+          {header}
+        </div>
         <div
           className={cn(
-            'ml-auto sm:absolute left-56 size-3 rounded-full border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] duration-300 transition',
+            'text-black dark:text-white ml-auto sm:absolute left-56 size-3 rounded-full border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] duration-300 transition',
             isOpen ? 'bg-black dark:bg-white' : 'bg-white dark:bg-black',
           )}
         ></div>
@@ -277,7 +279,7 @@ function Right({
     <div className="dark:text-white transition duration-300 sm:p-10 sm:pb-0 flex flex-col h-full">
       <div className="flex flex-col-reverse sm:flex-row items-start justify-between">
         <div className="px-4 pb-0 sm:pb-6 sm:px-0 py-6 sm:py-0">
-          <h1 className="text-xs sm:text-base font-[HelveticaNeueBold] uppercase">
+          <h1 className="text-xs sm:text-base font-[HelveticaNeueBold] uppercase text-black dark:text-white transition duration-300">
             {title}
           </h1>
           <ProductPrice
@@ -287,7 +289,7 @@ function Right({
           <div className="flex flex-col-reverse sm:flex-col">
             <div
               dangerouslySetInnerHTML={{__html: descriptionHtml}}
-              className="uppercase text-xs mt-6 sm:max-w-[16rem] prose leading-relaxed"
+              className="uppercase text-xs mt-6 sm:max-w-[16rem] prose leading-relaxed text-black dark:text-white transition duration-300"
             />
             {productOptions?.find((o: any) => o.name === 'Color') && (
               <div className="mt-5 sm:mt-7">
