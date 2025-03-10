@@ -43,9 +43,9 @@ export function CartLineItem({
         </div>
       )}
 
-      <div className="p-4 sm:p-5 w-full flex flex-col sm:flex-row sm:items-center justify-between">
+      <div className="p-4 sm:p-5 w-full flex flex-col sm:flex-row sm:items-center">
         <CartLineQuantity line={line} />
-        <div className="flex flex-col sm:flex-row items-start justify-between mb-4 sm:mb-0 mt-2 sm:mt-0">
+        <div className="flex flex-col sm:flex-row items-start justify-between mb-auto sm:mb-0 mt-2 sm:mt-0">
           <div className="grid sm:gap-1">
             <Link
               prefetch="intent"

@@ -284,67 +284,71 @@ function Right({
             price={selectedVariant?.price}
             compareAtPrice={selectedVariant?.compareAtPrice}
           />
-          <div
-            dangerouslySetInnerHTML={{__html: descriptionHtml}}
-            className="text-xs mt-6 max-w-[16rem] prose leading-relaxed"
-          />
-          <div className="mt-7">
-            {productOptions.map((option: any) => {
-              if (option.optionValues.length === 1) return null;
-              return (
-                <div className="" key={option.name}>
-                  <div className="flex gap-2">
-                    {option.optionValues.map((value: any, i: number) => {
-                      const {
-                        name,
-                        handle,
-                        variantUriQuery,
-                        selected,
-                        available,
-                        exists,
-                        isDifferentProduct,
-                        swatch,
-                      } = value;
-                      if (option.name === 'Color') {
-                        return (
-                          <button
-                            type="button"
-                            key={option.name + name}
-                            disabled={!exists}
-                            onClick={() => {
-                              if (!selected) {
-                                navigate(`?${variantUriQuery}`, {
-                                  replace: true,
-                                  preventScrollReset: true,
-                                });
-                              }
-                            }}
-                          >
-                            <div className="relative">
-                              <div
-                                style={{backgroundColor: swatch?.color}}
-                                className={cn(
-                                  'size-5 rounded-full border sm:border-2 cursor-pointer',
-                                  selected
-                                    ? 'border-black dark:border-white'
-                                    : 'border-neutral-300 dark:border-[#2D2D2D] transition duration-300',
-                                  'transition',
-                                )}
-                              ></div>
-                              {i !== option.optionValues.length - 1 && (
-                                <div className="h-[1px] sm:h-[2px] bg-neutral-300 dark:bg-[#2D2D2D] w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
-                              )}
-                            </div>
-                          </button>
-                        );
-                      } else {
-                        return null;
-                      }
-                    })}
-                  </div>
-                </div>
-              );
-            })}
+          <div className="flex flex-col-reverse sm:flex-col">
+            <div
+              dangerouslySetInnerHTML={{__html: descriptionHtml}}
+              className="uppercase text-xs mt-6 sm:max-w-[16rem] prose leading-relaxed"
+            />
+            {productOptions?.find((o: any) => o.name === 'Color') && (
+              <div className="mt-5 sm:mt-7">
+                {productOptions.map((option: any) => {
+                  if (option.optionValues.length === 1) return null;
+                  return (
+                    <div className="" key={option.name}>
+                      <div className="flex gap-2">
+                        {option.optionValues.map((value: any, i: number) => {
+                          const {
+                            name,
+                            handle,
+                            variantUriQuery,
+                            selected,
+                            available,
+                            exists,
+                            isDifferentProduct,
+                            swatch,
+                          } = value;
+                          if (option.name === 'Color') {
+                            return (
+                              <button
+                                type="button"
+                                key={option.name + name}
+                                disabled={!exists}
+                                onClick={() => {
+                                  if (!selected) {
+                                    navigate(`?${variantUriQuery}`, {
+                                      replace: true,
+                                      preventScrollReset: true,
+                                    });
+                                  }
+                                }}
+                              >
+                                <div className="relative">
+                                  <div
+                                    style={{backgroundColor: swatch?.color}}
+                                    className={cn(
+                                      'size-5 rounded-full border sm:border-2 cursor-pointer',
+                                      selected
+                                        ? 'border-black dark:border-white'
+                                        : 'border-neutral-300 dark:border-[#2D2D2D] transition duration-300',
+                                      'transition',
+                                    )}
+                                  ></div>
+                                  {i !== option.optionValues.length - 1 && (
+                                    <div className="h-[1px] sm:h-[2px] bg-neutral-300 dark:bg-[#2D2D2D] w-3 absolute top-1/2 -translate-y-1/2 -right-3"></div>
+                                  )}
+                                </div>
+                              </button>
+                            );
+                          } else {
+                            return null;
+                          }
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
         <div

@@ -30,7 +30,7 @@ export function CartLineItem({
     // <li key={id} className="cart-line">
     <li
       key={id}
-      className="dark:text-white flex flex-col sm:flex-row border-y sm:border-y-2 border-b-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 -mt-[2px] relative"
+      className="dark:text-white text-center sm:text-left flex flex-col sm:flex-row border-y sm:border-y-2 border-b-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 -mt-[2px] relative"
     >
       {image && (
         <div className="aspect-square w-full sm:w-[17.19rem]">
