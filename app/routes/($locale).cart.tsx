@@ -215,7 +215,7 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
         }
         right={
           cartHasItems ? (
-            <div className="h-full flex flex-col justify-end">
+            <div className="h-full flex flex-col justify-end text-black dark:text-white transition duration-300">
               <CartSummary cart={cart} layout={layout} />
             </div>
           ) : null

@@ -30,7 +30,7 @@ export function CartLineItem({
     // <li key={id} className="cart-line">
     <li
       key={id}
-      className="flex sm:border-y-2 border-b-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 -mt-[2px] relative"
+      className="text-black dark:text-white flex sm:border-y-2 border-b-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 -mt-[2px] relative"
     >
       {image && (
         <div className="shrink-0 w-1/2 sm:w-[6.56rem] aspect-square">
@@ -43,7 +43,7 @@ export function CartLineItem({
         </div>
       )}
 
-      <div className="p-4 sm:p-5 w-full flex flex-col sm:flex-row sm:items-center">
+      <div className="p-4 sm:p-5 w-full flex flex-col sm:flex-row sm:items-center justify-between">
         <CartLineQuantity line={line} />
         <div className="flex flex-col sm:flex-row items-start justify-between mb-auto sm:mb-0 mt-2 sm:mt-0">
           <div className="grid sm:gap-1">

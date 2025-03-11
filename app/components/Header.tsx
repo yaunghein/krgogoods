@@ -207,11 +207,23 @@ function CartBadge({count}: {count: number | null}) {
   const {publish, shop, cart, prevCart} = useAnalytics();
 
   return (
-    <a
-      href="/cart"
+    // <a
+    //   href="/cart"
+    //   onClick={(e) => {
+    //     // e.preventDefault();
+    //     // open('cart');
+    //     publish('cart_viewed', {
+    //       cart,
+    //       prevCart,
+    //       shop,
+    //       url: window.location.href || '',
+    //     } as CartViewPayload);
+    //   }}
+    //   className="group"
+    // >
+    <NavLink
+      to="/cart"
       onClick={(e) => {
-        // e.preventDefault();
-        // open('cart');
         publish('cart_viewed', {
           cart,
           prevCart,
@@ -219,9 +231,8 @@ function CartBadge({count}: {count: number | null}) {
           url: window.location.href || '',
         } as CartViewPayload);
       }}
-      className="group"
     >
-      <div className="flex items-center gap-3">
+      <div className="group flex items-center gap-3">
         <div className="relative shrink-0 hidden sm:block">
           <div className="size-8 sm:size-9 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full relative">
             <div className="text-sm absolute leading-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-[39%] text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition duration-300">
@@ -273,7 +284,7 @@ function CartBadge({count}: {count: number | null}) {
           <div className="absolute z-10 size-2 top-1/2 right-0 transform translate-x-2/5 -translate-y-1/2 bg-white dark:bg-black group-hover:bg-black dark:group-hover:bg-white transition duration-300 border sm:border-2 border-neutral-300 rounded-full"></div>
         </div>
       </div>
-    </a>
+    </NavLink>
   );
 }
 

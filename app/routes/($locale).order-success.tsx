@@ -35,8 +35,8 @@ export default function Homepage() {
 
 function Left({data}: {data: any}) {
   return (
-    <div className="p-4 sm:p-7 h-full flex flex-col justify-between">
-      <div className="grid gap-4 max-w-[28rem]">
+    <div className="p-4 sm:p-7 h-full flex flex-col justify-between text-black dark:text-white transition duration-300">
+      <div className="grid gap-4 max-w-[25rem]">
         <div className="font-[HelveticaNeueBold] uppercase leading-none">
           THANK YOU FOR YOUR PURCHASE!
         </div>
@@ -51,14 +51,21 @@ function Left({data}: {data: any}) {
           <span className="font-[HelveticaNeueBold] uppercase">
             Order Confirmation
           </span>{' '}
-          will be send to your email within 24 hours.
+          has been sent to your email. If you have not received it, please
+          contact us at{' '}
+          <a href="mailto:hello.krgogoods@gmail.com" className="underline">
+            hello.krgogoods@gmail.com
+          </a>
+          .
         </div>
         <div className="leading-tight">
           Please note that delivery fees may vary on your location and to be
           paid upon delivery.
         </div>
 
-        <div className="font-[HelveticaNeueBold]">Delivery Information</div>
+        <div className="font-[HelveticaNeueBold] uppercase mt-5">
+          Delivery Information
+        </div>
         <div>
           <div>{data.name}</div>
           <div>{data.email}</div>

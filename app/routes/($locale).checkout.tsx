@@ -11,7 +11,7 @@ import {
 import {useAside} from '~/components/Aside';
 
 import {useOptimisticCart} from '@shopify/hydrogen';
-import {Link} from '@remix-run/react';
+import {useNavigation, useLocation} from '@remix-run/react';
 import type {CartApiQueryFragment} from 'storefrontapi.generated';
 import {CartLineItem} from '~/components/CartLineItemCheckout';
 import {CartSummary} from '~/components/CartSummary';
@@ -34,100 +34,238 @@ export const headers: HeadersFunction = ({actionHeaders}) => actionHeaders;
 import {Resend} from 'resend';
 const resend = new Resend('re_uauU2oYt_Gq3Pt9KhkSnsrLmpREDXM2fe');
 
-export async function action({request, context}: ActionFunctionArgs) {
-  const {cart} = context;
-  const formData = Object.fromEntries(await request.formData());
+function getEmailTemplate(
+  customerData: any,
+  cartLines: any,
+  type: 'krgogoods' | 'customer',
+): string {
+  const titles: Record<'krgogoods' | 'customer', string> = {
+    krgogoods: `New Order from ${customerData.name}`,
+    customer: `Order Confirmation`,
+  };
+  return `
+    <!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>KROOCOODS® Order Confirmation</title>
+          <style>
+              body {
+                  font-family: Arial, sans-serif;
+                  background-color: #ffffff;
+                  color: #000000;
+                  margin: 0;
+                  padding: 0;
+              }
+              .email-container {
+                  max-width: 600px;
+                  margin: 20px auto;
+                  background-color: #ffffff;
+                  padding: 20px;
+                  border-radius: 4px;
+                  border: 1px solid #e0e0e0;
+              }
+              h1, h2, h3 {
+                  color: #000000;
+                  font-weight: bold;
+                  margin: 0;
+              }
+              h1 {
+                  font-size: 24px;
+                  border-bottom: 1px solid #e0e0e0;
+                  padding-bottom: 10px;
+                  margin-bottom: 20px;
+              }
+              h2 {
+                  font-size: 16px;
+              }
+              p {
+                  margin: 5px 0;
+                  line-height: 1.6;
+                  color: #333333;
+              }
+              strong {
+                  color: #000000;
+              }
+              ul {
+                  list-style-type: none;
+                  padding: 0;
+                  margin: 0;
+              }
+              ul li {
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 15px;
+                  padding: 10px;
+                  background-color: #f9f9f9;
+                  border-radius: 4px;
+                  border: 1px solid #e0e0e0;
+                  margin-left: 0 !important;
+              }
+              ul li img {
+                  margin-right: 15px;
+                  border-radius: 4px;
+                  border: 1px solid #e0e0e0;
+              }
+              .total {
+                  font-size: 1.2em;
+                  font-weight: bold;
+                  color: #000000;
+              }
+              .logo {
+                width: 16.06rem;
+                height: 3.44rem;
+              }
+          </style>
+      </head>
+      <body>
+          <div class="email-container">
+              <img src="https://i.ibb.co/fzDprzT9/logo-black.png" class="logo" alt="Kegogoods Logo" />
+              <h2 style="text-transform: uppercase; margin-bottom: ${
+                type === 'customer' ? '0px' : '20px'
+              };">${titles[type]}</h2>
+              <p style="font-size: 14px; margin-bottom: 20px; margin-top: 0px; display: ${
+                type === 'customer' ? 'block' : 'none'
+              };">Hi ${customerData.name}, We have received your order.</p>
+              <p><strong style="font-size: 12px;">EMAIL:</strong> ${
+                customerData.email
+              }</p>
+              <p><strong style="font-size: 12px;">PHONE:</strong> ${
+                customerData.phone
+              }</p>
+              <p><strong style="font-size: 12px;">ADDRESS:</strong> ${
+                customerData.address
+              }, ${customerData.township}, ${customerData.province}</p>
+              <p><strong style="font-size: 12px; margin-bottom: 8px;">PAYMENT METHOD:</strong> ${
+                customerData.paymentMethod
+              }</p>
 
-  // Parse form data
-  const customerData = JSON.parse(formData.customerData as string) as any;
-  const cartLines = JSON.parse(formData.lines as string) as any;
+              <h3 style="margin-top: 20px; margin-bottom: 8px; font-size: 12px;">ORDER ITEMS</h3>
+              <ul>
+                  ${cartLines
+                    .map(
+                      (line: any) => `
+                          <li>
+                              <img src="${
+                                line.merchandise.image.url
+                              }" width="80" height="80" alt="${
+                        line.merchandise.product.title
+                      }" />
+                      <div>
+                              <div><strong>${
+                                line.merchandise.product.title
+                              }</strong></div>
+                              <div>${line.merchandise.selectedOptions
+                                .map((o: any) => o.value)
+                                .join(' / ')}</div>
+                              <div>${line.quantity} x ${
+                        line.merchandise.price.amount
+                      } ${line.merchandise.price.currencyCode}</div>
+                       </div>
+                          </li>
+                          `,
+                    )
+                    .join('')}
+              </ul>
 
-  // Extract Screenshot Data (if exists)
-  let attachments = [];
-  if (customerData.screenshot?.content) {
-    attachments.push({
-      content: customerData.screenshot.content.split(',')[1], // Remove data:image/jpeg;base64,
-      filename: customerData.screenshot.filename || 'screenshot.jpg',
-    });
-  }
-
-  // 🛒 **Format Order Details for Email**
-  const orderDetailsHtml = `
-    <h2>New Order from ${customerData.name}</h2>
-    <p><strong>Email:</strong> ${customerData.email}</p>
-    <p><strong>Phone:</strong> ${customerData.phone}</p>
-    <p><strong>Address:</strong> ${customerData.address}, ${
-    customerData.township
-  }, ${customerData.province}</p>
-    <p><strong>Payment Method:</strong> ${customerData.paymentMethod}</p>
-
-    <h3>Order Summary</h3>
-    <ul>
-      ${cartLines
-        .map(
-          (line: any) => `
-        <li>
-          <img src="${line.merchandise.image.url}" width="80" height="80" />
-          <strong>${
-            line.merchandise.product.title
-          }</strong> - ${line.merchandise.selectedOptions
-            .map((o: any) => o.value)
-            .join(' / ')} - ${line.quantity} x ${
-            line.merchandise.price.amount
-          } ${line.merchandise.price.currencyCode}
-        </li>
-      `,
-        )
-        .join('')}
-    </ul>
-
-    <h3>Total: ${cartLines.reduce(
-      (total: number, line: any) =>
-        total + parseFloat(line.cost.totalAmount.amount),
-      0,
-    )} MMK</h3>
+              <h3 style="margin-top: 20px; font-size: 12px;">TOTAL: <span class="total">${cartLines.reduce(
+                (total: number, line: any) =>
+                  total + parseFloat(line.cost.totalAmount.amount),
+                0,
+              )} ${
+    cartLines[0]?.merchandise.price.currencyCode || 'USD'
+  }</span></h3>
+          </div>
+      </body>
+</html>
   `;
+}
 
-  // 📩 **Send Email via Resend**
-  const {data, error} = await resend.emails.send({
-    from: 'Krgogoods <order@mail.krgogoods.com>',
-    to: ['hello.krgogoods@gmail.com'],
-    subject: `New Order from ${customerData.name}`,
-    html: orderDetailsHtml,
-    attachments,
-  });
+export async function action({request, context}: ActionFunctionArgs) {
+  try {
+    const {cart} = context;
+    const formData = Object.fromEntries(await request.formData());
 
-  if (error) {
-    console.error('Failed to send email:', error);
-    // return json({ success: false, message: "Email failed to send" });
-  }
+    // Parse form data
+    const customerData = JSON.parse(formData.customerData as string) as any;
+    const cartLines = JSON.parse(formData.lines as string) as any;
 
-  console.log('Email sent successfully:', data);
-
-  // 🛒 **Clear the Shopify Cart**
-  if (cart) {
-    try {
-      await cart.removeLines(cartLines.map((line: any) => line.id)); // Clear cart if available in context
-      console.log('Shopify Cart Cleared');
-    } catch (err) {
-      console.error('Error clearing cart:', err);
+    // Extract Screenshot Data (if exists)
+    let attachments = [];
+    if (customerData.screenshot?.content) {
+      attachments.push({
+        content: customerData.screenshot.content.split(',')[1], // Remove data:image/jpeg;base64,
+        filename: customerData.screenshot.filename || 'screenshot.jpg',
+      });
     }
-  }
 
-  // ✅ **Redirect to Success Page**
-  return redirect(
-    `/order-success?name=${encodeURIComponent(
-      customerData.name,
-    )}&email=${encodeURIComponent(
-      customerData.email,
-    )}&phone=${encodeURIComponent(
-      customerData.phone,
-    )}&address=${encodeURIComponent(
-      customerData.address,
-    )}&township=${encodeURIComponent(
-      customerData.township,
-    )}&province=${encodeURIComponent(customerData.province)}`,
-  );
+    // 🛒 **Format Order Details for Email**
+    const orderDetailsHtml = getEmailTemplate(
+      customerData,
+      cartLines,
+      'krgogoods',
+    );
+
+    const {data, error} = await resend.emails.send({
+      from: 'Krgogoods <order@mail.krgogoods.com>',
+      to: ['hello.krgogoods@gmail.com'],
+      subject: `New Order from ${customerData.name}`,
+      html: orderDetailsHtml,
+      attachments,
+    });
+
+    if (error) {
+      console.error('Failed to send email:', error);
+      return redirect(`/checkout?error=${error.message}`);
+    }
+
+    const orderDetailsHtml2 = getEmailTemplate(
+      customerData,
+      cartLines,
+      'customer',
+    );
+
+    const {error: error2} = await resend.emails.send({
+      from: 'Krgogoods <order@mail.krgogoods.com>',
+      to: [customerData.email],
+      subject: `Hi ${customerData.name}, We have received your order`,
+      html: orderDetailsHtml2,
+      attachments,
+    });
+
+    if (error2) {
+      console.error('Failed to send email:', error);
+      return redirect(`/checkout?error=${error2.message}`);
+    }
+
+    // Clear the Shopify Cart
+    if (cart) {
+      try {
+        await cart.removeLines(cartLines.map((line: any) => line.id)); // Clear cart if available in context
+        console.log('Shopify Cart Cleared');
+      } catch (err) {
+        console.error('Error clearing cart:', err);
+      }
+    }
+
+    return redirect(
+      `/order-success?name=${encodeURIComponent(
+        customerData.name,
+      )}&email=${encodeURIComponent(
+        customerData.email,
+      )}&phone=${encodeURIComponent(
+        customerData.phone,
+      )}&address=${encodeURIComponent(
+        customerData.address,
+      )}&township=${encodeURIComponent(
+        customerData.township,
+      )}&province=${encodeURIComponent(customerData.province)}`,
+    );
+  } catch (error: any) {
+    console.log(error);
+    return redirect(`/checkout?error=${error.message}`);
+  }
 }
 
 export async function loader({context}: LoaderFunctionArgs) {
@@ -243,7 +381,7 @@ function Left({
   }, [screenshot]);
 
   return (
-    <div className="p-4 sm:p-10">
+    <div className="p-4 sm:p-10 text-black dark:text-white transition duration-300">
       <div className="font-[HelveticaNeueBold] text-xs leading-none translate-y-[0.1rem] sm:text-base mb-2 sm:mb-4 ml-2 sm:ml-4 uppercase">
         Contact
       </div>
@@ -314,7 +452,7 @@ function Left({
           <select
             name="province"
             value={formData.province}
-            className="appearance-none border leading-none sm:border-2 border-t-0 sm:border-t-0 sm:border-l-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base px-3 pt-[0.8rem] pb-3 sm:pt-[1.15rem] sm:pb-4 sm:px-4 placeholder:opacity-20 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
+            className="text-black dark:text-white appearance-none border leading-none sm:border-2 border-t-0 sm:border-t-0 sm:border-l-0 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 focus:border-neutral-300 focus:outline-0 w-full text-sm sm:text-base px-3 pt-[0.8rem] pb-3 sm:pt-[1.15rem] sm:pb-4 sm:px-4 placeholder:opacity-20 placeholder:text-black dark:placeholder:text-white dark:focus:border-[#2D2D2D]"
             onChange={(e) =>
               setFormData((data: any) => ({
                 ...data,
@@ -408,7 +546,7 @@ function Left({
           <button
             type="button"
             className={cn(
-              'flex-1 text-xs leading-none sm:text-sm font-[HelveticaNeueBold] py-3 sm:py-4 uppercase cursor-pointer',
+              'flex-1 text-xs leading-none sm:text-sm font-[HelveticaNeueBold] py-3 sm:py-4 uppercase cursor-pointer transition duration-300',
               formData.paymentMethod === 'wave'
                 ? 'text-white bg-black dark:text-black dark:bg-white'
                 : 'text-black bg-white dark:text-white dark:bg-black',
@@ -454,7 +592,7 @@ function Left({
               />
             </div>
 
-            <div className="sm:absolute top-1/2 sm:-translate-y-1/2 left-14 leading-none grid gap-3 sm:gap-5 text-center sm:text-left my-3 sm:my-0">
+            <div className="text-black dark:text-white transition duration-300 sm:absolute top-1/2 sm:-translate-y-1/2 left-14 leading-none grid gap-3 sm:gap-5 text-center sm:text-left my-3 sm:my-0">
               <div className="font-[HelveticaNeueBold] text-xs leading-none translate-y-[0.1rem] sm:text-base max-w-[7.2rem] uppercase">
                 USE {Labels[formData.paymentMethod]} Scan to Pay
               </div>
@@ -520,9 +658,22 @@ function Right({
 }) {
   const cart = useOptimisticCart(originalCart);
   const [isSending, setIsSending] = useState(false);
+  const navigation = useNavigation();
+
+  const location = useLocation();
+  const search = new URLSearchParams(location.search);
+  const error = search.get('error');
+
+  useEffect(() => {
+    if (navigation.state === 'submitting') {
+      setIsSending(true);
+    } else {
+      setTimeout(() => setIsSending(false), 3000);
+    }
+  }, [navigation.state]);
 
   return (
-    <div className="h-full flex flex-col justify-between">
+    <div className="h-full flex flex-col justify-between text-black dark:text-white transition duration-300">
       <div className="p-4 sm:p-0">
         {(cart?.lines?.nodes ?? []).map((line) => (
           <CartLineItem key={line.id} line={line} layout="page" />
@@ -563,9 +714,9 @@ function Right({
               !formData.email ||
               !formData.name ||
               !formData.address ||
+              isSending ||
               (!formData.screenshot.content && formData.paymentMethod !== 'cod')
             }
-            onClick={() => setIsSending(true)}
             className="disabled:opacity-50 disabled:pointer-events-none cursor-pointer block z-10 group text-xs sm:w-1/2 bg-white text-black hover:bg-black hover:text-white dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black uppercase font-[HelveticaNeueBold] py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
           >
             <div className="translate-y-[0.1rem]">
@@ -584,6 +735,11 @@ function Right({
             className="w-[7.44rem] aspect-[1/0.29] dark:invert transition duration-300"
           />
         </Form>
+        {error && (
+          <p className="text-red-500 mt-5 text-center sm:text-left text-sm">
+            Error: {error}
+          </p>
+        )}
         <p className="text-sm mt-5 sm:max-w-[13rem] font-[HelveticaNeueLight] text-center sm:text-left">
           Order Confirmation will be send to your email within 24 hours after
           submission.
