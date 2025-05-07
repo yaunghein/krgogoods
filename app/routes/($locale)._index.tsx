@@ -83,7 +83,7 @@ async function loadCriticalData({context, request}: LoaderFunctionArgs) {
   ]);
 
   if (!collection) {
-    throw new Response(`Collection "featured" not found`, {
+    throw new Response(`Collection "all" not found`, {
       status: 404,
     });
   }

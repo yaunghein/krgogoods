@@ -351,6 +351,62 @@ function Right({
                 })}
               </div>
             )}
+
+            {/* Other variants section */}
+            {productOptions?.filter(
+              (o: any) =>
+                o.name !== 'Color' &&
+                o.name !== 'Size' &&
+                o.optionValues.length > 1,
+            ).length > 0 && (
+              <div className="mt-5 sm:mt-7 grid gap-4">
+                {productOptions.map((option: any) => {
+                  if (
+                    option.name === 'Color' ||
+                    option.name === 'Size' ||
+                    option.optionValues.length === 1
+                  )
+                    return null;
+
+                  return (
+                    <div key={option.name} className="grid gap-2">
+                      <div className="text-xs uppercase">{option.name}</div>
+                      <div className="flex flex-wrap gap-2 -mx-3">
+                        {option.optionValues.map((value: any) => {
+                          const {name, variantUriQuery, selected, exists} =
+                            value;
+
+                          return (
+                            <button
+                              type="button"
+                              key={option.name + name}
+                              disabled={!exists}
+                              onClick={() => {
+                                if (!selected) {
+                                  navigate(`?${variantUriQuery}`, {
+                                    replace: true,
+                                    preventScrollReset: true,
+                                  });
+                                }
+                              }}
+                              className={cn(
+                                'px-3 py-1 text-xs transition duration-300 cursor-pointer',
+                                selected
+                                  ? 'font-[HelveticaNeueBold] text-black dark:text-white'
+                                  : 'opacity-50',
+                                !exists && 'opacity-50 cursor-not-allowed',
+                              )}
+                            >
+                              {name}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
         <div
