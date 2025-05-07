@@ -216,51 +216,69 @@ function SizeFit({product}: {product?: any}) {
   const [type, setType] = useState('inches');
   return (
     <div className="flex flex-col sm:flex-row gap-5">
-      <div className="shrink-0 w-[8rem] sm:w-[11.56rem] aspect-[1/0.82] dark:invert transition duration-300">
-        <img
-          src={product.sizeFitImages?.references.edges[0]?.node.image.url}
-          alt=""
-          className="w-full h-full"
-        />
-      </div>
-      <div className="grid gap-3">
-        <div className="flex gap-1">
-          <button
-            onClick={() => setType('cm')}
-            className={cn(
-              type === 'cm' ? 'opacity-100' : 'opacity-20',
-              'transition uppercase text-xs cursor-pointer',
-            )}
-          >
-            CM
-          </button>
-          <button
-            onClick={() => setType('inches')}
-            className={cn(
-              type === 'inches' ? 'opacity-100' : 'opacity-20',
-              'transition uppercase text-xs cursor-pointer',
-            )}
-          >
-            Inches
-          </button>
+      {product.category?.value === 'Accessories' && (
+        <div className="shrink-0 w-full h-auto dark:invert transition duration-300">
+          <img
+            src={product.sizeFitImages?.references.edges[0]?.node.image.url}
+            alt=""
+            className="w-full h-full"
+          />
         </div>
-        {type === 'cm' && (
-          <div className="flex-1 aspect-[1/0.33] dark:invert transition duration-300">
+      )}
+      {product.category?.value !== 'Accessories' && (
+        <>
+          <div className="shrink-0 w-[8rem] sm:w-[11.56rem] aspect-[1/0.82] dark:invert transition duration-300">
             <img
-              src={product.sizeFitImages?.references?.edges[1]?.node.image.url}
+              src={product.sizeFitImages?.references.edges[0]?.node.image.url}
               alt=""
+              className="w-full h-full"
             />
           </div>
-        )}
-        {type === 'inches' && (
-          <div className="flex-1 aspect-[1/0.33] dark:invert transition duration-300">
-            <img
-              src={product.sizeFitImages?.references?.edges[2]?.node.image.url}
-              alt=""
-            />
+
+          <div className="grid gap-3">
+            <div className="flex gap-1">
+              <button
+                onClick={() => setType('cm')}
+                className={cn(
+                  type === 'cm' ? 'opacity-100' : 'opacity-20',
+                  'transition uppercase text-xs cursor-pointer',
+                )}
+              >
+                CM
+              </button>
+              <button
+                onClick={() => setType('inches')}
+                className={cn(
+                  type === 'inches' ? 'opacity-100' : 'opacity-20',
+                  'transition uppercase text-xs cursor-pointer',
+                )}
+              >
+                Inches
+              </button>
+            </div>
+            {type === 'cm' && (
+              <div className="flex-1 aspect-[1/0.33] dark:invert transition duration-300">
+                <img
+                  src={
+                    product.sizeFitImages?.references?.edges[1]?.node.image.url
+                  }
+                  alt=""
+                />
+              </div>
+            )}
+            {type === 'inches' && (
+              <div className="flex-1 aspect-[1/0.33] dark:invert transition duration-300">
+                <img
+                  src={
+                    product.sizeFitImages?.references?.edges[2]?.node.image.url
+                  }
+                  alt=""
+                />
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 }
