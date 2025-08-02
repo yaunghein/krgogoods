@@ -7,12 +7,13 @@ import {FetcherWithComponents} from '@remix-run/react';
 type CartSummaryProps = {
   cart: OptimisticCart<CartApiQueryFragment | null>;
   layout: CartLayout;
+  country: string;
 };
 
 import Payments from '~/assets/payments.jpg';
 import MMPayments from '~/assets/mm-payments.svg';
 
-export function CartSummary({cart, layout}: CartSummaryProps) {
+export function CartSummary({cart, layout, country}: CartSummaryProps) {
   const className =
     layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
 
@@ -34,24 +35,38 @@ export function CartSummary({cart, layout}: CartSummaryProps) {
       </div>
       <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-7">
         <div className="w-full sm:w-1/2">
-          <CartCheckoutActions checkoutUrl={cart.checkoutUrl} />
+          <CartCheckoutActions
+            checkoutUrl={cart.checkoutUrl}
+            country={country}
+          />
         </div>
-        <img
-          src={MMPayments}
-          alt=""
-          className="w-[7.44rem] dark:invert transition duration-300 aspect-[1/0.29]"
-        />
+        {country === 'MM' && (
+          <img
+            src={MMPayments}
+            alt=""
+            className="w-[7.44rem] dark:invert transition duration-300 aspect-[1/0.29]"
+          />
+        )}
       </div>
     </div>
   );
 }
 
-function CartCheckoutActions({checkoutUrl}: {checkoutUrl?: string}) {
+function CartCheckoutActions({
+  checkoutUrl,
+  country,
+}: {
+  checkoutUrl?: string;
+  country: string;
+}) {
   if (!checkoutUrl) return null;
+
+  const finalCheckoutUrl =
+    country && country === 'SG' ? checkoutUrl : '/checkout';
 
   return (
     <a
-      href="/checkout"
+      href={finalCheckoutUrl}
       target="_self"
       className="group cursor-pointer block text-xs bg-white text-black hover:bg-black hover:text-white dark:bg-black dark:text-white dark:hover:bg-white dark:hover:text-black uppercase font-[HelveticaNeueBold] py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
     >

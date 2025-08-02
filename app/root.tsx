@@ -162,6 +162,7 @@ export function Layout({children}: {children?: React.ReactNode}) {
 
   const [theme, setTheme] = useState(data?.theme);
 
+  // TODO: Uncomment this when we want to show store selector on load
   // useEffect(() => {
   //   if (data && !data.country) {
   //     const currentPath = location.pathname;

@@ -10,6 +10,13 @@ export function StoreSelector() {
   const search = new URLSearchParams(location.search);
   const selectStore = search.get('select-store');
 
+  const getCleanRedirectUrl = () => {
+    const cleanSearch = new URLSearchParams(location.search);
+    cleanSearch.delete('select-store');
+    const searchString = cleanSearch.toString();
+    return location.pathname + (searchString ? `?${searchString}` : '');
+  };
+
   if (selectStore !== 'true') return null;
 
   return (
@@ -49,7 +56,7 @@ export function StoreSelector() {
           <div
             className={cn(
               '-mr-[1px] transition duration-300 text-black dark:text-white',
-              selectedStore === 'worldwide' ? 'opacity-100' : 'opacity-25',
+              selectedStore === 'worldwide' ? 'opacity-100' : 'opacity-50',
             )}
           >
             <div className="w-full aspect-[1/1] grid place-items-center">
@@ -179,18 +186,23 @@ export function StoreSelector() {
             <Form method="post" action="/locale" key="EN-MM">
               <input type="hidden" name="language" value="EN" />
               <input type="hidden" name="country" value="MM" />
+              <input
+                type="hidden"
+                name="redirectTo"
+                value={getCleanRedirectUrl()}
+              />
               <button
                 type="submit"
                 onMouseEnter={() => setSelectedStore('myanmar')}
                 onMouseLeave={() => setSelectedStore(null)}
-                className="group block text-xs sm:text-sm cursor-pointer bg-white dark:bg-black dark:text-white dark:opacity-75 dark:hover:opacity-100 hover:bg-black text-black hover:text-white uppercase py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+                className="group block text-xs sm:text-sm cursor-pointer bg-white dark:bg-black dark:text-white dark:opacity-75 dark:hover:opacity-100 dark:hover:bg-white dark:hover:text-black hover:bg-black text-black hover:text-white uppercase py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
               >
                 Myanmar
                 {/* dots */}
-                <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-                <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-                <div className="absolute hidden sm:block size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-                <div className="absolute hidden sm:block size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black dark:group-hover:bg-white dark:group-hover:text-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black dark:group-hover:bg-white dark:group-hover:text-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute hidden sm:block size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black dark:group-hover:bg-white dark:group-hover:text-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute hidden sm:block size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black dark:group-hover:bg-white dark:group-hover:text-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
               </button>
             </Form>
           </div>
@@ -198,18 +210,22 @@ export function StoreSelector() {
             <Form method="post" action="/locale" key="EN-SG">
               <input type="hidden" name="language" value="EN" />
               <input type="hidden" name="country" value="SG" />
+              <input
+                type="hidden"
+                name="redirectTo"
+                value={getCleanRedirectUrl()}
+              />
               <button
-                disabled
                 onMouseEnter={() => setSelectedStore('worldwide')}
                 onMouseLeave={() => setSelectedStore(null)}
-                className="disabled:opacity-25 disabled:pointer-events-none group block text-xs sm:text-sm cursor-pointer bg-white dark:bg-black dark:text-white dark:opacity-75 dark:hover:opacity-100 hover:bg-black text-black hover:text-white uppercase py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
+                className="disabled:opacity-25 disabled:pointer-events-none group block dark:hover:bg-white dark:hover:text-black text-xs sm:text-sm cursor-pointer bg-white dark:bg-black dark:text-white dark:opacity-75 dark:hover:opacity-100 hover:bg-black text-black hover:text-white uppercase py-3 text-center w-full relative border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300"
               >
-                WORLDWIDE (Coming soon)
+                WORLDWIDE
                 {/* dots */}
-                <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-                <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-                <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
-                <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute size-2 top-0 left-0 transform -translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black dark:group-hover:bg-white dark:group-hover:text-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute size-2 top-0 right-0 transform translate-x-3/5 -translate-y-3/5 bg-white dark:bg-black dark:group-hover:bg-white dark:group-hover:text-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute size-2 bottom-0 left-0 transform -translate-x-3/5 translate-y-3/5 bg-white dark:bg-black dark:group-hover:bg-white dark:group-hover:text-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
+                <div className="absolute size-2 bottom-0 right-0 transform translate-x-3/5 translate-y-3/5 bg-white dark:bg-black dark:group-hover:bg-white dark:group-hover:text-black group-hover:bg-black border sm:border-2 border-neutral-300 dark:border-[#2D2D2D] transition duration-300 rounded-full"></div>
               </button>
             </Form>
           </div>

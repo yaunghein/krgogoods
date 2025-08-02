@@ -1,4 +1,8 @@
-import {type MetaFunction, useLoaderData} from '@remix-run/react';
+import {
+  type MetaFunction,
+  useLoaderData,
+  useRouteLoaderData,
+} from '@remix-run/react';
 import type {CartQueryDataReturn} from '@shopify/hydrogen';
 import {CartForm} from '@shopify/hydrogen';
 import {
@@ -16,12 +20,14 @@ import {CartLineItem} from '~/components/CartLineItem';
 import {CartSummary} from '~/components/CartSummary';
 import {cn} from '~/utils/cn';
 import {TwoColumnLayout} from '~/components/TwoColumnLayout';
+import type {RootLoader} from '~/root';
 
 export type CartLayout = 'page' | 'aside';
 
 export type CartMainProps = {
   cart: CartApiQueryFragment | null;
   layout: CartLayout;
+  country: string;
 };
 
 export const meta: MetaFunction = () => {
@@ -122,15 +128,16 @@ export async function loader({context}: LoaderFunctionArgs) {
 
 export default function Cart() {
   const cart = useLoaderData<typeof loader>();
+  const data = useRouteLoaderData<RootLoader>('root');
 
-  return <CartMain layout="page" cart={cart} />;
+  return <CartMain layout="page" cart={cart} country={data?.country} />;
 }
 
 /**
  * The main cart component that displays the cart items and summary.
  * It is used by both the /cart route and the cart aside dialog.
  */
-function CartMain({layout, cart: originalCart}: CartMainProps) {
+function CartMain({layout, cart: originalCart, country}: CartMainProps) {
   // The useOptimisticCart hook applies pending actions to the cart
   // so the user immediately sees feedback when they modify the cart.
   const cart = useOptimisticCart(originalCart);
@@ -216,7 +223,7 @@ function CartMain({layout, cart: originalCart}: CartMainProps) {
         right={
           cartHasItems ? (
             <div className="h-full flex flex-col justify-end text-black dark:text-white transition duration-300">
-              <CartSummary cart={cart} layout={layout} />
+              <CartSummary cart={cart} layout={layout} country={country} />
             </div>
           ) : null
         }

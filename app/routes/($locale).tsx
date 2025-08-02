@@ -34,6 +34,13 @@ export async function loader({params, context}: LoaderFunctionArgs) {
 export async function action({request, context}: ActionFunctionArgs) {
   const formData = await request.formData();
   const country = formData.get('country');
+  let redirectTo = formData.get('redirectTo') || '/';
+
+  // Avoid redirecting to external URLs to prevent phishing attacks
+  if (typeof redirectTo === 'string' && redirectTo.includes('//')) {
+    redirectTo = '/';
+  }
+
   const {cart} = context;
   const cartId = cart.getCartId();
 
@@ -46,12 +53,8 @@ export async function action({request, context}: ActionFunctionArgs) {
     });
   }
 
-  const url =
-    process.env.NODE_ENV === 'development'
-      ? 'http://localhost:3000'
-      : 'https://www.krgogoods.com/';
-
-  return redirect(url, {
+  // Redirect back to the original page
+  return redirect(redirectTo as string, {
     headers: {
       'Set-Cookie': await localizationCookie.serialize(country),
     },
