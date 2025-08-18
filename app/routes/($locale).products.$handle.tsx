@@ -72,6 +72,7 @@ async function loadCriticalData({
 
   return {
     product,
+    country,
   };
 }
 
@@ -88,7 +89,7 @@ function loadDeferredData({context, params}: LoaderFunctionArgs) {
 }
 
 export default function Product() {
-  const {product} = useLoaderData<typeof loader>();
+  const {product, country} = useLoaderData<typeof loader>();
 
   // Optimistically selects a variant with given available variant information
   const selectedVariant = useOptimisticVariant(
@@ -119,6 +120,7 @@ export default function Product() {
             selectedVariant={selectedVariant}
             productOptions={productOptions}
             product={product}
+            country={country}
           />
         }
       />
@@ -291,6 +293,7 @@ function Right({
   selectedVariant,
   productOptions,
   product,
+  country,
 }: any) {
   const navigate = useNavigate();
   return (
@@ -499,7 +502,7 @@ function Right({
                   </a>{' '}
                   or call{' '}
                   <a href="tel:+959774234928" className="underline">
-                    +959774234928
+                    {country === 'MM' ? '+959774234928' : '+6592374046'}
                   </a>
                   .
                 </div>

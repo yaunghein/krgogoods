@@ -25,14 +25,18 @@ export async function loader(args: LoaderFunctionArgs) {
  * Load data necessary for rendering content above the fold. This is the critical data
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  */
-async function loadCriticalData({context}: LoaderFunctionArgs) {
+async function loadCriticalData({context, request}: LoaderFunctionArgs) {
   const [{collections}] = await Promise.all([
     context.storefront.query(FEATURED_COLLECTION_QUERY),
     // Add other queries here, so that they are loaded in parallel
   ]);
 
+  const cookieHeader = request.headers.get('Cookie');
+  const country = await localizationCookie.parse(cookieHeader);
+
   return {
     featuredCollection: collections.nodes[0],
+    country,
   };
 }
 
@@ -56,14 +60,15 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 }
 
 import {TwoColumnLayout} from '~/components/TwoColumnLayout';
+import {localizationCookie} from '~/cookie.server';
 
 export default function Homepage() {
-  // const data = useLoaderData<typeof loader>();
+  const data = useLoaderData<typeof loader>();
 
-  return <TwoColumnLayout left={<Left />} />;
+  return <TwoColumnLayout left={<Left country={data.country} />} />;
 }
 
-function Left() {
+function Left({country}: {country: string}) {
   return (
     <div className="p-4 sm:p-7 text-black dark:text-white transition duration-300">
       <div className="font-[HelveticaNeueBold] text-sm uppercase">Stores</div>
@@ -84,28 +89,6 @@ function Left() {
               <div className="text-sm">
                 No. 276 D-1, Corner of Moe Kaung Road & Pyi Thar Yar Street
                 (Between City Expressand G&G), Yangon, 11082
-              </div>
-            </div>
-            <div className="max-w-[25rem] flex flex-col gap-1">
-              <div className="text-sm -mb-[0.15rem]">Beetage Streetwear</div>
-              <a href="tel:+959777975678" className="text-sm underline">
-                +959777975678
-              </a>
-              <div className="text-sm">
-                Room No. D(8), Talamon Station (Near The Death Railway Museum),
-                Thanbyuzayat, 12092
-              </div>
-            </div>
-            <div className="max-w-[25rem] flex flex-col gap-1">
-              <div className="text-sm -mb-[0.15rem]">
-                Your Design T-Shirt Collection
-              </div>
-              <a href="tel:+959770385558" className="text-sm underline">
-                +959770385558
-              </a>
-              <div className="text-sm">
-                No. (4/B), Myo Shaung Road, Taung Shan Su, Hlaing Quater,
-                Mawlamyine, 12016
               </div>
             </div>
           </div>

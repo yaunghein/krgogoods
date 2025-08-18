@@ -1,4 +1,4 @@
-import {type LoaderFunctionArgs} from '@shopify/remix-oxygen';
+import {data, type LoaderFunctionArgs} from '@shopify/remix-oxygen';
 import {
   Await,
   useLoaderData,
@@ -31,14 +31,18 @@ export async function loader(args: LoaderFunctionArgs) {
  * Load data necessary for rendering content above the fold. This is the critical data
  * needed to render the page. If it's unavailable, the whole page should 400 or 500 error.
  */
-async function loadCriticalData({context}: LoaderFunctionArgs) {
+async function loadCriticalData({context, request}: LoaderFunctionArgs) {
   const [{collections}] = await Promise.all([
     context.storefront.query(FEATURED_COLLECTION_QUERY),
     // Add other queries here, so that they are loaded in parallel
   ]);
 
+  const cookieHeader = request.headers.get('Cookie');
+  const country = await localizationCookie.parse(cookieHeader);
+
   return {
     featuredCollection: collections.nodes[0],
+    country,
   };
 }
 
@@ -62,14 +66,16 @@ function loadDeferredData({context}: LoaderFunctionArgs) {
 }
 
 import {TwoColumnLayout} from '~/components/TwoColumnLayout';
+import {localizationCookie} from '~/cookie.server';
 
 export default function Homepage() {
-  // const data = useLoaderData<typeof loader>();
+  const data = useLoaderData<typeof loader>();
+  console.log(data);
 
-  return <TwoColumnLayout left={<Left />} />;
+  return <TwoColumnLayout left={<Left country={data.country} />} />;
 }
 
-function Left() {
+function Left({country}: {country: string}) {
   return (
     <div className="p-4 sm:p-7 min-h-full flex flex-col justify-between text-black dark:text-white transition duration-300">
       <div className="h-full">
@@ -92,7 +98,7 @@ function Left() {
               Unfortunately, since the tracking section is not currently
               available on our website, we advise you to contact directly to{' '}
               <a href="tel:+959774234928" className="underline">
-                +959774234928
+                {country === 'MM' ? '+959774234928' : '+6592374046'}
               </a>{' '}
               for faster updates on orders tracking.
             </div>
@@ -101,15 +107,23 @@ function Left() {
             <div className="text-sm uppercase font-[HelveticaNeueBold]">
               Call
             </div>
-            <div className="text-sm leading-normal">
-              <a href="tel:+95 9774234928" className="underline">
-                +95 9774234928
-              </a>{' '}
-              /{' '}
-              <a href="tel:+95 9977374053" className="underline">
-                +95 9977374053
-              </a>
-            </div>
+            {country === 'MM' ? (
+              <div className="text-sm leading-normal">
+                <a href="tel:+95 9774234928" className="underline">
+                  +95 9774234928
+                </a>{' '}
+                /{' '}
+                <a href="tel:+95 9977374053" className="underline">
+                  +95 9977374053
+                </a>
+              </div>
+            ) : (
+              <div className="text-sm leading-normal">
+                <a href="tel:+6592374046" className="underline">
+                  +6592374046
+                </a>
+              </div>
+            )}
           </div>
           <div className="grid gap-1">
             <div className="text-sm uppercase font-[HelveticaNeueBold]">
