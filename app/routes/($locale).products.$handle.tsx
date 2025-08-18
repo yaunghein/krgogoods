@@ -502,7 +502,7 @@ function Right({
                   </a>{' '}
                   or call{' '}
                   <a href="tel:+959774234928" className="underline">
-                    {country === 'MM' ? '+959774234928' : '+6592374046'}
+                    +959774234928
                   </a>
                   .
                 </div>
@@ -529,8 +529,8 @@ function Right({
                     hello.krgogoods@gmail.com
                   </a>{' '}
                   or call{' '}
-                  <a href="tel:+959774234928" className="underline">
-                    +959774234928
+                  <a href="tel:+6592374046" className="underline">
+                    +6592374046
                   </a>
                   .
                 </div>
