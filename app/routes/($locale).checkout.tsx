@@ -32,7 +32,6 @@ export const meta: MetaFunction = () => {
 export const headers: HeadersFunction = ({actionHeaders}) => actionHeaders;
 
 import {Resend} from 'resend';
-const resend = new Resend('re_uauU2oYt_Gq3Pt9KhkSnsrLmpREDXM2fe');
 
 function getEmailTemplate(
   customerData: any,
@@ -185,6 +184,13 @@ function getEmailTemplate(
 export async function action({request, context}: ActionFunctionArgs) {
   try {
     const {cart} = context;
+    const resendApiKey = context.env.RESEND_API_KEY;
+
+    if (!resendApiKey) {
+      throw new Error('RESEND_API_KEY environment variable is not set');
+    }
+
+    const resend = new Resend(resendApiKey);
     const formData = Object.fromEntries(await request.formData());
 
     // Parse form data
@@ -192,7 +198,7 @@ export async function action({request, context}: ActionFunctionArgs) {
     const cartLines = JSON.parse(formData.lines as string) as any;
 
     // Extract Screenshot Data (if exists)
-    let attachments = [];
+    const attachments = [];
     if (customerData.screenshot?.content) {
       attachments.push({
         content: customerData.screenshot.content.split(',')[1], // Remove data:image/jpeg;base64,

@@ -19,7 +19,7 @@ declare global {
   const process: {env: {NODE_ENV: 'production' | 'development'}};
 
   interface Env extends HydrogenEnv {
-    // declare additional Env parameter use in the fetch handler and Remix loader context here
+    RESEND_API_KEY: string;
   }
 }
 
