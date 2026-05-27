@@ -120,7 +120,7 @@ function getEmailTemplate(
       </head>
       <body>
           <div class="email-container">
-              <img src="https://i.ibb.co/fzDprzT9/logo-black.png" class="logo" alt="Kegogoods Logo" />
+              <img src="https://i.ibb.co/y7gWpmC/logo-black.png" class="logo" alt="Kegogoods Logo" />
               <h2 style="text-transform: uppercase; margin-bottom: ${
                 type === 'customer' ? '0px' : '20px'
               };">${titles[type]}</h2>
